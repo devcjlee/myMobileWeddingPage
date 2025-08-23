@@ -82,3 +82,9 @@ input, select {
     max-width: 100%;
   }
 }
+
+#dday {
+  font-weight: bold;
+  color: #c94e50;
+  margin-left: 8px;
+}
