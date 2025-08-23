@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>치종 & OO의 모바일 청첩장</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="intro">
+      <h1>💍 치종 & OO의 결혼식에 초대합니다</h1>
+      <p>저희 두 사람의 소중한 날에 함께해 주세요.</p>
+    </section>
+
+    <section class="details">
+      <h2>📅 날짜 & 장소</h2>
+      <p><strong>일시:</strong> 2025년 10월 18일 (토) 오후 2시</p>
+      <p><strong>장소:</strong> 서울 강남구 어딘가의 웨딩홀</p>
+      <button onclick="openMap()">📍 지도 보기</button>
+    </section>
+
+    <section class="photos">
+      <h2>📸 우리 이야기</h2>
+      <div class="photo-gallery">
+        <img src="images/photo1.jpg" alt="우리 사진 1">
+        <img src="images/photo2.jpg" alt="우리 사진 2">
+      </div>
+    </section>
+
+    <section class="rsvp">
+      <h2>📝 참석 여부</h2>
+      <form id="rsvpForm">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="attend">참석 여부:</label>
+        <select id="attend" name="attend">
+          <option value="yes">참석합니다</option>
+          <option value="no">불참합니다</option>
+        </select>
+
+        <button type="submit">제출하기</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>📞 문의: 010-XXXX-XXXX</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

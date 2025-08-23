@@ -1,0 +1,92 @@
+/* 기본 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fffafc;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h1, h2 {
+  color: #c94e50;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #c94e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a83e42;
+}
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.photo-gallery img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+}
+
+/* RSVP 폼 */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+input, select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p, input, select, button {
+    font-size: 15px;
+  }
+
+  .photo-gallery img {
+    max-width: 100%;
+  }
+}
