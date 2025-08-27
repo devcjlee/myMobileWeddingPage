@@ -119,7 +119,7 @@ function startSakura() {
     petals.forEach(p => {
       p.y += p.speedY;
       p.x += p.speedX;
-      p.angle += p.rotationSpeed;
+      p.angle += p.rotationSpeed + Math.sin(Date.now() / 1000 + p.x) * 0.002;
       p.opacity += 0.01; // 서서히 선명해지게
       if (p.opacity > 1) p.opacity = 1;
       if (p.y > canvas.height) p.y = -20;
