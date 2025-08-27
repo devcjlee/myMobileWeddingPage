@@ -79,3 +79,62 @@ window.addEventListener("load", () => {
     overlay.classList.add("fade-out");
   }, 2000); // 2초 후 페이드아웃
 });
+
+// 벚꽃 애니메이션
+function startSakura() {
+  const canvas = document.getElementById("sakuraCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  const sakuraImg1 = new Image();
+  sakuraImg1.src = "images/sakuraLeaf1.png"; // 벚꽃 이미지 경로
+
+  const petals = [];
+
+  for (let i = 0; i < 30; i++) {
+    petals.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: 10 + Math.random() * 10,
+      speedY: 1 + Math.random() * 2,
+      speedX: Math.random() * 1,
+      angle: Math.random() * 2 * Math.PI,
+      rotationSpeed: 0.01 + Math.random() * 0.02
+    });
+  }
+
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.angle);
+    ctx.drawImage(sakuraImg1, -p.size / 2, -p.size / 2, p.size, p.size);
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    petals.forEach(p => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.angle += p.rotationSpeed;
+
+      if (p.y > canvas.height) p.y = -20;
+      if (p.x > canvas.width) p.x = -20;
+
+      drawPetal(p);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+// 인트로 오버레이 페이드아웃 + 벚꽃 시작
+window.addEventListener("load", () => {
+  startSakura(); // 벚꽃 애니메이션 시작
+  const overlay = document.getElementById("introOverlay");
+  setTimeout(() => {
+    overlay.classList.add("fade-out");
+  }, 2000);
+});
