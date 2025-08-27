@@ -100,12 +100,14 @@ function startSakura() {
       speedY: 1 + Math.random() * 2,
       speedX: Math.random() * 1,
       angle: Math.random() * 2 * Math.PI,
-      rotationSpeed: 0.01 + Math.random() * 0.02
+      rotationSpeed: 0.01 + Math.random() * 0.02,
+      opacity: 0 // 처음엔 완전 투명
     });
   }
 
   function drawPetal(p) {
     ctx.save();
+    ctx.globalAlpha = p.opacity; // 투명도 적용
     ctx.translate(p.x, p.y);
     ctx.rotate(p.angle);
     ctx.drawImage(sakuraImg1, -p.size / 2, -p.size / 2, p.size, p.size);
@@ -118,7 +120,8 @@ function startSakura() {
       p.y += p.speedY;
       p.x += p.speedX;
       p.angle += p.rotationSpeed;
-
+      p.opacity += 0.03; // 서서히 선명해지게
+      if (p.opacity > 1) p.opacity = 1;
       if (p.y > canvas.height) p.y = -20;
       if (p.x > canvas.width) p.x = -20;
 
