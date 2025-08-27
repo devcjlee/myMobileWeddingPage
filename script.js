@@ -127,7 +127,7 @@ function startSakura() {
     requestAnimationFrame(animate);
   }
 
-  animate();
+  sakuraImg1.onload = animate;
 }
 
 // 인트로 오버레이 페이드아웃 + 벚꽃 시작
