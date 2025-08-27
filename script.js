@@ -120,7 +120,7 @@ function startSakura() {
       p.y += p.speedY;
       p.x += p.speedX;
       p.angle += p.rotationSpeed;
-      p.opacity += 0.03; // 서서히 선명해지게
+      p.opacity += 0.01; // 서서히 선명해지게
       if (p.opacity > 1) p.opacity = 1;
       if (p.y > canvas.height) p.y = -20;
       if (p.x > canvas.width) p.x = -20;
