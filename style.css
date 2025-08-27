@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', serif;
   background-color: #fffafc;
   color: #333;
 }
@@ -18,7 +18,7 @@ section {
 }
 
 h1, h2 {
-  color: #c94e50;
+  color: #000000;
   text-align: center;
 }
 
@@ -64,6 +64,11 @@ input, select {
   border-radius: 4px;
 }
 
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 480px) {
   h1 {
@@ -87,4 +92,10 @@ input, select {
   font-weight: bold;
   color: #c94e50;
   margin-left: 8px;
+}
+
+.subtle {
+  color: #999;           /* 연회색 */
+  font-size: 0.875em;    /* 기본보다 살짝 작게 */
+  font-weight: 400;      /* 너무 가볍지 않게 */
 }
