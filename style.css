@@ -131,7 +131,7 @@ img {
   font-family: 'Noto Serif KR', serif;
   font-weight: 300;
   opacity: 0;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
   animation: fadeInOut 2.5s forwards;
   /*text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6);*/
 }
