@@ -8,7 +8,6 @@ body {
 }
 
 .photo-gallery img {
-  width: 100%;
   max-width: 100%; /* 한 줄에 하나씩 꽉 차게 */
 }
 
@@ -17,16 +16,25 @@ button {
   font-size: 15px;
 }
 
-p, input, select {
-  font-size: 14px; /* 본문 및 폼 요소 글자 크기 살짝 줄임 */
-}
-
 h1 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+p {
+  line-height: 1.4;
+  font-size: 14px; /* 본문 및 폼 요소 글자 크기 살짝 줄임 */
+}
+
+input {
+  font-size: 14px; /* 본문 및 폼 요소 글자 크기 살짝 줄임 */
+}
+
+select {
+  font-size: 14px; /* 본문 및 폼 요소 글자 크기 살짝 줄임 */
 }
 
 #introText {

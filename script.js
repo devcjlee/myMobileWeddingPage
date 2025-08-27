@@ -41,7 +41,7 @@ document.addEventListener ("DOMContentLoaded", () => {
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact
-  };
+  }; 
 
   document.querySelectorAll("[data-name]").forEach(el => {
     const key = el.dataset.name;
