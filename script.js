@@ -97,8 +97,8 @@ function startSakura() {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: 10 + Math.random() * 10,
-      speedY: 1 + Math.random() * 2,
-      speedX: Math.random() * 1,
+      speedY: 1 + Math.random() * 1.2,
+      speedX: Math.random() * 0.6,
       angle: Math.random() * 2 * Math.PI,
       rotationSpeed: 0.01 + Math.random() * 0.02,
       opacity: 0 // 처음엔 완전 투명
