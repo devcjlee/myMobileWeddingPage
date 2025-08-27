@@ -15,8 +15,9 @@ document.addEventListener ("DOMContentLoaded", () => {
   const weddingDayOfWeek = "일";
   const weddingHour = "오전 11";
   const weddingLocation = "밀리토피아 바이 마린 웨딩센터 2층 아이리스홀";
-  const weddingLocationAddress = "경기도 성남시 강남구 1532-12";
-  const weddingLocationContact = "031-0000-0000";
+  const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
+  const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
+  const weddingLocationContact = "031-727-9350";
 
   // 2. title 업데이트
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
@@ -37,7 +38,8 @@ document.addEventListener ("DOMContentLoaded", () => {
     weddingDayOfWeek,
     weddingHour,
     weddingLocation,
-    weddingLocationAddress,
+    weddingLocationAddress1,
+    weddingLocationAddress2,
     weddingLocationContact
   };
 
@@ -69,3 +71,11 @@ function updateDday() {
   const ddayText = diffDays > 0 ? `D-${diffDays}` : (diffDays === 0 ? "오늘!" : `D+${Math.abs(diffDays)}`);
   document.getElementById("dday").textContent = `(${ddayText})`;
 }
+
+// 인트로 오버레이 페이드아웃
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("introOverlay");
+  setTimeout(() => {
+    overlay.classList.add("fade-out");
+  }, 2000); // 2초 후 페이드아웃
+});

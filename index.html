@@ -14,6 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="introOverlay">
+    <h1 id="introText">Wedding Invitation</h1>
+  </div>
   <main class="container">
     <section class="intro">
       <h1>💍 <span data-name="groomFirstName"></span> ❤️ <span data-name="brideFirstName"></span>의 결혼식에<br> 초대합니다</h1>
@@ -31,12 +34,14 @@
 
     <section class="location">
       <h2>🚗 오시는 길</h2>
-      <p><strong><span data-name="weddingLocation"></span></strong></p>
-      <p><strong>주소: </strong><span data-name="weddingLocationAddress"></span></p>
-      <p><strong>연락처: </strong><span data-name="weddingLocationContact"></span></p>
+      <br>
+      <p><strong>주소 및 연락처</strong></p>
+      <p>(도로명)<span data-name="weddingLocationAddress1"></span></p>
+      <p>(지번)<span data-name="weddingLocationAddress2"></span></p>
+      <p><span data-name="weddingLocationContact"></span></p>
+      <br>
       <!--지도 미리보기 추가 하기 -->
       <button onclick="openMap()">📍 지도 보기</button>
-
       <br>
       <p><strong>지하철:</strong> ?????</p>
       <p><strong>버스:</strong> ?????</p>
