@@ -8,9 +8,9 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px 28px;
 }
 
 section {
@@ -71,6 +71,9 @@ img {
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
+  .container {
+    padding: 20px 16px; /* 모바일에선 살짝 좁게 유지 */
+  }
   h1 {
     font-size: 22px;
   }
