@@ -1,5 +1,18 @@
-document.addEventListener ("DOMContentLoaded", () => {
-  // 1. 변수 선언
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+// Firebase 초기화는 index.html에서 이미 완료되었고, getFirestore()로 연결
+const db = getFirestore();
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. 데이터 바인딩
   const welcomeMessage = "저희 두 사람의 소중한 날에 함께해 주세요.";
   const groomFullName = "고길동";
   const brideFullName = "둘리맘";
@@ -19,7 +32,6 @@ document.addEventListener ("DOMContentLoaded", () => {
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
 
-  // 2. title 업데이트
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
   const dataMap = {
@@ -41,7 +53,7 @@ document.addEventListener ("DOMContentLoaded", () => {
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact
-  }; 
+  };
 
   document.querySelectorAll("[data-name]").forEach(el => {
     const key = el.dataset.name;
@@ -51,47 +63,35 @@ document.addEventListener ("DOMContentLoaded", () => {
   });
 
   updateDday();
+  loadGuestbook();
 });
 
-
-// 지도 열기
-function openMap() {
-  window.open("https://map.kakao.com/link/search/밀리토피아 바이 마린 웨딩센터", "_blank");
-}
-
-// 디데이 계산
+// 2. 디데이 계산
 function updateDday() {
-  const weddingDate = new Date("2026-04-26T11:00:00+09:00"); // 결혼식 날짜
+  const weddingDate = new Date("2026-04-26T11:00:00+09:00");
   const today = new Date();
-  
-  // 시간 차이 계산 (밀리초 → 일수)
   const diffTime = weddingDate - today;
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
   const ddayText = diffDays > 0 ? `D-${diffDays}` : (diffDays === 0 ? "오늘!" : `D+${Math.abs(diffDays)}`);
   document.getElementById("dday").textContent = `(${ddayText})`;
 }
 
-// 인트로 오버레이 페이드아웃
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("introOverlay");
-  setTimeout(() => {
-    overlay.classList.add("fade-out");
-  }, 2000); // 2초 후 페이드아웃
-});
+// 3. 지도 열기
+window.openMap = function () {
+  window.open("https://map.kakao.com/link/search/밀리토피아 바이 마린 웨딩센터", "_blank");
+};
 
-// 벚꽃 애니메이션
+// 4. 벚꽃 애니메이션
 function startSakura() {
   const canvas = document.getElementById("sakuraCanvas");
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  
+
   const sakuraImg1 = new Image();
-  sakuraImg1.src = "images/sakuraLeaf1.png"; // 벚꽃 이미지 경로
+  sakuraImg1.src = "images/sakuraLeaf1.png";
 
   const petals = [];
-
   for (let i = 0; i < 24; i++) {
     petals.push({
       x: Math.random() * canvas.width,
@@ -101,13 +101,13 @@ function startSakura() {
       speedX: Math.random() * 0.6,
       angle: Math.random() * 2 * Math.PI,
       rotationSpeed: 0.01 + Math.random() * 0.02,
-      opacity: 0 // 처음엔 완전 투명
+      opacity: 0
     });
   }
 
   function drawPetal(p) {
     ctx.save();
-    ctx.globalAlpha = p.opacity; // 투명도 적용
+    ctx.globalAlpha = p.opacity;
     ctx.translate(p.x, p.y);
     ctx.rotate(p.angle);
     ctx.drawImage(sakuraImg1, -p.size / 2, -p.size / 2, p.size, p.size);
@@ -120,11 +120,10 @@ function startSakura() {
       p.y += p.speedY;
       p.x += p.speedX;
       p.angle += p.rotationSpeed + Math.sin(Date.now() / 1000 + p.x) * 0.002;
-      p.opacity += 0.01; // 서서히 선명해지게
+      p.opacity += 0.01;
       if (p.opacity > 1) p.opacity = 1;
       if (p.y > canvas.height) p.y = -20;
       if (p.x > canvas.width) p.x = -20;
-
       drawPetal(p);
     });
     requestAnimationFrame(animate);
@@ -135,24 +134,24 @@ function startSakura() {
   };
 }
 
-// 인트로 오버레이 페이드아웃 + 벚꽃 시작
 window.addEventListener("load", () => {
-  startSakura(); // 벚꽃 애니메이션 시작
+  startSakura();
   const overlay = document.getElementById("introOverlay");
   setTimeout(() => {
     overlay.classList.add("fade-out");
   }, 2000);
 });
 
-document.getElementById("guestbookForm").addEventListener("submit", async function(e) {
+// 5. 방명록 기능
+document.getElementById("guestbookForm").addEventListener("submit", async function (e) {
   e.preventDefault();
   const name = document.getElementById("guestName").value;
   const message = document.getElementById("guestMessage").value;
 
-  await db.collection("guestbook").add({
+  await addDoc(collection(db, "guestbook"), {
     name,
     message,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    timestamp: serverTimestamp()
   });
 
   this.reset();
@@ -160,7 +159,8 @@ document.getElementById("guestbookForm").addEventListener("submit", async functi
 });
 
 async function loadGuestbook() {
-  const snapshot = await db.collection("guestbook").orderBy("timestamp", "desc").get();
+  const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+  const snapshot = await getDocs(q);
   const list = document.getElementById("guestbookList");
   list.innerHTML = "";
   snapshot.forEach(doc => {
@@ -170,5 +170,3 @@ async function loadGuestbook() {
     list.appendChild(li);
   });
 }
-
-document.addEventListener("DOMContentLoaded", loadGuestbook);
