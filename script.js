@@ -1,3 +1,4 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -8,8 +9,19 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-// Firebase 초기화는 index.html에서 이미 완료되었고, getFirestore()로 연결
-const db = getFirestore();
+// Firebase 설정
+const firebaseConfig = {
+  apiKey: "AIzaSyDQSY8qBL8udXjlQDJm1khItDdjR3AQjTo",
+  authDomain: "mymobileweddingpage.firebaseapp.com",
+  projectId: "mymobileweddingpage",
+  storageBucket: "mymobileweddingpage.firebasestorage.app",
+  messagingSenderId: "195301010200",
+  appId: "1:195301010200:web:0725fb5ddd98b97400cc6d"
+};
+
+// Firebase 초기화
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
