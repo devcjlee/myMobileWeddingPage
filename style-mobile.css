@@ -40,3 +40,24 @@ select {
 #introText {
   letter-spacing: 1px; /* 모바일에선 너무 넓지 않게 */
 }
+
+@media (max-width: 480px) {
+  .account-box p,
+  .account-line input,
+  .account-line button {
+    font-size: 16px;
+  }
+
+  .account-line {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .account-line input {
+    width: 100%;
+  }
+
+  .account-line button {
+    width: 100%;
+  }
+}

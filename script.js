@@ -182,3 +182,14 @@ async function loadGuestbook() {
     list.appendChild(li);
   });
 }
+
+function copyAccount(button) {
+  const input = button.previousElementSibling;
+  input.select();
+  input.setSelectionRange(0, 99999); // 모바일 대응
+  document.execCommand("copy");
+  button.textContent = "복사됨!";
+  setTimeout(() => {
+    button.textContent = "복사";
+  }, 1500);
+}
