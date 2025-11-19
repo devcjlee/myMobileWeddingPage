@@ -60,6 +60,16 @@
       </div>
     </section>
 
+    <section class="guestbook card">
+      <h2>💌 방명록</h2>
+      <form id="guestbookForm">
+        <input type="text" id="guestName" placeholder="이름" required>
+        <textarea id="guestMessage" placeholder="축하 메시지" required></textarea>
+        <button type="submit">남기기</button>
+      </form>
+      <ul id="guestbookList"></ul>
+    </section>
+
     <footer>
       <p>뭘만들어요?</p>
     </footer>
@@ -67,4 +77,53 @@
 
   <script src="script.js"></script>
 </body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDQSY8qBL8udXjlQDJm1khItDdjR3AQjTo",
+    authDomain: "mymobileweddingpage.firebaseapp.com",
+    projectId: "mymobileweddingpage",
+    storageBucket: "mymobileweddingpage.firebasestorage.app",
+    messagingSenderId: "195301010200",
+    appId: "1:195301010200:web:0725fb5ddd98b97400cc6d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // 방명록 저장
+  const form = document.getElementById("guestbookForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("guestName").value;
+    const message = document.getElementById("guestMessage").value;
+
+    await addDoc(collection(db, "guestbook"), {
+      name,
+      message,
+      timestamp: new Date()
+    });
+
+    form.reset();
+    loadGuestbook();
+  });
+
+  // 방명록 불러오기
+  async function loadGuestbook() {
+    const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+    const snapshot = await getDocs(q);
+    const list = document.getElementById("guestbookList");
+    list.innerHTML = "";
+    snapshot.forEach((doc) => {
+      const entry = doc.data();
+      const li = document.createElement("li");
+      li.textContent = `${entry.name}: ${entry.message}`;
+      list.appendChild(li);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadGuestbook);
+</script>
 </html>

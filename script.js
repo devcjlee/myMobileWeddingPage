@@ -143,3 +143,32 @@ window.addEventListener("load", () => {
     overlay.classList.add("fade-out");
   }, 2000);
 });
+
+document.getElementById("guestbookForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const name = document.getElementById("guestName").value;
+  const message = document.getElementById("guestMessage").value;
+
+  await db.collection("guestbook").add({
+    name,
+    message,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  });
+
+  this.reset();
+  loadGuestbook();
+});
+
+async function loadGuestbook() {
+  const snapshot = await db.collection("guestbook").orderBy("timestamp", "desc").get();
+  const list = document.getElementById("guestbookList");
+  list.innerHTML = "";
+  snapshot.forEach(doc => {
+    const entry = doc.data();
+    const li = document.createElement("li");
+    li.textContent = `${entry.name}: ${entry.message}`;
+    list.appendChild(li);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadGuestbook);
