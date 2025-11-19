@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateDday();
   loadGuestbook();
-  
+
   // URL 쿼리로 로그인 폼 보이기
   const params = new URLSearchParams(window.location.search);
   const isAdminMode = params.get("admin") === "true";
@@ -239,7 +239,6 @@ window.loginAdmin = function () {
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       alert("로그인 성공!");
-      loadGuestbook(); // 삭제 버튼 보이게 다시 로드
     })
     .catch((error) => {
       alert("로그인 실패: " + error.message);
