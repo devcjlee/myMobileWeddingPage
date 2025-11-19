@@ -185,11 +185,14 @@ async function loadGuestbook() {
 
 function copyAccount(button) {
   const input = button.previousElementSibling;
-  input.select();
-  input.setSelectionRange(0, 99999); // 모바일 대응
-  document.execCommand("copy");
-  button.textContent = "복사됨!";
-  setTimeout(() => {
-    button.textContent = "복사";
-  }, 1500);
+  navigator.clipboard.writeText(input.value)
+    .then(() => {
+      button.textContent = "복사됨!";
+      setTimeout(() => {
+        button.textContent = "복사";
+      }, 1500);
+    })
+    .catch(() => {
+      alert("복사에 실패했어요. 브라우저 설정을 확인해주세요.");
+    });
 }
