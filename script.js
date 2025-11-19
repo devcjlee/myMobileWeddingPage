@@ -34,7 +34,10 @@ const auth = getAuth();
 // 🔐 관리자 로그인 상태 감지
 let isAdmin = false;
 onAuthStateChanged(auth, (user) => {
+  console.log("isAdmin 상태:", isAdmin);
+  console.log("로그인 상태:", user);
   isAdmin = !!user;
+  document.getElementById("adminLogin").style.display = "block"; // 항상 보이게
   loadGuestbook(); // 로그인 상태 바뀌면 방명록 다시 로드
 });
 
@@ -247,6 +250,17 @@ window.loginAdmin = function () {
     });
 };
 
+window.logoutAdmin = function () {
+  auth.signOut()
+    .then(() => {
+      alert("로그아웃 되었습니다.");
+      isAdmin = false;
+      loadGuestbook(); // 삭제 버튼 숨기기 위해 다시 로드
+    })
+    .catch((error) => {
+      alert("로그아웃 실패: " + error.message);
+    });
+};
 
 // 🗑️ 방명록 삭제 함수
 async function deleteGuestbookEntry(id) {
