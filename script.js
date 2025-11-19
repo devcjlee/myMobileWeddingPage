@@ -183,7 +183,7 @@ async function loadGuestbook() {
   });
 }
 
-function copyAccount(button) {
+window.copyAccount = function (button){
   const input = button.previousElementSibling;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(input.value)
