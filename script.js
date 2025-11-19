@@ -37,7 +37,6 @@ onAuthStateChanged(auth, (user) => {
   console.log("isAdmin 상태:", isAdmin);
   console.log("로그인 상태:", user);
   isAdmin = !!user;
-  document.getElementById("adminLogin").style.display = "block"; // 항상 보이게
   loadGuestbook(); // 로그인 상태 바뀌면 방명록 다시 로드
 });
 
