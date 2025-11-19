@@ -271,3 +271,16 @@ select:focus {
   border-radius: 6px;
   cursor: pointer;
 }
+
+#guestbookList {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+  min-height: 80px;
+}
+
+#guestbookList li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}

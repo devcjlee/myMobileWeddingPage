@@ -212,6 +212,7 @@ async function loadGuestbook() {
       delBtn.onclick = () => deleteGuestbookEntry(doc.id);
       li.appendChild(delBtn);
     }
+    list.appendChild(li);
   });
 }
 
