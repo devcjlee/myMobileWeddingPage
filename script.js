@@ -195,9 +195,11 @@ document.getElementById("guestbookForm").addEventListener("submit", async functi
 async function loadGuestbook() {
   const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
   const snapshot = await getDocs(q);
+  console.log("문서 수:", snapshot.size);
   const list = document.getElementById("guestbookList");
   list.innerHTML = "";
   snapshot.forEach(doc => {
+    console.log("문서 내용:", doc.data());
     const entry = doc.data();
     const li = document.createElement("li");
     li.textContent = `${entry.name}: ${entry.message}`;
@@ -210,7 +212,6 @@ async function loadGuestbook() {
       delBtn.onclick = () => deleteGuestbookEntry(doc.id);
       li.appendChild(delBtn);
     }
-
   });
 }
 
