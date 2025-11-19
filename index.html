@@ -96,8 +96,13 @@
     </section>
 
     <footer>
-      <p>뭘만들어요?</p>
+      <div id="adminLogin" style="display: none;">
+        <input type="email" id="adminEmail" placeholder="이메일">
+        <input type="password" id="adminPassword" placeholder="비밀번호">
+        <button onclick="loginAdmin()">관리자 로그인</button>
+      </div>
     </footer>
+
   </main>
   <script type="module" src="script.js"></script>
 </body>

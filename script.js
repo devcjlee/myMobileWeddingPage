@@ -1,3 +1,4 @@
+// 🔥 Firebase SDK Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import {
   getFirestore,
@@ -6,10 +7,17 @@ import {
   getDocs,
   query,
   orderBy,
-  serverTimestamp
+  serverTimestamp,
+  deleteDoc,
+  doc as firestoreDoc
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
-// Firebase 설정
+// 🔧 Firebase 설정 및 초기화
 const firebaseConfig = {
   apiKey: "AIzaSyDQSY8qBL8udXjlQDJm1khItDdjR3AQjTo",
   authDomain: "mymobileweddingpage.firebaseapp.com",
@@ -19,9 +27,16 @@ const firebaseConfig = {
   appId: "1:195301010200:web:0725fb5ddd98b97400cc6d"
 };
 
-// Firebase 초기화
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth();
+
+// 🔐 관리자 로그인 상태 감지
+let isAdmin = false;
+onAuthStateChanged(auth, (user) => {
+  isAdmin = !!user;
+  loadGuestbook(); // 로그인 상태 바뀌면 방명록 다시 로드
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
@@ -76,6 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateDday();
   loadGuestbook();
+  
+  // URL 쿼리로 로그인 폼 보이기
+  const params = new URLSearchParams(window.location.search);
+  const isAdminMode = params.get("admin") === "true";
+  if (isAdminMode) {
+    document.getElementById("adminLogin").style.display = "block";
+  }
 });
 
 // 2. 디데이 계산
@@ -179,7 +201,16 @@ async function loadGuestbook() {
     const entry = doc.data();
     const li = document.createElement("li");
     li.textContent = `${entry.name}: ${entry.message}`;
-    list.appendChild(li);
+
+    // 관리자일 때만 삭제 버튼 추가
+    if (isAdmin) {
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "삭제";
+      delBtn.className = "delete-btn";
+      delBtn.onclick = () => deleteGuestbookEntry(doc.id);
+      li.appendChild(delBtn);
+    }
+
   });
 }
 
@@ -199,5 +230,33 @@ window.copyAccount = function (button){
       });
   } else {
     alert("이 브라우저에서는 복사 기능을 지원하지 않아요.");
+  }
+}
+
+window.loginAdmin = function () {
+  const email = document.getElementById("adminEmail").value;
+  const password = document.getElementById("adminPassword").value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      alert("로그인 성공!");
+      loadGuestbook(); // 삭제 버튼 보이게 다시 로드
+    })
+    .catch((error) => {
+      alert("로그인 실패: " + error.message);
+    });
+};
+
+
+// 🗑️ 방명록 삭제 함수
+async function deleteGuestbookEntry(id) {
+  const confirmDelete = confirm("정말로 삭제하시겠어요?");
+  if (!confirmDelete) return;
+  try {
+    await deleteDoc(firestoreDoc(db, "guestbook", id));
+    alert("삭제되었습니다.");
+    loadGuestbook();
+  } catch (err) {
+    console.error("삭제 실패:", err);
+    alert("삭제에 실패했어요.");
   }
 }
