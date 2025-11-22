@@ -210,7 +210,7 @@ window.addEventListener("load", () => {
   const overlay = document.getElementById("introOverlay");
   setTimeout(() => {
     overlay.classList.add("fade-out");
-  }, 2000);
+  }, 2500);
 });
 
 // 5. 방명록 기능
