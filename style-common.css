@@ -201,7 +201,7 @@ select:focus {
 
 /* 애니메이션은 show 클래스가 붙을 때만 실행 */
 #introText.show {
-  animation: fadeInOut 2.5s forwards;
+  animation: fadeInOut 4.0s forwards;
 }
 
 /* 데스크탑 화면일 때 (768px 이상) */
