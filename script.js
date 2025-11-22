@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
+  const accountGuide = "참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.";
 
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
@@ -98,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingLocation,
     weddingLocationAddress1,
     weddingLocationAddress2,
-    weddingLocationContact
+    weddingLocationContact,
+    accountGuide
   };
 
   document.querySelectorAll("[data-name]").forEach(el => {
@@ -141,20 +143,29 @@ function startSakura() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  const sakuraImg1 = new Image();
-  sakuraImg1.src = "images/sakuraLeaf1.png";
+  const sakuraImages = [
+    "images/newSakuraLeaf1.png",
+    "images/newSakuraLeaf2.png",
+    "images/newSakuraLeaf3.png",
+    "images/newSakuraLeaf4.png"
+  ].map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+  });
 
   const petals = [];
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 50; i++) {
     petals.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: 10 + Math.random() * 10,
       speedY: 1 + Math.random() * 1.2,
-      speedX: Math.random() * 0.6,
+      speedX: Math.random() * 0.8,
       angle: Math.random() * 2 * Math.PI,
       rotationSpeed: 0.01 + Math.random() * 0.02,
-      opacity: 0
+      opacity: 0,
+      img: sakuraImages[Math.floor(Math.random() * sakuraImages.length)]
     });
   }
 
@@ -163,7 +174,7 @@ function startSakura() {
     ctx.globalAlpha = p.opacity;
     ctx.translate(p.x, p.y);
     ctx.rotate(p.angle);
-    ctx.drawImage(sakuraImg1, -p.size / 2, -p.size / 2, p.size, p.size);
+    ctx.drawImage(p.img, -p.size / 2, -p.size / 2, p.size, p.size);
     ctx.restore();
   }
 
@@ -172,7 +183,7 @@ function startSakura() {
     petals.forEach(p => {
       p.y += p.speedY;
       p.x += p.speedX;
-      p.angle += p.rotationSpeed + Math.sin(Date.now() / 1000 + p.x) * 0.002;
+      p.angle += p.rotationSpeed + Math.sin(Date.now() / 1000 + p.x) * 0.005;
       p.opacity += 0.01;
       if (p.opacity > 1) p.opacity = 1;
       if (p.y > canvas.height) p.y = -20;
@@ -181,10 +192,15 @@ function startSakura() {
     });
     requestAnimationFrame(animate);
   }
-
-  sakuraImg1.onload = () => {
-    requestAnimationFrame(animate);
-  };
+  let loadedCount = 0;
+  sakuraImages.forEach(img => {
+    img.onload = () => {
+      loadedCount++;
+      if (loadedCount === sakuraImages.length) {
+        requestAnimationFrame(animate);
+      }
+    };
+  });
 }
 
 window.addEventListener("load", () => {
@@ -269,7 +285,7 @@ window.loginAdmin = function () {
 window.logoutAdmin = function () {
   auth.signOut()
     .then(() => {
-      alert("로그아웃 되었습니다.");
+      alert("로그아웃 성공!");
       isAdmin = false;
       loadGuestbook(); // 삭제 버튼 숨기기 위해 다시 로드
     })
