@@ -155,7 +155,7 @@ function startSakura() {
   });
 
   const petals = [];
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 37; i++) {
     petals.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -173,6 +173,12 @@ function startSakura() {
     ctx.save();
     ctx.globalAlpha = p.opacity;
     ctx.translate(p.x, p.y);
+
+    // 앞뒤로 뒤집히는 효과 (sin 값으로 scaleX 조정)
+    const flipX = Math.sin(Date.now() / 300 + p.x * 0.01);
+    ctx.scale(flipX, 1); // flipX가 -1 ~ 1 사이로 변하면서 좌우 반전
+
+
     ctx.rotate(p.angle);
     ctx.drawImage(p.img, -p.size / 2, -p.size / 2, p.size, p.size);
     ctx.restore();
