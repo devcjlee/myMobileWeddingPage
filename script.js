@@ -1,43 +1,60 @@
-// 🔥 Firebase SDK Imports
+// 🔥 Firebase SDK에서 initializeApp 함수 가져오기
+// Firebase 프로젝트를 웹 앱에 연결할 수 있게 해주는 핵심 함수.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+// 📦 Firestore(데이터베이스) 관련 함수들을 가져오기
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  orderBy,
-  serverTimestamp,
-  deleteDoc,
-  doc as firestoreDoc
+  getFirestore,       // Firestore 인스턴스를 가져오는 함수
+  collection,         // 특정 컬렉션(테이블과 유사)을 참조하는 함수
+  addDoc,             // 컬렉션에 새 문서를 추가할 때 사용하는 함수 
+  getDocs,            // 컬렉션/쿼리 결과의 모든 문서를 가져올 때 사용하는 함수
+  query,              // Firestore에서 조건/정렬을 지정할 때 사용하는 함수
+  orderBy,            // 쿼리 결과를 특정 필드 기준으로 정렬할 때 사용하는 함수
+  serverTimestamp,    // 서버 시간을 필드 값으로 저장할 때 사용하는 함수
+  deleteDoc,          // 특정 문서를 삭제할 때 사용하는 함수
+  doc as firestoreDoc // 특정 문서 참조를 가져올 때 사용 (doc 이름을 firestoreDoc으로 바꿔서 사용)
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+// 🔑 Firebase Authentication(로그인/인증) 관련 함수들을 가져오기
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged
+  getAuth,                     // Firebase Auth 인스턴스를 가져오는 함수
+  signInWithEmailAndPassword,  // 이메일/비밀번호로 로그인할 때 사용
+  onAuthStateChanged           // 로그인 상태 변화(로그인/로그아웃)를 실시간으로 감지하는 함수
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-
 // 🔧 Firebase 설정 및 초기화
+// Firebase 콘솔에서 발급받은 프로젝트 설정값을 넣어야 함
 const firebaseConfig = {
-  apiKey: "AIzaSyDQSY8qBL8udXjlQDJm1khItDdjR3AQjTo",
-  authDomain: "mymobileweddingpage.firebaseapp.com",
-  projectId: "mymobileweddingpage",
-  storageBucket: "mymobileweddingpage.firebasestorage.app",
-  messagingSenderId: "195301010200",
-  appId: "1:195301010200:web:0725fb5ddd98b97400cc6d"
+  apiKey: "AIzaSyDQSY8qBL8udXjlQDJm1khItDdjR3AQjTo",  // Firebase 프로젝트의 API 키 (앱이 Firebase와 통신할 때 사용)
+  authDomain: "mymobileweddingpage.firebaseapp.com",  // Firebase Authentication에서 사용하는 도메인 주소
+  projectId: "mymobileweddingpage",                   // Firebase 프로젝트 고유 ID
+  storageBucket: "mymobileweddingpage.firebasestorage.app", // Firebase Storage(파일 저장소) 주소
+  messagingSenderId: "195301010200",                  // Firebase Cloud Messaging(푸시 알림)에서 사용하는 발신자 ID
+  appId: "1:195301010200:web:0725fb5ddd98b97400cc6d"  // Firebase 앱 고유 식별자 (웹 앱을 구분하는 ID)
 };
-
+// 🚀 Firebase 앱 초기화
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth();
+// 📦 Firestore 인스턴스 가져오기 (데이터베이스)
+const db = getFirestore(app); 
+// 🔑 Auth 인스턴스 가져오기 (로그인/인증)
+const auth = getAuth(); 
 
 // 🔐 관리자 로그인 상태 감지
-let isAdmin = false;
+let isAdmin = false; //관리자 여부. 기본값은 false(로그인 안된 상태)
 onAuthStateChanged(auth, (user) => {
+  // Firebase Auth에서 제공하는 함수.
+  // 사용자의 로그인 상태(로그인/로그아웃)가 바뀔 때마다 자동으로 호출됨.
+  // 'auth'는 getAuth(app)으로 초기화한 인증 객체.
   console.log("isAdmin 상태:", isAdmin);
-  console.log("로그인 상태:", user);
+  // 현재 isAdmin 값(관리자 여부)을 콘솔에 출력해서 디버깅 확인.
+  console.log("로그인 상태:", user); 
+  // 로그인된 사용자 정보(user 객체)를 콘솔에 출력
+  // 로그인 안 되어 있으면 null이 출력됨.
+
   isAdmin = !!user;
-  loadGuestbook(); // 로그인 상태 바뀌면 방명록 다시 로드
+  // user 객체가 존재하면 true, 없으면 false.
+  // 즉 로그인 상태면 isAdmin = true, 로그아웃 상태면 isAdmin = false.
+
+  loadGuestbook();
+  // 로그인 상태가 바뀔 때마다 방명록을 다시 불러옴.
+  // 관리자 여부에 따라 삭제 버튼을 보여줄지 말지 결정하기 위함.
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -207,7 +224,7 @@ async function loadGuestbook() {
     li.textContent = `${entry.name}: ${entry.message}`;
 
     // 관리자일 때만 삭제 버튼 추가
-    if (isAdmin) {
+    if (isAdmin && window.location.search.includes("admin=true")) {
       const delBtn = document.createElement("button");
       delBtn.textContent = "삭제";
       delBtn.className = "delete-btn";
