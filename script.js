@@ -198,6 +198,8 @@ function startSakura() {
       loadedCount++;
       if (loadedCount === sakuraImages.length) {
         requestAnimationFrame(animate);
+        // 인트로 메시지 애니메이션도 동시에 시작
+        document.getElementById("introText").classList.add("show");
       }
     };
   });
