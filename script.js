@@ -155,7 +155,7 @@ function startSakura() {
   });
 
   const petals = [];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 30; i++) {
     petals.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
