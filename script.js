@@ -59,6 +59,7 @@ onAuthStateChanged(auth, (user) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
+  const introText = "저희, 결혼합니다.";
   const welcomeMessage = "저희 두 사람의 소중한 날에 함께해 주세요.";
   const groomFullName = "고길동";
   const brideFullName = "둘리맘";
@@ -82,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
   const dataMap = {
+    introText,
     welcomeMessage,
     groomFullName,
     brideFullName,
@@ -147,7 +149,8 @@ function startSakura() {
     "images/newSakuraLeaf1.png",
     "images/newSakuraLeaf2.png",
     "images/newSakuraLeaf3.png",
-    "images/newSakuraLeaf4.png"
+    "images/newSakuraLeaf4.png",
+    "images/newSakuraLeaf5.png"
   ].map(src => {
     const img = new Image();
     img.src = src;
@@ -216,7 +219,7 @@ window.addEventListener("load", () => {
   const overlay = document.getElementById("introOverlay");
   setTimeout(() => {
     overlay.classList.add("fade-out");
-  }, 4000);
+  }, 3800);
 });
 
 // 5. 방명록 기능
