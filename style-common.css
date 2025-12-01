@@ -30,14 +30,20 @@ body {
 }
 
 section {
-  margin-bottom: 24px;                /* 섹션 간 간격 */
+  margin-bottom: 8px;                /* 섹션 간 간격 */
 }
 
 .container {
   width: 100%;
-  max-width: 720px;                   /* 최대 너비 제한 */
-  margin: 0 auto;                     /* 가운데 정렬 */
-  padding: 0;                /* 내부 여백 */
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 16px;
+  }
 }
 
 textarea {
@@ -52,19 +58,12 @@ textarea {
 }
 
 
-@media (max-width: 480px) {
-  .container {
-    padding: 24px 16px;
-  }
-}
-
-
 /* ============================= */
 /* 📦 카드 스타일 */
 /* ============================= */
 .card {
   background-color: var(--card-bg);
-  border-radius: 16px;                /* 둥근 모서리 */
+  border-radius: 10px;                /* 둥근 모서리 */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 부드러운 그림자 */
   padding: 32px;
   margin-bottom: 32px;
