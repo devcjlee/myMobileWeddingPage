@@ -199,7 +199,7 @@ select:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.99); /* ✅ 흰색 + 80% 불투명도 */
+  background-color: rgba(255, 255, 255, 1.0); /* ✅ 흰색 + 80% 불투명도 */
   display: flex;
   justify-content: center;
   align-items: center;
