@@ -146,11 +146,11 @@ function startSakura() {
   canvas.height = window.innerHeight;
 
   const sakuraImages = [
-    "images/newSakuraLeaf1.png",
-    "images/newSakuraLeaf2.png",
-    "images/newSakuraLeaf3.png",
-    "images/newSakuraLeaf4.png",
-    "images/newSakuraLeaf5.png"
+    "images/intro/newSakuraLeaf1.png",
+    "images/intro/newSakuraLeaf2.png",
+    "images/intro/newSakuraLeaf3.png",
+    "images/intro/newSakuraLeaf4.png",
+    "images/intro/newSakuraLeaf5.png"
   ].map(src => {
     const img = new Image();
     img.src = src;

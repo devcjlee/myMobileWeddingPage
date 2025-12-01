@@ -7,6 +7,7 @@
   --background-color: #fefaf7;        /* 배경 색상 (따뜻한 느낌) */
   --card-bg: #ffffff;                 /* 카드 배경색 */
   --subtle-color: #999;               /* 보조 텍스트 색상 */
+  --hover-color: #a83e42;              /* 버튼 호버 색상 */
 }
 
 /* ============================= */
@@ -16,13 +17,16 @@
   box-sizing: border-box;             /* padding, border 포함한 너비 계산 */
 }
 
+body, p, input, button {
+  font-family: 'Noto Serif KR', serif; /* 본문도 세리프로 통일 */
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans KR', sans-serif;  /* 기본 폰트 */
   background-color: var(--background-color);
   color: var(--text-color);
-  font-size: 16px;                    /* 전체 기준 폰트 크기 */
+  font-size: clamp(14px, 2vw, 16px);  /* 전체 기준 폰트 크기 */
 }
 
 section {
@@ -35,6 +39,24 @@ section {
   margin: 0 auto;                     /* 가운데 정렬 */
   padding: 32px 24px;                 /* 내부 여백 */
 }
+
+textarea {
+  padding: 12px;
+  font-size: clamp(14px, 2vw, 16px);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 8px;
+  resize: vertical; /* 크기 조절 가능 */
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 16px;
+  }
+}
+
 
 /* ============================= */
 /* 📦 카드 스타일 */
@@ -80,8 +102,9 @@ section {
 button {
   display: inline-block;
   padding: 12px 20px;
-  font-size: 1rem;
+  font-size: clamp(14px, 2vw, 16px);
   border: 1px solid var(--primary-color);
+  white-space: nowrap;
   background-color: transparent;
   color: var(--primary-color);
   border-radius: 8px;
@@ -90,7 +113,7 @@ button {
 }
 
 button:hover {
-  background-color: #a83e42;
+  background-color: var(--hover-color);
   color: white;
 }
 
@@ -107,23 +130,23 @@ button:active {
 /* 📝 텍스트 스타일 */
 /* ============================= */
 h1, h2 {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
   color: #222;
   text-align: center;
   margin-bottom: 16px;
 }
 
 h1 {
-  font-size: 28px;
+  font-size: clamp(24px, 4vw, 32px);
 }
 
 h2 {
-  font-size: 20px;
+  font-size: clamp(18px, 3vw, 22px);
   font-weight: 500;
 }
 
 p {
-  font-size: 1rem;
+  font-size: clamp(14px, 2vw, 16px);
   line-height: 1.7;
   text-align: center;
   margin: 8px 0;
@@ -134,7 +157,7 @@ p {
 /* ============================= */
 input, select {
   padding: 12px;
-  font-size: 1rem;
+  font-size: clamp(14px, 2vw, 16px);
   border: 1px solid #ddd;
   border-radius: 6px;
   width: 100%;
@@ -161,7 +184,7 @@ select:focus {
 /* ============================= */
 .subtle {
   color: var(--subtle-color);
-  font-size: 0.875em;
+  font-size: clamp(13px, 2vw, 15px);
   font-weight: 400;
 }
 
@@ -190,7 +213,7 @@ select:focus {
 /* 인트로 텍스트 애니메이션 */
 #introText {
   color: #242424; /* ✅ 짙은 회색 글자 */
-  font-size: 6vw;
+  font-size: clamp(20px, 6vw, 48px);
   font-family: 'Noto Serif KR', serif;
   font-weight: 300;
   opacity: 0;
@@ -247,6 +270,13 @@ select:focus {
   z-index: 1;
 }
 
+.hero-photo img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: block;
+}
+
 .account-box {
   background-color: #f9f9f9;
   border-radius: 12px;
@@ -258,12 +288,12 @@ select:focus {
 .account-box h3 {
   margin-top: 0;
   color: #444;
-  font-size: 18px;
+  font-size: clamp(16px, 2.5vw, 20px);
 }
 
 .account-box p {
   margin: 4px 0;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   line-height: 1.4;
 }
 
@@ -276,14 +306,14 @@ select:focus {
 .account-line input {
   flex: 1;
   padding: 6px 10px;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
 .account-line button {
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: clamp(13px, 2vw, 14px);
   background-color: #eee;
   border: none;
   border-radius: 6px;
@@ -300,5 +330,5 @@ select:focus {
 #guestbookList li {
   padding: 8px 12px;
   border-bottom: 1px solid #ddd;
-  font-size: 15px;
+  font-size: clamp(14px, 2vw, 15px);
 }
