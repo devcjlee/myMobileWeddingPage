@@ -57,6 +57,8 @@ onAuthStateChanged(auth, (user) => {
   // 관리자 여부에 따라 삭제 버튼을 보여줄지 말지 결정하기 위함.
 });
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
   const introText = "저희, 결혼합니다.";

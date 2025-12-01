@@ -300,6 +300,7 @@ select:focus {
   pointer-events: none;      /* 터치 이벤트 차단 → 길게 눌러도 반응 없음 */
   -webkit-touch-callout: none; /* iOS Safari에서 터치 메뉴 방지 */
   -webkit-user-select: none;   /* iOS Safari에서 선택 방지 */
+  -webkit-user-drag: none; /* 크롬/사파리에서 드래그 방지 */
   user-select: none;           /* 텍스트/이미지 선택 방지 */
 }
 
