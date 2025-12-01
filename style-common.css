@@ -48,6 +48,7 @@ textarea {
   width: 100%;
   margin-top: 8px;
   resize: vertical; /* 크기 조절 가능 */
+  line-height: 1.5;
 }
 
 
@@ -162,6 +163,7 @@ input, select {
   border-radius: 6px;
   width: 100%;
   margin-top: 8px;
+  line-height: 1.5;
 }
 
 input:focus,
@@ -270,11 +272,52 @@ select:focus {
   z-index: 1;
 }
 
-.hero-photo img {
+.wedding-title .amp {
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  text-align: center;
+  color: #222;
+  font-weight: 300; /* 기본보다 얇게 */
+  letter-spacing: 2px;
+}
+
+.wedding-title .dot {
+  margin: 0 12px;
+  color: #222;
+  font-weight: 400;            /* 중점은 살짝 강조 */
+}
+
+.hero-photo{
+  position: relative;
   width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+}
+
+.hero-photo img {
+  width: 100%;          /* 화면 너비에 맞게 꽉 채움 */
+  height: auto;         /* 비율 유지 */
   display: block;
+}
+
+.hero-text {
+  position: absolute;
+  top: 5%;               /* 사진 상단에서 조금 내려옴 */
+  left: 50%;             /* 가로 중앙 */
+  transform: translateX(-50%);
+  font-family: 'Great Vibes', cursive; /* 필기체 폰트 적용 */
+  font-size: clamp(15px, 3vw, 23px);      /* 반응형 폰트 크기 */
+  color: rgba(20, 6, 6, 0.95);       /* 흰색 글자 */
+  text-shadow: 0 2px 6px rgba(58, 58, 58, 0.4); /* 배경 대비를 위한 그림자 */
+  font-weight: 600;
+  letter-spacing: 2px;   /* 글자 간격 살짝 넓게 */
+  white-space: nowrap;   /* 줄바꿈 방지 */
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+  .hero-photo img {
+    max-width: 100%;         /* 작은 화면에서는 꽉 차게 */
+  }
 }
 
 .account-box {
@@ -294,7 +337,7 @@ select:focus {
 .account-box p {
   margin: 4px 0;
   font-size: clamp(14px, 2vw, 15px);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .account-line {
