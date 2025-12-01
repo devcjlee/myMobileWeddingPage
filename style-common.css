@@ -37,7 +37,7 @@ section {
   width: 100%;
   max-width: 720px;                   /* 최대 너비 제한 */
   margin: 0 auto;                     /* 가운데 정렬 */
-  padding: 32px 24px;                 /* 내부 여백 */
+  padding: 0;                /* 내부 여백 */
 }
 
 textarea {
