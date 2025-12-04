@@ -3,21 +3,26 @@
 /* ============================= */
 :root {
   --primary-color: #c94e50;           /* 메인 포인트 컬러 (버튼, 강조 텍스트 등) */
-  --text-color: #444;                 /* 기본 텍스트 색상 */
+  --text-color: #464646;                 /* 기본 텍스트 색상 */
   --background-color: #fefaf7;        /* 배경 색상 (따뜻한 느낌) */
   --card-bg: #ffffff;                 /* 카드 배경색 */
   --subtle-color: #999;               /* 보조 텍스트 색상 */
-  --hover-color: #a83e42;              /* 버튼 호버 색상 */
+  --hover-color: #a83e42;             /* 버튼 호버 색상 */
 }
 
-/* ============================= */
-/* 🔧 기본 초기화 및 공통 설정 */
-/* ============================= */
-* {
+/* ==== CSS우선순위 ==== */
+/*
+1. 인라인스타일ID
+2. 클래그,속성,가상선택자
+3. 태그선택자
+4. 전체선택자(*) 
+*/
+
+* {                                   /* 유니버셜 셀렉터로 모든 요소에 적용 */
   box-sizing: border-box;             /* padding, border 포함한 너비 계산 */
 }
 
-body, p, input, button {
+body, section, h1, h2, p, input, textarea, button { /*모든 태그선택자 폰트 조정*/
   font-family: 'Noto Serif KR', serif; /* 본문도 세리프로 통일 */
 }
 
@@ -26,24 +31,46 @@ body {
   padding: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  font-size: clamp(14px, 2vw, 16px);  /* 전체 기준 폰트 크기 */
 }
 
+/* ============================= */
+/* 카드 섹션 공통 스타일*/
+/* ============================= */
 section {
-  margin-bottom: 8px;                /* 섹션 간 간격 */
+  margin-bottom: 12px;                /* 섹션 간 간격 */
 }
 
-.container {
+/* ============================= */
+/* 📝 텍스트 스타일 */
+/* h1 : 인트로 텍스트, 웨딩 타이틀*/
+/* h2 : 각 세션의 제목*/
+/* ============================= */
+h1, h2{
+  color: #222;
+  text-align: center;
+  font-weight: 500;
+}
+
+p {
+  margin: 8px 0;
+  text-align: center;
+}
+
+/* ============================= */
+/* 🧾 입력 폼 스타일 */
+/* ============================= */
+input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0;
+  margin-top: 8px;
+  line-height: 1.5;
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 24px 16px;
-  }
+input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 textarea {
@@ -57,57 +84,16 @@ textarea {
   line-height: 1.5;
 }
 
-
-/* ============================= */
-/* 📦 카드 스타일 */
-/* ============================= */
-.card {
-  background-color: var(--card-bg);
-  border-radius: 10px;                /* 둥근 모서리 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 부드러운 그림자 */
-  padding: 32px;
-  margin-bottom: 32px;
-}
-
-/* ============================= */
-/* 📍 오시는 길 섹션 정렬 */
-/* ============================= */
-.location {
-  text-align: center;
-}
-
-/* ============================= */
-/* 🖼️ 사진 갤러리 스타일 */
-/* ============================= */
-.photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;                          /* 이미지 간 간격 */
-}
-
-.photo-gallery img {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  display: block;                     /* 하단 여백 제거 */
-  pointer-events: none;              /* 클릭 방지 */
-  user-select: none;                 /* 드래그 방지 */
-}
-
 /* ============================= */
 /* 🔘 버튼 스타일 */
 /* ============================= */
 button {
   display: inline-block;
-  padding: 12px 20px;
-  font-size: clamp(14px, 2vw, 16px);
   border: 1px solid var(--primary-color);
+  border-radius: 8px;
   white-space: nowrap;
   background-color: transparent;
   color: var(--primary-color);
-  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
@@ -126,158 +112,23 @@ button:active {
   transform: scale(0.98);            /* 클릭 시 살짝 눌리는 효과 */
 }
 
-/* ============================= */
-/* 📝 텍스트 스타일 */
-/* ============================= */
-h1, h2 {
-  font-family: 'Playfair Display', 'Noto Serif KR', serif;
-  color: #222;
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-h1 {
-  font-size: clamp(24px, 4vw, 32px);
-}
-
-h2 {
-  font-size: clamp(18px, 3vw, 22px);
-  font-weight: 500;
-}
-
-p {
-  font-size: clamp(14px, 2vw, 16px);
-  line-height: 1.7;
-  text-align: center;
-  margin: 8px 0;
-}
-
-/* ============================= */
-/* 🧾 입력 폼 스타일 */
-/* ============================= */
-input, select {
-  padding: 12px;
-  font-size: clamp(14px, 2vw, 16px);
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.container {
   width: 100%;
-  margin-top: 8px;
-  line-height: 1.5;
-}
-
-input:focus,
-select:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /* ============================= */
-/* 📅 디데이 강조 텍스트 */
+/* 📦 카드 스타일 */
 /* ============================= */
-#dday {
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-left: 8px;
+.card {
+  background-color: var(--card-bg);
+  border-radius: 10px;                /* 둥근 모서리 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 조금 더 진한 그림자 */
 }
 
-/* ============================= */
-/* 💬 보조 텍스트 스타일 */
-/* ============================= */
-.subtle {
-  color: var(--subtle-color);
-  font-size: clamp(13px, 2vw, 15px);
-  font-weight: 400;
-}
-
-/* ============================= */
-/* 🎬 인트로 오버레이 스타일 */
-/* ============================= */
-#introOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 1.0); /* ✅ 흰색 + 80% 불투명도 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 1.3s ease;
-}
-
-#introOverlay.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* 인트로 텍스트 애니메이션 */
-#introText {
-  color: #242424; /* ✅ 짙은 회색 글자 */
-  font-size: clamp(20px, 6vw, 48px);
-  font-family: 'Noto Serif KR', serif;
-  font-weight: 300;
-  opacity: 0;
-  letter-spacing: 5px;
-  z-index: 2;
-  position: relative;
-}
-
-/* 애니메이션은 show 클래스가 붙을 때만 실행 */
-#introText.show {
-  animation: fadeInOut 4.7s forwards;
-}
-
-/* 데스크탑 화면일 때 (768px 이상) */
-@media (min-width: 768px) {
-  #introText {
-    font-size: 3.5vw; /* 데스크탑에서는 조금 줄이기 */
-  }
-}
-
-/* 아주 큰 화면 (1200px 이상) */
-@media (min-width: 1200px) {
-  #introText {
-    font-size: 2.5vw; /* 큰 화면에서는 더 줄이기 */
-  }
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  30% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.01);
-  }
-}
-
-/* 벚꽃 캔버스 위치 설정 */
-#sakuraCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.wedding-title .amp {
-  font-family: 'Playfair Display', 'Noto Serif KR', serif;
-  font-size: clamp(24px, 4vw, 36px);
-  text-align: center;
-  color: #222;
-  font-weight: 300; /* 기본보다 얇게 */
-  letter-spacing: 2px;
+.cardTitle {
+  margin: 0px 0px 34px 0px;
 }
 
 .wedding-title .dot {
@@ -317,12 +168,42 @@ select:focus {
   white-space: nowrap;   /* 줄바꿈 방지 */
 }
 
-/* 모바일 최적화 */
-@media (max-width: 480px) {
-  .hero-photo img {
-    max-width: 100%;         /* 작은 화면에서는 꽉 차게 */
-  }
+/* ============================= */
+/* 💬 보조 텍스트 스타일 */
+/* ============================= */
+.subtle {
+  color: var(--subtle-color);
+  font-size: clamp(13px, 2vw, 15px);
+  font-weight: 400;
 }
+
+/* ============================= */
+/* 📍 오시는 길 섹션 정렬 */
+/* ============================= */
+.location {
+  text-align: center;
+}
+
+/* ============================= */
+/* 🖼️ 사진 갤러리 스타일 */
+/* ============================= */
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;                          /* 이미지 간 간격 */
+}
+
+.photo-gallery img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: block;                     /* 하단 여백 제거 */
+  pointer-events: none;              /* 클릭 방지 */
+  user-select: none;                 /* 드래그 방지 */
+}
+
 
 .account-box {
   background-color: #f9f9f9;
@@ -367,6 +248,66 @@ select:focus {
   cursor: pointer;
 }
 
+
+/* ============================= */
+/* 🎬 인트로 오버레이 스타일 */
+/* ============================= */
+#introOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1.0); /* ✅ 흰색 + 80% 불투명도 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1.3s ease;
+}
+
+#introOverlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 인트로 텍스트 애니메이션 */
+#introText {
+  color: #242424; /* ✅ 짙은 회색 글자 */
+  font-size: clamp(20px, 6vw, 48px);
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 300;
+  opacity: 0;
+  letter-spacing: 5px;
+  z-index: 2;
+  position: relative;
+}
+
+/* 애니메이션은 show 클래스가 붙을 때만 실행 */
+#introText.show {
+  animation: fadeInOut 4.7s forwards;
+}
+
+/* 벚꽃 캔버스 위치 설정 */
+#sakuraCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================= */
+/* 📅 디데이 강조 텍스트 */
+/* ============================= */
+#dday {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-left: 8px;
+}
+
 #guestbookList {
   list-style: none;
   padding: 0;
@@ -378,4 +319,33 @@ select:focus {
   padding: 8px 12px;
   border-bottom: 1px solid #ddd;
   font-size: clamp(14px, 2vw, 15px);
+}
+
+/* ============================= */
+/* 🔄 fadeInOut 애니메이션 정의   */
+/* ============================= */
+@keyframes fadeInOut {
+  /* 0% : 애니메이션 시작 시점 */
+  0% {
+    opacity: 0;              /* 완전히 투명 → 화면에 보이지 않음 */
+    transform: scale(0.98);  /* 살짝 축소된 상태 (약간 작게 시작) */
+  }
+
+  /* 30% : 애니메이션 진행 30% 시점 */
+  30% {
+    opacity: 1;              /* 완전히 불투명 → 화면에 나타남 */
+    transform: scale(1);     /* 원래 크기로 확대 → 자연스러운 등장 */
+  }
+
+  /* 70% : 애니메이션 진행 70% 시점 */
+  70% {
+    opacity: 1;              /* 여전히 불투명 → 화면에 유지됨 */
+    /* transform은 지정하지 않아 이전 상태(scale 1) 유지 */
+  }
+
+  /* 100% : 애니메이션 종료 시점 */
+  100% {
+    opacity: 0;              /* 다시 투명해짐 → 화면에서 사라짐 */
+    transform: scale(1.01);  /* 아주 살짝 확대된 상태로 사라짐 */
+  }
 }

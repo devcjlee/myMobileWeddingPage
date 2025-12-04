@@ -160,11 +160,18 @@ function startSakura() {
   });
 
   const petals = [];
-  for (let i = 0; i < 37; i++) {
+  const sakuraCount = window.innerWidth >= 768 ? 80 : 37; // 데스크탑과 모바일에 따라 꽃잎 수 조절
+
+  const leafSize = window.innerWidth >= 768 
+  ? Math.random() * 30 + 20   // 데스크탑: 20~50px
+  : Math.random() * 20 + 10;  // 모바일: 10~20px
+
+
+  for (let i = 0; i < sakuraCount; i++) {
     petals.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: 10 + Math.random() * 10,
+      size: leafSize,
       speedY: 1 + Math.random() * 1.2,
       speedX: Math.random() * 0.8,
       angle: Math.random() * 2 * Math.PI,

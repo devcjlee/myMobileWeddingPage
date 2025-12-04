@@ -43,13 +43,13 @@
     </section>
 
     <section class="details card">
-      <h2>📅 일시 & 장소</h2>
+      <h2 class="cardTitle">일시 & 장소</h2>
       <p><strong>일시:</strong><span data-name="weddingYear"></span>년 <span data-name="weddingMonth"></span>월 <span data-name="weddingDay"></span>일 <span data-name="weddingDayOfWeek"></span>요일 <span data-name="weddingHour"></span>시 <span id="dday"></span></p>
       <p><strong>장소:</strong><span data-name="weddingLocation"></span></p>
     </section>
 
     <section class="location card">
-      <h2>🚗 오시는 길</h2>
+      <h2>오시는 길</h2>
       <br>
       <p><strong>주소 및 연락처</strong></p>
       <p>(도로명)<span data-name="weddingLocationAddress1"></span></p>
@@ -66,7 +66,7 @@
     </section>
 
     <section class="photos card">
-      <h2>📸 우리 이야기</h2>
+      <h2>우리 이야기</h2>
       <div class="photo-gallery">
         <img src="images/photo1.jpg" alt="우리 사진 1">
         <img src="images/photo2.jpg" alt="우리 사진 2">
@@ -74,7 +74,7 @@
     </section>
 
     <section class="guestbook card">
-      <h2>💌 방명록</h2>
+      <h2>방명록</h2>
       <form id="guestbookForm">
         <input type="text" id="guestName" placeholder="이름" required>
         <textarea id="guestMessage" placeholder="축하 메시지" required></textarea>
@@ -84,27 +84,27 @@
     </section>
 
     <section class="account card">
-      <h2>🎁 마음 전하실 곳</h2>
+      <h2>마음 전하실 곳</h2>
       <p><span data-name="accountGuide"></span></p>
 
       <div class="account-box">
-        <h3>👰 신부 측</h3>
-        <p><strong>신부:</strong> 둘리맘</p>
-        <div class="account-line">
-          <input type="text" value="3333-12-3456789" readonly>
-          <button onclick="copyAccount(this)">복사</button>
-        </div>
-        <p><strong>예금주:</strong> 둘리맘</p>
-      </div>
-
-      <div class="account-box">
-        <h3>🤵 신랑 측</h3>
+        <h3>신랑 측</h3>
         <p><strong>신랑:</strong> 고길동</p>
         <div class="account-line">
           <input type="text" value="100-123-456789" readonly>
           <button onclick="copyAccount(this)">복사</button>
         </div>
         <p><strong>예금주:</strong> 고길동</p>
+      </div>
+
+      <div class="account-box">
+        <h3>신부 측</h3>
+        <p><strong>신부:</strong> 둘리맘</p>
+        <div class="account-line">
+          <input type="text" value="3333-12-3456789" readonly>
+          <button onclick="copyAccount(this)">복사</button>
+        </div>
+        <p><strong>예금주:</strong> 둘리맘</p>
       </div>
     </section>
 
