@@ -30,7 +30,7 @@ button {
 }
 
 .card {
- padding: clamp(32px, 5vw, 52px) clamp(12px, 3vw, 16px);
+ padding: clamp(50px, 12vw, 60px) clamp(12px, 3vw, 16px);
 }
 
 .cardTitle {

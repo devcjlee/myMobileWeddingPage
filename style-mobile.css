@@ -14,7 +14,7 @@ h2 {
 
 p {
   line-height: 1.4;
-  font-size: clamp(13px, 4.5vw, 16px); /* 본문 및 폼 요소 글자 크기 */
+  font-size: clamp(13px, 4.5vw, 16.5px); /* 본문 및 폼 요소 글자 크기 */
 }
 
 input {
@@ -31,7 +31,7 @@ button {
 }
 
 .card {
- padding: clamp(24px, 9vw, 40px) clamp(12px, 3vw, 16px);
+ padding: clamp(40px, 10vw, 50px) clamp(12px, 3vw, 16px);
 }
 
 .cardTitle {

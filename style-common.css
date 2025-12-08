@@ -207,8 +207,8 @@ button:active {
 
 .wedding-info-text {
   font-weight: 500;
-  font-size: clamp(18px, 3.5vw, 24px); /* 날짜만 조금 더 크게 */
-  letter-spacing: 2px;
+  font-size: clamp(18px, 3.5vw, 24px);
+  letter-spacing: 2.5px;
 }
 
 /* ============================= */
