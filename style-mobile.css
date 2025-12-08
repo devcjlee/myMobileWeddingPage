@@ -37,6 +37,13 @@ button {
   margin: 0px 0px clamp(40px, 2vw, 44px) 0px;
 }
 
+.hero-photo.card {
+  min-height: 100vh;       /* 화면 높이 전체 차지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 내부 내용 세로 중앙 정렬 */
+}
+
 .hero-photo img {
   max-width: 100%; /* 작은 화면에서는 꽉 차게 */
 }
