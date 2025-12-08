@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const welcomeMessage1 = "저희 두 사람의 사랑을 약속하는 날,";
   const welcomeMessage2 = "따뜻한 축복 속에서 함께해 주신다면";
   const welcomeMessage3 = "더없는 기쁨이 될 것입니다.";
-  const welcomeMessage4 = "귀한 걸음을 해 주신다면 진심으로 감사하겠습니다.";
+  const welcomeMessage4 = "귀한 걸음을 해 주신다면";
+  const welcomeMessage5 = "진심으로 감사하겠습니다.";
   const groomFullName = "이치종";
   const brideFullName = "길신영";
   const groomFirstName = groomFullName.slice(1);
@@ -96,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessage2,
     welcomeMessage3,
     welcomeMessage4,
+    welcomeMessage5,
     groomFullName,
     brideFullName,
     groomFirstName,

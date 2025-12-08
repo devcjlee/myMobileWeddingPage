@@ -6,7 +6,7 @@
   --text-color: #464646;                 /* 기본 텍스트 색상 */
   --background-color: #fefaf7;        /* 배경 색상 (따뜻한 느낌) */
   --card-bg: #ffffff;                 /* 카드 배경색 */
-  --subtle-color: #999;               /* 보조 텍스트 색상 */
+  --subtle-color: #696969;               /* 보조 텍스트 색상 */
   --hover-color: #a83e42;             /* 버튼 호버 색상 */
 }
 
@@ -221,12 +221,16 @@ button:active {
 /* ============================= */
 .subtle {
   color: var(--subtle-color);
-  font-size: clamp(13px, 2vw, 15px);
+  font-size: clamp(14px, 3vw, 15px);
   font-weight: 400;
 }
 
 .intro {
   text-align: center;
+}
+
+.welcomeMessage {
+
 }
 
 .details {
