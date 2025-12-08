@@ -127,11 +127,9 @@ button:active {
 /* ============================= */
 
 .sakura-icon {
-  width: 30px;              /* 크기 조절 */
-  height: 30px;
-  object-fit: contain;      /* 비율 유지 */
-  display: block;
-  margin: 0px auto 40px;        /* 위쪽에 중앙 정렬 */
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .card {
@@ -141,10 +139,9 @@ button:active {
 }
 
 .cardTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; /* 제목과 이미지 사이 간격 */
+  margin: 0;                 /* 기본 h2 마진 제거 */
+  font-weight: 500;
+  text-align: center;        /* 텍스트 자체도 가운데 */
 }
 
 .hero-photo{
@@ -228,10 +225,26 @@ button:active {
   font-weight: 400;
 }
 
+.intro {
+  text-align: center;
+}
+
+.details {
+  text-align: center;
+}
+
 /* ============================= */
 /* 📍 오시는 길 섹션 정렬 */
 /* ============================= */
 .location {
+  text-align: center;
+}
+
+.photos {
+  text-align: center;
+}
+
+.guestbook {
   text-align: center;
 }
 
