@@ -9,7 +9,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(14px, 4vw, 18px);
+  font-size: clamp(16px, 5vw, 22px);
 }
 
 p {
