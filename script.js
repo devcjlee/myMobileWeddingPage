@@ -164,8 +164,7 @@ function startSakura() {
 
   const leafSize = window.innerWidth >= 768 
   ? Math.random() * 30 + 20   // 데스크탑: 20~50px
-  : Math.random() * 20 + 10;  // 모바일: 10~20px
-
+  : Math.random() * 24 + 10;  // 모바일: 10~20px
 
   for (let i = 0; i < sakuraCount; i++) {
     petals.push({

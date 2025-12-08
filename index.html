@@ -23,16 +23,20 @@
     <h1 id="introText"><span data-name="introText"></span></h1>
   </div>
   <main class="container">
-    
-    <h1 class="wedding-title">
-      <span class="name groom"data-name="groomFullName"></span>
-      <span class="dot">·</span>
-      <span class="name bride" data-name="brideFullName"></span>
-    </h1>
-
-    <section class="hero-photo">
-      <img src="images/weddingPhoto/whiteWallStanding.jpg" alt="우리 웨딩 대표 사진">
-      <div class="hero-text">Wedding Invitation</div>
+    <section class="hero-photo card">
+      <div id="hero-photo-container">
+        <img src="images/weddingPhoto/whiteWallStanding.jpg" alt="우리 웨딩 대표 사진">
+        <div class="hero-text">Wedding Invitation</div>
+        <h1 class="wedding-title">
+          <span class="name groom"data-name="groomFullName"></span>
+          <span class="dot">·</span>
+          <span class="name bride" data-name="brideFullName"></span>
+        </h1>
+      </div>
+      <div id="wedding-info">
+        <p>2025.04.26 Sat</p>
+        <p>밀리토피아 웨딩센터 2층 아이리스홀</p>
+      </div>
     </section>
 
     <section class="intro card">
@@ -43,14 +47,17 @@
     </section>
 
     <section class="details card">
-      <h2 class="cardTitle">일시 & 장소</h2>
+      <h2 class="cardTitle">
+        <span>일시</span>
+        <span class="dot">·</span>
+        <span>장소</span>
+      </h2>
       <p><strong>일시:</strong><span data-name="weddingYear"></span>년 <span data-name="weddingMonth"></span>월 <span data-name="weddingDay"></span>일 <span data-name="weddingDayOfWeek"></span>요일 <span data-name="weddingHour"></span>시 <span id="dday"></span></p>
       <p><strong>장소:</strong><span data-name="weddingLocation"></span></p>
     </section>
 
     <section class="location card">
-      <h2>오시는 길</h2>
-      <br>
+      <h2 class="cardTitle">오시는 길</h2>
       <p><strong>주소 및 연락처</strong></p>
       <p>(도로명)<span data-name="weddingLocationAddress1"></span></p>
       <p>(지번)<span data-name="weddingLocationAddress2"></span></p>
@@ -62,11 +69,10 @@
       <p><strong>지하철:</strong> ?????</p>
       <p><strong>버스:</strong> ?????</p>
       <p><strong>자가용:</strong> ?????</p>
-
     </section>
 
     <section class="photos card">
-      <h2>우리 이야기</h2>
+      <h2 class="cardTitle">우리 이야기</h2>
       <div class="photo-gallery">
         <img src="images/photo1.jpg" alt="우리 사진 1">
         <img src="images/photo2.jpg" alt="우리 사진 2">
@@ -74,7 +80,7 @@
     </section>
 
     <section class="guestbook card">
-      <h2>방명록</h2>
+      <h2 class="cardTitle">방명록</h2>
       <form id="guestbookForm">
         <input type="text" id="guestName" placeholder="이름" required>
         <textarea id="guestMessage" placeholder="축하 메시지" required></textarea>
@@ -84,7 +90,7 @@
     </section>
 
     <section class="account card">
-      <h2>마음 전하실 곳</h2>
+      <h2 class="cardTitle">마음 전하실 곳</h2>
       <p><span data-name="accountGuide"></span></p>
 
       <div class="account-box">

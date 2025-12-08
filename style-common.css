@@ -37,7 +37,7 @@ body {
 /* 카드 섹션 공통 스타일*/
 /* ============================= */
 section {
-  margin-bottom: 12px;                /* 섹션 간 간격 */
+  margin-bottom: 8px;                /* 섹션 간 간격 */
 }
 
 /* ============================= */
@@ -128,19 +128,24 @@ button:active {
 }
 
 .cardTitle {
-  margin: 0px 0px 34px 0px;
-}
-
-.wedding-title .dot {
-  margin: 0 12px;
-  color: #222;
-  font-weight: 400;            /* 중점은 살짝 강조 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* 제목과 이미지 사이 간격 */
 }
 
 .hero-photo{
   position: relative;
   width: 100%;
-  margin-bottom: 24px;
+}
+
+#hero-photo-container{
+  position: relative;
+  width: 100%;
+  max-width: 720px;        /* 카드와 통일된 최대 너비 */
+  margin: 0 auto;          /* 가운데 정렬 */
+  text-align: center;      /* 내부 텍스트 중앙 정렬 */
+  padding: clamp(12px, 3vw, 24px) 0; /* 위아래 여백 */
 }
 
 .hero-photo img {
@@ -166,6 +171,34 @@ button:active {
   font-weight: 600;
   letter-spacing: 2px;   /* 글자 간격 살짝 넓게 */
   white-space: nowrap;   /* 줄바꿈 방지 */
+}
+
+.wedding-title {
+  margin-top: 12px;
+  margin-bottom: 12px; /* 이름과 날짜 사이 간격을 조금 더 */
+}
+
+.wedding-title .dot {
+  margin: 0 12px;
+  color: #222;
+  font-weight: 400;            /* 중점은 살짝 강조 */
+}
+
+.wedding-info {
+  margin-top: 12px;              /* 사진과 이름 사이 간격 조금 더 */
+  font-size: clamp(14px, 3vw, 18px);
+  color: #444;
+  line-height: 1.4;
+  background-color: rgba(201, 78, 80, 0.08);
+  padding: 12px 16px;            /* 안쪽 여백 넉넉하게 */
+  border-radius: 8px;
+  text-align: center;            /* 텍스트 중앙 정렬 */
+}
+
+.wedding-info p:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: clamp(16px, 3.5vw, 20px); /* 날짜만 조금 더 크게 */
 }
 
 /* ============================= */

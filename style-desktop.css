@@ -34,7 +34,7 @@ button {
 }
 
 .cardTitle {
-  margin: 0px 0px clamp(48px, 2vw, 52px) 0px;
+  margin: 0px 0px clamp(44px, 2vw, 48px) 0px;
 }
 
 .photo-gallery img {
