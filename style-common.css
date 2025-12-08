@@ -125,6 +125,15 @@ button:active {
 /* ============================= */
 /* 📦 카드 스타일 */
 /* ============================= */
+
+.sakura-icon {
+  width: 30px;              /* 크기 조절 */
+  height: 30px;
+  object-fit: contain;      /* 비율 유지 */
+  display: block;
+  margin: 0px auto 40px;        /* 위쪽에 중앙 정렬 */
+}
+
 .card {
   background-color: var(--card-bg);
   border-radius: 10px;                /* 둥근 모서리 */
