@@ -35,7 +35,7 @@ button {
 }
 
 .cardTitle {
-  margin: 0px 0px clamp(40px, 2vw, 44px) 0px;
+  margin: 0px 0px clamp(30px, 2vw, 34px) 0px;
 }
 
 .hero-photo.card {
