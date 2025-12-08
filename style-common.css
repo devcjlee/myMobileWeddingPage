@@ -187,11 +187,11 @@ button:active {
 }
 
 .heart-icon {
-  width: clamp(20px, 6vw, 40px);
-  height: clamp(20px, 6vw, 40px);
+  width: clamp(55px, 10vw, 75px);
+  height: clamp(55px, 10vw, 75px);
   object-fit: contain; /* 비율 유지 */
-  margin: 0 8px;     /* 이름과 하트 사이 간격 */
   vertical-align: middle; /* 텍스트와 수직 정렬 */
+  padding-bottom: 10px;
 }
 
 .wedding-info {
