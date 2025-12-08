@@ -163,8 +163,8 @@ button:active {
   user-select: none;           /* 텍스트/이미지 선택 방지 */
 
   /* ✅ 희미한 검은색 테두리 추가 */
-  border: 1.5px solid rgba(0,0,0,0.1); /* 안쪽 테두리 */
-  box-shadow: 0 0 0 1.5px rgba(0,0,0,0.15); /* 바깥쪽 테두리 */
+  border: 1.2px solid rgba(0,0,0,0.1); /* 안쪽 테두리 */
+  box-shadow: 0 0 0 1.2px rgba(0,0,0,0.15); /* 바깥쪽 테두리 */
 }
 
 .hero-text {
