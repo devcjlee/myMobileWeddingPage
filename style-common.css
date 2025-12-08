@@ -205,10 +205,9 @@ button:active {
   text-align: center;            /* 텍스트 중앙 정렬 */
 }
 
-.wedding-info p:first-child {
-  font-weight: 600;
-  color: var(--primary-color);
-  font-size: clamp(16px, 3.5vw, 20px); /* 날짜만 조금 더 크게 */
+.wedding-info-text {
+  font-weight: 500;
+  font-size: clamp(18px, 3.5vw, 24px); /* 날짜만 조금 더 크게 */
 }
 
 /* ============================= */

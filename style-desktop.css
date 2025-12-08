@@ -13,7 +13,7 @@ h2 {
 
 p {
   line-height: 1.6;
-  font-size: clamp(15px, 1.5vw, 18px); /* 본문 가독성 향상 */
+  font-size: clamp(18px, 2vw, 24px); /* 본문 가독성 향상 */
 }
 
 input {
@@ -30,15 +30,11 @@ button {
 }
 
 .card {
-  padding: clamp(20px, 2vw, 28px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px);
+ padding: clamp(32px, 5vw, 52px) clamp(12px, 3vw, 16px);
 }
 
 .cardTitle {
   margin: 0px 0px clamp(44px, 2vw, 48px) 0px;
-}
-
-.wedding-info {
-  font-size: clamp(24px, 4vw, 30px);
 }
 
 .photo-gallery img {
