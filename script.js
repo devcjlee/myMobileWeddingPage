@@ -163,8 +163,8 @@ function startSakura() {
   const sakuraCount = window.innerWidth >= 768 ? 80 : 37; // 데스크탑과 모바일에 따라 꽃잎 수 조절
 
   const leafSize = window.innerWidth >= 768 
-  ? Math.random() * 30 + 20   // 데스크탑: 20~50px
-  : Math.random() * 24 + 10;  // 모바일: 10~20px
+  ? Math.random() * 28 + 20   // 데스크탑: 20~50px
+  : Math.random() * 22 + 10;  // 모바일: 10~20px
 
   for (let i = 0; i < sakuraCount; i++) {
     petals.push({

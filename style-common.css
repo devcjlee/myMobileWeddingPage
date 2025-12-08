@@ -128,7 +128,7 @@ button:active {
 .card {
   background-color: var(--card-bg);
   border-radius: 10px;                /* 둥근 모서리 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 조금 더 진한 그림자 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 조금 더 진한 그림자 */
 }
 
 .cardTitle {
@@ -161,6 +161,10 @@ button:active {
   -webkit-user-select: none;   /* iOS Safari에서 선택 방지 */
   -webkit-user-drag: none; /* 크롬/사파리에서 드래그 방지 */
   user-select: none;           /* 텍스트/이미지 선택 방지 */
+
+  /* ✅ 희미한 검은색 테두리 추가 */
+  border: 2px solid rgba(0,0,0,0.1); /* 안쪽 테두리 */
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2); /* 바깥쪽 테두리 */
 }
 
 .hero-text {
