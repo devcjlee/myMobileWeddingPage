@@ -182,7 +182,7 @@ button:active {
 }
 
 .wedding-title {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px; /* 이름과 날짜 사이 간격을 조금 더 */
 }
 
@@ -208,6 +208,7 @@ button:active {
 .wedding-info-text {
   font-weight: 500;
   font-size: clamp(18px, 3.5vw, 24px); /* 날짜만 조금 더 크게 */
+  letter-spacing: 2px;
 }
 
 /* ============================= */
