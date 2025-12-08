@@ -74,8 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingYear = "2026";
   const weddingMonth = "04";
   const weddingDay = "26";
-  const weddingDayOfWeek = "일";
-  const weddingHour = "오전 11";
+  const weddingDayOfWeekEng = "Sun";
+  const weddingDayOfWeekKor = "일";
+  const weddingTimeZone = "AM";
+  const weddingHour = "11";
+  const weddingMinute = "00";
   const weddingLocation = "밀리토피아 바이 마린 웨딩센터 2층 아이리스홀";
   const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
@@ -98,8 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingYear,
     weddingMonth,
     weddingDay,
-    weddingDayOfWeek,
+    weddingDayOfWeekEng,
+    weddingDayOfWeekKor,
+    weddingTimeZone,
     weddingHour,
+    weddingMinute,
     weddingLocation,
     weddingLocationAddress1,
     weddingLocationAddress2,

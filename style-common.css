@@ -196,7 +196,7 @@ button:active {
 
 .wedding-info {
   margin-top: 12px;              /* 사진과 이름 사이 간격 조금 더 */
-  font-size: clamp(14px, 3vw, 18px);
+  font-size: clamp(16px, 4vw, 18px);
   color: #444;
   line-height: 1.4;
   background-color: rgba(201, 78, 80, 0.08);
