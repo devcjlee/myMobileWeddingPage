@@ -149,11 +149,6 @@ function updateDday() {
   document.getElementById("dday").textContent = `(${ddayText})`;
 }
 
-// 3. 지도 열기
-window.openMap = function () {
-  window.open("https://map.kakao.com/link/search/밀리토피아 바이 마린 웨딩센터", "_blank");
-};
-
 // 4. 벚꽃 애니메이션
 function startSakura() {
   const canvas = document.getElementById("sakuraCanvas");
@@ -237,11 +232,20 @@ function startSakura() {
 }
 
 window.addEventListener("load", () => {
-  startSakura();
-  const overlay = document.getElementById("introOverlay");
-  setTimeout(() => {
+  if (!sessionStorage.getItem("introPlayed")) {
+    startSakura();
+    const overlay = document.getElementById("introOverlay");
+    setTimeout(() => {
+      overlay.classList.add("fade-out");
+    }, 3800);
+    // 실행 여부 저장
+    sessionStorage.setItem("introPlayed", "true");
+  }
+  else {
+    // 이미 실행된 경우 → 오버레이 바로 숨기기
+    const overlay = document.getElementById("introOverlay");
     overlay.classList.add("fade-out");
-  }, 3800);
+  }
 });
 
 // 5. 방명록 기능
@@ -339,6 +343,23 @@ async function deleteGuestbookEntry(id) {
     console.error("삭제 실패:", err);
     alert("삭제에 실패했어요.");
   }
+}
+
+// 3. 지도 열기
+window.openMapLink = function (appUrl, webUrl) {
+  // 앱 실행 시도
+  var timeout = setTimeout(function() {
+    // 앱이 없으면 웹 URL로 이동
+    window.location.href = webUrl;
+  }, 1000);
+
+  // 앱 URL 호출
+  window.location.href = appUrl;
+
+  // 앱이 실행되면 timeout 취소
+  window.onblur = function() {
+    clearTimeout(timeout);
+  };
 }
 
 document.addEventListener("DOMContentLoaded", function() {

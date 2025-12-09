@@ -251,11 +251,37 @@ button:active {
 .location .root_daum_roughmap {
   width: 100% !important;   /* 카드 폭에 맞추기 */
   max-width: 640px;         /* 너무 커지지 않게 제한 */
-  height: 360px !important; /* 원하는 높이 */
+  height: clamp(240px, 40vw, 360px) !important; /* 반응형 높이 */
   margin: 0 auto;           /* 가운데 정렬 */
   border-radius: 8px;       /* 카드와 어울리게 둥글게 */
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+
+.map-links {
+  display: flex;
+  width: 100%;              /* 지도의 가로폭과 동일하게 */
+  margin-top: 12px;
+}
+
+.map-btn {
+  flex: 1;                  /* 3등분 */
+  text-align: center;
+  padding: 16px 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.map-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 색상 테마 */
+.map-btn.ivory { background-color: #f5f5dc; color: #333; }
+.map-btn.navy { background-color: #2c3e50; }
+.map-btn.beige { background-color: #d9c7b0; color: #333; }
+
 
 .photos {
   text-align: center;
