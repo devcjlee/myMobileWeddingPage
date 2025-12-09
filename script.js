@@ -340,3 +340,13 @@ async function deleteGuestbookEntry(id) {
     alert("삭제에 실패했어요.");
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  new daum.roughmap.Lander({
+    "timestamp" : "1765279961113",
+    "key" : "dyc7m2xawav",
+    "mapWidth" : "100%",
+    "mapHeight" : "360",
+    "container" : "daumRoughmapContainer1765279961113" // div id 지정
+  }).render();
+});

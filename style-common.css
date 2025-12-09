@@ -140,7 +140,7 @@ button:active {
 .card {
   background-color: var(--card-bg);
   border-radius: 10px;                /* 둥근 모서리 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 조금 더 진한 그림자 */
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.2); /* 조금 더 진한 그림자 */
 }
 
 .cardTitle {
@@ -246,6 +246,15 @@ button:active {
 /* ============================= */
 .location {
   text-align: center;
+}
+
+.location .root_daum_roughmap {
+  width: 100% !important;   /* 카드 폭에 맞추기 */
+  max-width: 640px;         /* 너무 커지지 않게 제한 */
+  height: 360px !important; /* 원하는 높이 */
+  margin: 0 auto;           /* 가운데 정렬 */
+  border-radius: 8px;       /* 카드와 어울리게 둥글게 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .photos {
