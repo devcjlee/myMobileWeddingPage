@@ -16,6 +16,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
 </head>
 <body>
   <div id="introOverlay">
@@ -86,29 +91,57 @@
           티맵
         </div>
       </div>
+      <br>
       <!-- 주소 연락처 -->
       <div class="location-info">
         <div class="address-row">
-          <span class="locationTypeLabel" data-name="locationType1"></span>
+          <strong><div>주소</div></strong>
+          - <span class="locationTypeLabel" data-name="locationType1"></span>
           <span class="address" data-name="weddingLocationAddress1"></span>
-          <button class="copy-btn" onclick="copyAddress('weddingLocationAddress1')">📋</button>
+          <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress1', this)">복사하기</button>
         </div>
         <div class="address-row">
-          <span class="locationTypeLabel" data-name="locationType2"></span>
+          - <span class="locationTypeLabel" data-name="locationType2"></span>
           <span class="address" data-name="weddingLocationAddress2"></span>
-          <button class="copy-btn" onclick="copyAddress('weddingLocationAddress2')">📋</button>
+          <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress2', this)">복사하기</button>
         </div>
         <div class="contact-row">
+          <strong><span class="location-row-header">연락처 : </span></strong>
           <span data-name="weddingLocationContact"></span>
+        </div>
+        <!-- 교통 안내 -->
+        <div class="transport-info">
+          <div class="shuttle-row">
+            <strong><div>밀리토피아호텔 바이 마린 셔틀버스 안내</div></strong>
+            <span> - 남위례역 5번출구 ↔ 호텔 * 예식 1시간전 ~ 예식 후 2시간까지, 15분 간격</span>
+          </div>
+          <div class="walk-row">
+            <strong><div>도보 및 지하철 이용 시</div></strong>
+            <span> - 남위례역 3,4번출구, 7분 소요</span>
+          </div>
+          <div class="bus-row">
+            <strong><div>버스 이용 시</div></strong>
+            <span> - 서울버스 343번, 345번, 3420번</span>
+            <br>
+            <span> - 성남버스 50번, 231번</span>
+            <br>
+            <span> - 광역버스9200번, 9202번</span>
+            <br>
+            <span> - 공항버스5500번</span>
+          </div>
+          <div class="car-row">
+            <strong><div>자가용 이용 시 (동시 600여대 주차 가능)</div></strong>
+            <span> - 복정역 교차로(남한산성 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
+            <br>
+            <span> -  산성역 사거리(서울 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
+          </div>
+          <div class="airplane-row">
+            <strong><div>김포공항과 밀리토피아호텔 바이 마린 구간 교통안내</div></strong>
+            <span> - 일반택시약 1시간 15분 소요 (약 4~5만원)</span>
+          </div>
         </div>
       </div>
       <br>
-      <!-- 교통 안내 -->
-      <div class="transport-info">
-        <p><strong>지하철:</strong> ?????</p>
-        <p><strong>버스:</strong> ?????</p>
-        <p><strong>자가용:</strong> ?????</p>
-      </div>
     </section>
 
     <section class="photos card">

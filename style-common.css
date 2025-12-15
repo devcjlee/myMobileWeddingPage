@@ -2,12 +2,17 @@
 /* 🌈 색상 변수 선언 (CSS 변수) */
 /* ============================= */
 :root {
-  --primary-color: #c94e50;           /* 메인 포인트 컬러 (버튼, 강조 텍스트 등) */
-  --text-color: #464646;                 /* 기본 텍스트 색상 */
+  --primary-color: #ff9900;           /* 메인 포인트 컬러 (버튼, 강조 텍스트 등) */
+  --text-color: #2c3e50;                 /* 기본 텍스트 색상 */
   --background-color: #fefaf7;        /* 배경 색상 (따뜻한 느낌) */
   --card-bg: #ffffff;                 /* 카드 배경색 */
   --subtle-color: #696969;               /* 보조 텍스트 색상 */
-  --hover-color: #a83e42;             /* 버튼 호버 색상 */
+  --hover-color: #ffd900;             /* 버튼 호버 색상 */
+
+  --naver-map-color: #f5f5dc;
+  --kakao-map-color: #2c3e50;
+  --tmap-map-color: #d9c7b0;
+  --map-link-color: #333;
 }
 
 /* ==== CSS우선순위 ==== */
@@ -282,48 +287,76 @@ button:active {
 }
 
 /* 색상 테마 */
-.map-btn.ivory { background-color: #f5f5dc; color: #333; }
-.map-btn.navy { background-color: #2c3e50; }
-.map-btn.beige { background-color: #d9c7b0; color: #333; }
+.map-btn.ivory { background-color: var(--naver-map-color); color: var(--map-link-color); }
+.map-btn.navy { background-color: var(--kakao-map-color); }
+.map-btn.beige { background-color: var(--tmap-map-color); color: var(--map-link-color); }
 
 
 .location-info {
-  font-size: clamp(0.8rem, 1.5vw, 0.95rem); /* 최소 0.8rem, 뷰포트에 따라 1.5vw, 최대 0.95rem */
-  margin-top: 8px;
+  font-size: clamp(14px, 1.4vw, 18px);  /* 최소 12px, 뷰포트에 따라 1.5vw, 최대 15px */
 }
 
 .address-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
+  text-align:left;
+  padding-left:8px;
+  margin-bottom: 6px;
 }
 
 .address-row .locationTypeLabel {
-  width: 60px;
-  text-align: right;
-  margin-right: 8px;
-  color: #555;
-  font-weight: 500;
-  font-size: clamp(0.75rem, 1.2vw, 0.9rem); /* 라벨도 clamp 적용 */
+  text-align:left;
+  font-size: clamp(14px, 1.4vw, 18px); /* 라벨도 clamp 적용 */
 }
 
 .address-row .address {
-  flex: 1;
-  font-size: clamp(0.8rem, 1.4vw, 1rem); /* 주소 텍스트도 반응형 */
+  text-align:left;
+  font-size: clamp(14px, 1.4vw, 18px); /* 주소 텍스트도 반응형 */
 }
 
-.copy-btn {
-  margin-left: 8px;
-  background: none;
-  border: none;
+.addressCopyButton {
+  margin-left: 0px;
+  padding: 4px 10px;
+  background-color: #f0f0f0;   /* 기본 배경 */
+  border: 1px solid #ccc;      /* 테두리 */
+  border-radius: 4px;          /* 둥근 모서리 */
   cursor: pointer;
-  font-size: clamp(1rem, 2vw, 1.2rem); /* 아이콘 크기도 반응형 */
+  font-size: clamp(12px, 1.4vw, 14px); /* 반응형 폰트 */
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.copy-btn:hover {
-  color: #007bff;
+.addressCopyButton:hover {
+  background-color: #3f371f;   /* 호버 시 파란색 */
+  color: #fff;                 /* 글자색 흰색 */
+  border-color: #007bff;
 }
 
+.contact-row {
+  text-align:left;
+  padding-left:8px;
+  margin-top: 6px;
+  text-align:left;
+  font-size: clamp(14px, 1.4vw, 18px); /* 라벨도 clamp 적용 */
+}
 
+.transport-info{
+  text-align:left;
+  padding-left:8px;
+  margin-top: 6px;
+  text-align:left;
+  font-size: clamp(14px, 1.4vw, 18px); /* 라벨도 clamp 적용 */
+}
+.shuttle-row{
+  margin-bottom: 10px;
+}
+.walk-row{
+  margin-bottom: 10px;
+}
+.bus-row{
+  margin-bottom: 10px;
+}
+.car-row{
+  margin-bottom: 10px;
+  font-size: clamp(11px, 1.4vw, 18px); /* 라벨도 clamp 적용 */
+}
 
 .photos {
   text-align: center;

@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationDetail = "2층 아이리스홀";
   const locationType1 = "(도로명)";
   const locationType2 = "(지번)";
-  const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
+  const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
   const accountGuide = "참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.";
@@ -341,18 +341,21 @@ window.openMapLink = function (appUrl, webUrl) {
   };
 }
 
-window.copyAddress = function (dataName) {
+window.copyAddress = function (dataName, button) {
   const el = document.querySelector(`[data-name="${dataName}"]`);
   const text = el.textContent.trim();
 
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text)
       .then(() => {
-        //alert("주소가 복사되었습니다!");
+        button.textContent = "복사됨!";
+        setTimeout(() => {
+          button.textContent = "복사하기";
+        }, 1500);
       })
       .catch(err => {
         console.error("복사 실패:", err);
-        //alert("복사에 실패했습니다.");
+        alert("복사에 실패했어요. 브라우저 설정을 확인해주세요.");
       });
   } else {
     alert("이 브라우저에서는 복사 기능을 지원하지 않습니다.");
