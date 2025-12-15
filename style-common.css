@@ -311,7 +311,10 @@ button:active {
   margin-bottom: 6px;
 }
 
-.address-row .locationTypeLabel,
+.address-row .locationTypeLabel{
+  font-size: clamp(12px, 1.2vw, 16px); /* 라벨도 clamp 적용 */
+  color: var(--subtle-color);
+}
 .address-row .address {
   font-size: inherit;    /* 부모 폰트 크기 따라감 */
 }
