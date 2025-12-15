@@ -220,12 +220,15 @@ button:active {
   letter-spacing: 2.0px;
 }
 
+.familyName{
+  font-size: clamp(20px, 4vw, 28px);
+}
 /* ============================= */
 /* 💬 보조 텍스트 스타일 */
 /* ============================= */
 .subtle {
   color: var(--subtle-color);
-  font-size: clamp(14px, 3vw, 15px);
+  font-size: clamp(17px, 4vw, 22px);
   font-weight: 400;
 }
 
@@ -234,7 +237,8 @@ button:active {
 }
 
 .welcomeMessage {
-
+  font-size: clamp(17px, 4vw, 22px);
+  line-height: 1.6;
 }
 
 .details {

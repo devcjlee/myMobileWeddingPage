@@ -62,11 +62,12 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
   const introText = "저희, 결혼합니다.";
-  const welcomeMessage1 = "저희 두 사람의 사랑을 약속하는 날,";
-  const welcomeMessage2 = "따뜻한 축복 속에서 함께해 주신다면";
-  const welcomeMessage3 = "더없는 기쁨이 될 것입니다.";
-  const welcomeMessage4 = "귀한 걸음을 해 주신다면";
-  const welcomeMessage5 = "진심으로 감사하겠습니다.";
+  const welcomeMessage1 = "믿음과 사랑으로 서로를 알아가며,";
+  const welcomeMessage2 = "평생 함께할 인생의 동반자를 만났습니다.";
+  const welcomeMessage3 = "서로에 대한 깊은 신뢰와 다짐 속에서";
+  const welcomeMessage4 = "결혼이라는 새로운 출발을 하려합니다.";
+  const welcomeMessage5 = "귀한 시간 내주시어 참석해주신다면";
+  const welcomeMessage6 = "깊이 감사하겠습니다.";
   const groomFullName = "이치종";
   const brideFullName = "길신영";
   const groomFirstName = groomFullName.slice(1);
@@ -83,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingTimeZone = "AM";
   const weddingHour = "11";
   const weddingMinute = "00";
-  const weddingLocation = "밀리토피아 바이 마린 웨딩센터 2층 아이리스홀";
+  const weddingLocation = "밀리토피아호텔 바이마린 웨딩센터";
+  const weddingLocationDetail = "2층 아이리스홀";
   const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
@@ -98,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessage3,
     welcomeMessage4,
     welcomeMessage5,
+    welcomeMessage6,
     groomFullName,
     brideFullName,
     groomFirstName,
@@ -115,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingHour,
     weddingMinute,
     weddingLocation,
+    weddingLocationDetail,
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact,
@@ -146,7 +150,7 @@ function updateDday() {
   const diffTime = weddingDate - today;
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   const ddayText = diffDays > 0 ? `D-${diffDays}` : (diffDays === 0 ? "오늘!" : `D+${Math.abs(diffDays)}`);
-  document.getElementById("dday").textContent = `(${ddayText})`;
+  document.getElementById("dday").textContent = `${ddayText}`;
 }
 
 // 4. 벚꽃 애니메이션
