@@ -329,6 +329,18 @@ window.copyAccount = function (button){
   }
 }
 
+window.openMapLink = function (appUrl, webUrl) {
+  var timeout = setTimeout(function() {
+    window.open(webUrl, "_blank"); // 새 탭으로 열기
+  }, 1000);
+
+  window.location.href = appUrl;
+
+  window.onblur = function() {
+    clearTimeout(timeout);
+  };
+}
+
 window.copyAddress = function (dataName) {
   const el = document.querySelector(`[data-name="${dataName}"]`);
   const text = el.textContent.trim();
