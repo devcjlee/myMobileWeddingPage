@@ -72,30 +72,43 @@
       <h2 class="cardTitle">오시는 길</h2>
       <img src="images/illustration/card_sakura.png" alt="벚꽃 장식" class="sakura-icon">
       <br>
+      <!-- 지도 -->
       <div id="daumRoughmapContainer1765279961113" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-      
+      <!-- 지도앱 버튼 -->
       <div class="map-links">
-        <div class="map-btn ivory" onclick="openMapLink('nmap://search?query=웨딩홀주소', 'https://naver.me/5qDjdnCy')">
+        <div class="map-btn ivory" onclick="openMapLink('nmap://search?query=밀리토피아호텔 바이마린 웨딩센터', 'https://naver.me/5qDjdnCy')">
           네이버 지도
         </div>
-        <div class="map-btn navy" onclick="openMapLink('kakaomap://search?q=웨딩홀주소', 'https://kko.kakao.com/p9WobR_gOT')">
+        <div class="map-btn navy" onclick="openMapLink('kakaomap://search?q=밀리토피아호텔 바이마린 웨딩센터', 'https://kko.kakao.com/p9WobR_gOT')">
           카카오 지도
         </div>
-        <div class="map-btn beige" onclick="openMapLink('tmap://search?name=웨딩홀주소', 'https://tmap.life/d1ad1568')">
+        <div class="map-btn beige" onclick="openMapLink('tmap://search?name=밀리토피아호텔 바이마린 웨딩센터', 'https://tmap.life/d1ad1568')">
           티맵
         </div>
       </div>
-      
-      <p>(도로명)<span data-name="weddingLocationAddress1"></span></p>
-      <p>(지번)<span data-name="weddingLocationAddress2"></span></p>
-      <p><span data-name="weddingLocationContact"></span></p>
+      <!-- 주소 연락처 -->
+      <div class="location-info">
+        <div class="address-row">
+          <span class="locationTypeLabel" data-name="locationType1"></span>
+          <span class="address" data-name="weddingLocationAddress1"></span>
+          <button class="copy-btn" onclick="copyAddress('weddingLocationAddress1')">📋</button>
+        </div>
+        <div class="address-row">
+          <span class="locationTypeLabel" data-name="locationType2"></span>
+          <span class="address" data-name="weddingLocationAddress2"></span>
+          <button class="copy-btn" onclick="copyAddress('weddingLocationAddress2')">📋</button>
+        </div>
+        <div class="contact-row">
+          <span data-name="weddingLocationContact"></span>
+        </div>
+      </div>
       <br>
-      <!--지도 미리보기 추가 하기 -->
-      <button onclick="openMap()">📍 지도 보기</button>
-      <br>
-      <p><strong>지하철:</strong> ?????</p>
-      <p><strong>버스:</strong> ?????</p>
-      <p><strong>자가용:</strong> ?????</p>
+      <!-- 교통 안내 -->
+      <div class="transport-info">
+        <p><strong>지하철:</strong> ?????</p>
+        <p><strong>버스:</strong> ?????</p>
+        <p><strong>자가용:</strong> ?????</p>
+      </div>
     </section>
 
     <section class="photos card">

@@ -287,6 +287,44 @@ button:active {
 .map-btn.beige { background-color: #d9c7b0; color: #333; }
 
 
+.location-info {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem); /* 최소 0.8rem, 뷰포트에 따라 1.5vw, 최대 0.95rem */
+  margin-top: 8px;
+}
+
+.address-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.address-row .locationTypeLabel {
+  width: 60px;
+  text-align: right;
+  margin-right: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem); /* 라벨도 clamp 적용 */
+}
+
+.address-row .address {
+  flex: 1;
+  font-size: clamp(0.8rem, 1.4vw, 1rem); /* 주소 텍스트도 반응형 */
+}
+
+.copy-btn {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* 아이콘 크기도 반응형 */
+}
+.copy-btn:hover {
+  color: #007bff;
+}
+
+
+
 .photos {
   text-align: center;
 }
@@ -462,4 +500,15 @@ button:active {
     opacity: 0;              /* 다시 투명해짐 → 화면에서 사라짐 */
     transform: scale(1.01);  /* 아주 살짝 확대된 상태로 사라짐 */
   }
+}
+
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }

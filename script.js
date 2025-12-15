@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingMinute = "00";
   const weddingLocation = "밀리토피아호텔 바이마린 웨딩센터";
   const weddingLocationDetail = "2층 아이리스홀";
+  const locationType1 = "(도로명)";
+  const locationType2 = "(지번)";
   const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83 밀리토피아호텔 바이마린 웨딩센터";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
@@ -119,6 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingMinute,
     weddingLocation,
     weddingLocationDetail,
+    locationType1,
+    locationType2,
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact,
@@ -235,6 +239,20 @@ function startSakura() {
   });
 }
 
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // 화면에 들어왔을 때
+      entry.target.classList.add("show");
+    } else {
+      // 화면에서 벗어났을 때
+      entry.target.classList.remove("show");
+    }
+  });
+});
+// 여러 요소에 적용 가능
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
 window.addEventListener("load", () => {
   if (!sessionStorage.getItem("introPlayed")) {
     startSakura();
@@ -311,6 +329,25 @@ window.copyAccount = function (button){
   }
 }
 
+window.copyAddress = function (dataName) {
+  const el = document.querySelector(`[data-name="${dataName}"]`);
+  const text = el.textContent.trim();
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        //alert("주소가 복사되었습니다!");
+      })
+      .catch(err => {
+        console.error("복사 실패:", err);
+        //alert("복사에 실패했습니다.");
+      });
+  } else {
+    alert("이 브라우저에서는 복사 기능을 지원하지 않습니다.");
+  }
+}
+
+
 window.loginAdmin = function () {
   const email = document.getElementById("adminEmail").value;
   const password = document.getElementById("adminPassword").value;
@@ -347,23 +384,6 @@ async function deleteGuestbookEntry(id) {
     console.error("삭제 실패:", err);
     alert("삭제에 실패했어요.");
   }
-}
-
-// 3. 지도 열기
-window.openMapLink = function (appUrl, webUrl) {
-  // 앱 실행 시도
-  var timeout = setTimeout(function() {
-    // 앱이 없으면 웹 URL로 이동
-    window.location.href = webUrl;
-  }, 1000);
-
-  // 앱 URL 호출
-  window.location.href = appUrl;
-
-  // 앱이 실행되면 timeout 취소
-  window.onblur = function() {
-    clearTimeout(timeout);
-  };
 }
 
 document.addEventListener("DOMContentLoaded", function() {
