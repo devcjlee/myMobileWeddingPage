@@ -221,7 +221,7 @@ button:active {
 
 .wedding-info-text {
   font-weight: 500;
-  font-size: clamp(16px, 4vw, 18px);
+  font-size: clamp(16px, 6vw, 22px);
   letter-spacing: 2.0px;
 }
 

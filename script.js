@@ -62,12 +62,13 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
   const introText = "저희, 결혼합니다.";
-  const welcomeMessage1 = "믿음과 사랑으로 서로를 알아가며,";
-  const welcomeMessage2 = "평생 함께할 인생의 동반자를 만났습니다.";
-  const welcomeMessage3 = "서로에 대한 깊은 신뢰와 다짐 속에서";
-  const welcomeMessage4 = "결혼이라는 새로운 출발을 하려합니다.";
-  const welcomeMessage5 = "귀한 시간 내주시어 참석해주신다면";
-  const welcomeMessage6 = "깊이 감사하겠습니다.";
+  const welcomeMessage1 = "믿음과 사랑으로 인연을 맺어";
+  const welcomeMessage2 = "결혼이라는 새로운 출발을 하려 합니다.";
+  const welcomeMessage3 = "함께 축복해 주신다면";
+  const welcomeMessage4 = "한없는 기쁨으로 간직하겠습니다.";
+  const welcomeMessage5 = "귀한 시간 내주시어";
+  const welcomeMessage6 = "결혼식에 참석해 주셨으면 합니다.";
+  const welcomeMessage7 = "감사드립니다.";
   const groomFullName = "이치종";
   const brideFullName = "길신영";
   const groomFirstName = groomFullName.slice(1);
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessage4,
     welcomeMessage5,
     welcomeMessage6,
+    welcomeMessage7,
     groomFullName,
     brideFullName,
     groomFirstName,
