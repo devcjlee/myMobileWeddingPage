@@ -55,7 +55,7 @@ button {
 
 .location-info,
 .contact-row,
-.transport-info{
+.transport-row{
   font-size: clamp(15px, 2.7vw, 21px); /* 라벨도 clamp 적용 */
 }
 

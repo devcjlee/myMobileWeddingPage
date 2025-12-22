@@ -70,12 +70,12 @@ button {
 
 .location-info,
 .contact-row,
-.transport-info{
-  font-size: clamp(10px, 3.0vw, 15px); /* 라벨도 clamp 적용 */
+.transport-row{
+  font-size: clamp(10px, 3.2vw, 17px); /* 라벨도 clamp 적용 */
 }
 
 .address-row .locationTypeLabel{
-  font-size: clamp(8px, 2.7vw, 14px); /* 라벨도 clamp 적용 */
+  font-size: clamp(8px, 2.9vw, 15px); /* 라벨도 clamp 적용 */
 }
 
 .addressCopyButton {

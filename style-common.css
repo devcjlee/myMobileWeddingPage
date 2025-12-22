@@ -339,22 +339,14 @@ button:active {
 .map-btn.beige { background-color: var(--tmap-map-color); color: var(--text-color); }
 
 
-.location-info,
+.address-row,
 .contact-row,
-.transport-info{
+.transport-row{
   text-align:left;
   padding-left:8px;
-  margin-top: 6px;
   text-align:left;
   /*font-size -> css분기*/
-}
-
-.address-row {
-  padding-left:8px;
-  display: flex;
-  align-items: center;
-  gap: 3px;              /* 요소 간격 일정하게 */
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .address-row .locationTypeLabel{
@@ -368,7 +360,7 @@ button:active {
 }
 
 .transport-info div {
-  margin-bottom: 10px;   /* 각 교통 안내 블록 간격 일정 */
+
 }
 
 .photos {
