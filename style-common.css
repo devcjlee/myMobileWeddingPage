@@ -276,6 +276,7 @@ button:active {
 
 .familyName{
   /*font-size -> css분기*/
+  text-align: center;
 }
 /* ============================= */
 /* 💬 보조 텍스트 스타일 */
