@@ -60,7 +60,7 @@ button {
 .location-info,
 .contact-row,
 .transport-row{
-  font-size: clamp(15px, 2.7vw, 21px); /* 라벨도 clamp 적용 */
+  font-size: clamp(15px, 2.7vw, 20px); /* 라벨도 clamp 적용 */
 }
 
 .address-row .locationTypeLabel{
