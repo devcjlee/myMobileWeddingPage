@@ -267,6 +267,7 @@ button:active {
 
 #wedding-info-text {
   font-weight: 500;
+  font-family: 'Great Vibes', cursive; /* 필기체 폰트 적용 */
   letter-spacing: 2.0px;
 }
 
@@ -359,10 +360,6 @@ button:active {
   font-size: clamp(11px, 1.0vw, 13px); /* 버튼도 통일 */
 }
 
-.transport-info div {
-
-}
-
 .photos {
   text-align: center;
 }
@@ -391,54 +388,121 @@ button:active {
   user-select: none;                 /* 드래그 방지 */
 }
 
-.account{
+.account {
   text-align: center;
 }
 
-.account-box {
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  padding: 16px;
+#accountGuideBox {
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.account-box-header {
-  margin-top: 0;
-  color: #444;
-  font-size: clamp(16px, 2.5vw, 20px);
+.account-box {
+  background: #fffaf4;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-.account-box p {
-  margin: 4px 0;
-  font-size: clamp(14px, 3.5vw, 16px);
-  line-height: 1.5;
-}
-
-.account-line {
+/* 헤더 */
+.account-header {
   display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 1.5vw, 6px);
-  margin: 8px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
 }
 
-.account-line input {
+.account-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.arrow {
+  font-size: clamp(16px, 2vw, 20px);
+  transition: transform 0.3s ease;
+  color: #333;
+}
+
+/* 펼쳐지는 영역 */
+.account-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  background: #fff;
+  opacity: 0;                 /* 처음엔 투명 */
+  transform: translateY(-6px); /* 살짝 위에서 시작 */
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+}
+
+.account-box.open .account-content {
+  max-height: 1000px;
+  padding: 16px;
+  opacity: 1;                 /* 서서히 나타남 */
+  transform: translateY(0);   /* 제자리로 */
+}
+
+.account-box.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* 계좌 항목 */
+.account-item {
+  margin-bottom: 14px;
+}
+
+/* 한 줄 구조 통일 */
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.bank {
+  font-size: clamp(14px, 1.6vw, 16px);
+  white-space: nowrap;
+}
+
+.owner-group {
+  margin-left: auto; /* 오른쪽 끝으로 이동 */
+  display: flex;
+  gap: 4px; /* 예금주 : 와 이름 사이 간격 */
+  white-space: nowrap;
+}
+
+.account-owner,
+.account-name {
+  font-size: clamp(14px, 1.6vw, 16px);
+}
+
+.account-number {
   flex: 1;
+  text-align: left;
+  font-size: clamp(14px, 1.6vw, 16px);
+  white-space: nowrap;
+}
+
+/* 복사 버튼 */
+.copy-btn {
   padding: 6px 10px;
-  width: 100%;
-  font-size: clamp(14px, 2vw, 15px);
+  background: #eee;
   border: 1px solid #ccc;
   border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: clamp(13px, 1.6vw, 15px);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.account-line button {
-  padding: 6px 12px;
-  width: 100%;
-  font-size: clamp(13px, 2vw, 14px);
-  background-color: #eee;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.copy-btn:hover {
+  background: #3f371f;
+  color: #fff;
 }
 
 

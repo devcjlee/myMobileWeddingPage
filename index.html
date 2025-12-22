@@ -31,7 +31,7 @@
     <section id="hero-photo" class="card">
       <div id="hero-photo-container">
         <img id="hero-photo-image" src="images/weddingPhoto/whiteWallStanding.jpg" alt="우리 웨딩 대표 사진">
-        <div id="hero-text">Wedding Invitation</div>
+        <div id="hero-text"><span data-name="weddingInvitation"></span></div>
         <h1 id="wedding-title">
           <span data-name="groomFullName"></span>
           <img src="images/illustration/love_heart.png" alt="하트 아이콘" class="heart-icon">
@@ -39,7 +39,7 @@
         </h1>
       </div>
       <div id="wedding-info">
-        <p id="wedding-info-text"  style="font-family:'Great Vibes'"><span id="dday"></span><br><br><span data-name="weddingYear"></span>.<span data-name="weddingMonth"></span>.<span data-name="weddingDay"></span> <span data-name="weddingDayOfWeekEng"></span> <span data-name="weddingTimeZone"></span> <span data-name="weddingHour"></span>:<span data-name="weddingMinute"></span></p>
+        <p id="wedding-info-text"><span id="dday"></span><br><br><span data-name="weddingYear"></span>.<span data-name="weddingMonth"></span>.<span data-name="weddingDay"></span> <span data-name="weddingDayOfWeekEng"></span> <span data-name="weddingTimeZone"></span> <span data-name="weddingHour"></span>:<span data-name="weddingMinute"></span></p>
         
       </div>
     </section>
@@ -149,7 +149,7 @@
     </section>
 
     <section class="photos card">
-      <h2 class="cardTitle">우리 이야기</h2>
+      <h2 class="cardTitle">갤러리</h2>
       <img src="images/illustration/card_sakura.png" alt="벚꽃 장식" class="sakura-icon">
       <br>
       <div class="photo-gallery">
@@ -164,7 +164,7 @@
       <br>
       <form id="guestbookForm">
         <input type="text" id="guestName" placeholder="이름" required>
-        <textarea id="guestMessage" placeholder="축하 메시지" required></textarea>
+        <textarea id="guestMessage" placeholder="축하 메시지를 남겨주세요." required></textarea>
         <button type="submit">남기기</button>
       </form>
       <ul id="guestbookList"></ul>
@@ -173,25 +173,100 @@
     <section class="account card">
       <h2 class="cardTitle">마음 전하실 곳</h2>
       <img src="images/illustration/card_sakura.png" alt="벚꽃 장식" class="sakura-icon">
-      <p><span data-name="accountGuide"></span></p>
+      <p id="accountGuideBox"><span id="accountGuideText" data-name="accountGuide"></span></p>
       <div class="account-box">
-        <h3 class="account-box-header">신랑 측</h3>
-        <p><strong>신랑:</strong> 고길동</p>
-        <div class="account-line">
-          <input type="text" value="100-123-456789" readonly>
-          <button onclick="copyAccount(this)">복사</button>
+        <div class="account-header" onclick="toggleAccount(this)">
+          <h3>신랑 측</h3>
+          <span class="arrow">▼</span>
         </div>
-        <p><strong>예금주:</strong> 고길동</p>
+        <div class="account-content">
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">국민은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="groomFatherFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="groomFatherAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">신한은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="groomMotherFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="groomMotherAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">우리은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="groomFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="groomAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+        </div>
       </div>
-
       <div class="account-box">
-        <h3 class="account-box-header">신부 측</h3>
-        <p><strong>신부:</strong> 둘리맘</p>
-        <div class="account-line">
-          <input type="text" value="3333-12-3456789" readonly>
-          <button onclick="copyAccount(this)">복사</button>
+        <div class="account-header" onclick="toggleAccount(this)">
+          <h3>신부 측</h3>
+          <span class="arrow">▼</span>
         </div>
-        <p><strong>예금주:</strong> 둘리맘</p>
+        <div class="account-content">
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">우리은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="brideFatherFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="brideFatherAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">우리은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="brideMotherFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="brideMotherAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+          <div class="account-item">
+            <div class="account-row">
+              <span class="bank">우리은행</span>
+              <span class="owner-group">
+                <span class="account-owner">예금주 : </span>
+                <span class="account-name" data-name="brideFullName"></span>
+              </span>
+            </div>
+            <div class="account-row">
+              <span class="account-number" data-name="brideAccount"></span>
+              <button class="copy-btn" onclick="copyAccount(this)">복사</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

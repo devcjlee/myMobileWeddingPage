@@ -62,6 +62,7 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
   const introText = "저희, 결혼합니다.";
+  const weddingInvitation = "Wedding Invitation";
   const welcomeMessage1 = "믿음과 사랑으로 인연을 맺어";
   const welcomeMessage2 = "결혼이라는 새로운 출발을 하려 합니다.";
   const welcomeMessage3 = "함께 축복해 주신다면";
@@ -70,13 +71,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const welcomeMessage6 = "결혼식에 참석해 주셨으면 합니다.";
   const welcomeMessage7 = "감사드립니다.";
   const groomFullName = "이치종";
+  const groomAccount = "333-333333-33-333";
   const brideFullName = "길신영";
+  const brideAccount = "666-666666-66-666";
   const groomFirstName = groomFullName.slice(1);
   const brideFirstName = brideFullName.slice(1);
   const groomFatherFullName = "이영호";
+  const groomFatherAccount = "000-000000-00-000";
   const groomMotherFullName = "김애정";
+  const groomMotherAccount = "111-111111-11-222";
   const brideFatherFullName = "길기용";
+  const brideFatherAccount = "444-444444-44-444";
   const brideMotherFullName = "전영희";
+  const brideMotherAccount = "555-555555-55-555";
   const weddingYear = "2026";
   const weddingMonth = "04";
   const weddingDay = "26";
@@ -92,12 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationAddress1 = "경기 성남시 수정구 위례대로 83";
   const weddingLocationAddress2 = "경기 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
-  const accountGuide = "참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.";
+  const accountGuide = "축하해 주셔서 감사드립니다.";
 
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
   const dataMap = {
     introText,
+    weddingInvitation,
     welcomeMessage1,
     welcomeMessage2,
     welcomeMessage3,
@@ -106,13 +114,19 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessage6,
     welcomeMessage7,
     groomFullName,
+    groomAccount,
     brideFullName,
+    brideAccount,
     groomFirstName,
     brideFirstName,
     groomFatherFullName,
+    groomFatherAccount,
     groomMotherFullName,
+    groomMotherAccount,
     brideFatherFullName,
+    brideFatherAccount,
     brideMotherFullName,
+    brideMotherAccount,
     weddingYear,
     weddingMonth,
     weddingDay,
@@ -263,7 +277,7 @@ window.addEventListener("load", () => {
       overlay.classList.add("fade-out");
     }, 3800);
     // 실행 여부 저장
-    sessionStorage.setItem("introPlayed", "false");
+    sessionStorage.setItem("introPlayed", "true");
   }
   else {
     // 이미 실행된 경우 → 오버레이 바로 숨기기
@@ -312,23 +326,29 @@ async function loadGuestbook() {
   });
 }
 
-window.copyAccount = function (button){
-  const input = button.previousElementSibling;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(input.value)
-      .then(() => {
-        button.textContent = "복사됨!";
-        setTimeout(() => {
-          button.textContent = "복사";
-        }, 1500);
-      })
-      .catch(err => {
-        console.error("복사 실패:", err);
-        alert("복사에 실패했어요. 브라우저 설정을 확인해주세요.");
-      });
-  } else {
-    alert("이 브라우저에서는 복사 기능을 지원하지 않아요.");
-  }
+window.toggleAccount = function (header) {
+  const box = header.parentElement;
+  box.classList.toggle("open");
+}
+
+window.copyAccount = function(button) {
+  const row = button.parentElement; // account-row (계좌번호 + 버튼)
+  const numberEl = row.querySelector(".account-number");
+
+  // 은행명은 바로 위의 account-row에 있음
+  const bankEl = row.previousElementSibling.querySelector(".bank");
+
+  const bank = bankEl.textContent.trim();
+  const number = numberEl.textContent.trim();
+
+  const textToCopy = `${bank} ${number}`;
+
+  navigator.clipboard.writeText(textToCopy)
+    .then(() => {
+      button.textContent = "복사됨!";
+      setTimeout(() => button.textContent = "복사", 1500);
+    })
+    .catch(() => alert("복사에 실패했습니다."));
 }
 
 window.openMapLink = function (appUrl, webUrl) {

@@ -87,6 +87,14 @@ button {
   font-size: clamp(10px, 3.0vw, 15px); /* 버튼도 통일 */
 }
 
+#accountGuideText{
+  font-size: clamp(13px, 4.15vw, 18px);
+}
+
+.account-header h3{
+  font-size: clamp(14.5px, 4.5vw, 16px);
+}
+
 .photo-gallery img {
   max-width: 100%; /* 한 줄에 하나씩 꽉 차게 */
 }
