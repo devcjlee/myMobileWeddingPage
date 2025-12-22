@@ -256,14 +256,14 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
 window.addEventListener("load", () => {
-  if (!sessionStorage.getItem("introPlayed")) {
+  if (sessionStorage.getItem("introPlayed") != "true") {
     startSakura();
     const overlay = document.getElementById("introOverlay");
     setTimeout(() => {
       overlay.classList.add("fade-out");
     }, 3800);
     // 실행 여부 저장
-    sessionStorage.setItem("introPlayed", "true");
+    sessionStorage.setItem("introPlayed", "false");
   }
   else {
     // 이미 실행된 경우 → 오버레이 바로 숨기기

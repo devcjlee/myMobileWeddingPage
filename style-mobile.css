@@ -3,22 +3,16 @@ body {
   font-size: clamp(12px, 3.5vw, 14px); /* 기본 글자 크기 */
 }
 
-h1 {
-  font-size: clamp(24px, 6vw, 40px);
-  font-weight: 550;
-}
-
-h2 {
-  font-size: clamp(16px, 5vw, 22px);
-}
-
 p {
   line-height: 1.4;
-  font-size: clamp(13px, 4.5vw, 16.5px); /* 본문 및 폼 요소 글자 크기 */
 }
 
 input {
   font-size: clamp(13px, 3.5vw, 15px); /* 입력 폼 글자 크기 */
+}
+
+textarea {
+  font-size: clamp(14px, 2vw, 16px); /* 텍스트 영역 글자 크기 */
 }
 
 button {
@@ -31,47 +25,64 @@ button {
 }
 
 .card {
- padding: clamp(40px, 10vw, 50px) clamp(12px, 3vw, 16px);
+  padding: clamp(40px, 10vw, 50px) clamp(12px, 3vw, 16px);
 }
 
 .cardTitle {
+  font-size: clamp(16px, 5vw, 22px);
   margin: 0px 0px clamp(30px, 2vw, 34px) 0px;
 }
 
-.hero-photo.card {
+#introText {
+  font-size: clamp(20px, 6vw, 30px);
+}
+
+#hero-photo.card {
   min-height: 95vh;       /* 화면 높이 전체 차지 */
   display: flex;
   flex-direction: column;
   justify-content: center; /* 내부 내용 세로 중앙 정렬 */
 }
 
-.hero-photo img {
+#hero-photo img {
   max-width: 100%; /* 작은 화면에서는 꽉 차게 */
+}
+
+#wedding-info-text {
+  font-size: clamp(16px, 4.5vw, 22px);
+}
+
+.familyName{
+  font-size: clamp(16px, 4vw, 18px);
+}
+
+.welcomeMessage {
+  font-size: clamp(16px, 4vw, 18px);
+}
+
+#wedding-info-details{
+  font-size: clamp(12px, 3.6vw, 17px);
+}
+
+.map-btn {
+  font-size: clamp(11px, 3.2vw, 16px);
+}
+
+.location-info,
+.contact-row,
+.transport-info{
+  font-size: clamp(10px, 3.0vw, 15px); /* 라벨도 clamp 적용 */
+}
+
+.address-row .locationTypeLabel{
+  font-size: clamp(8px, 2.7vw, 14px); /* 라벨도 clamp 적용 */
+}
+
+.addressCopyButton {
+  padding: 1px 6px;
+  font-size: clamp(10px, 3.0vw, 15px); /* 버튼도 통일 */
 }
 
 .photo-gallery img {
   max-width: 100%; /* 한 줄에 하나씩 꽉 차게 */
-}
-
-#introText {
-  letter-spacing: clamp(0.5px, 0.5vw, 1px); /* 모바일에선 너무 넓지 않게 */
-}
-
-.account-box p,
-.account-line input,
-.account-line button {
-  font-size: clamp(14px, 3.5vw, 16px);
-}
-
-.account-line {
-  flex-direction: column;
-  gap: clamp(4px, 1.5vw, 6px);
-}
-
-.account-line input {
-  width: 100%;
-}
-
-.account-line button {
-  width: 100%;
 }
