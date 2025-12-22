@@ -61,7 +61,7 @@ button {
 }
 
 #wedding-info-details{
-  font-size: clamp(13px, 3.7vw, 18px);
+  font-size: clamp(13px, 4.15vw, 18px);
 }
 
 .map-btn {
