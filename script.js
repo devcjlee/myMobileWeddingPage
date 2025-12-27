@@ -461,16 +461,18 @@ window.resetAutoSlide = function() {
 let isAutoSlidePaused = false;
 
 document.getElementById("slideToggleBtn").addEventListener("click", () => {
+  const icon = document.getElementById("slideToggleIcon");
+
   if (isAutoSlidePaused) {
-    // 재생
+    // ▶ 재생 → 자동 슬라이드 다시 시작
     resetAutoSlide();
     isAutoSlidePaused = false;
-    document.getElementById("slideToggleBtn").textContent = "⏸";
+    icon.src = "images/svg-icons/pause.svg";  // 일시정지 아이콘으로 변경
   } else {
-    // 일시정지
+    // ⏸ 일시정지 → 자동 슬라이드 멈춤
     clearInterval(autoSlideInterval);
     isAutoSlidePaused = true;
-    document.getElementById("slideToggleBtn").textContent = "▶";
+    icon.src = "images/svg-icons/play.svg";   // 재생 아이콘으로 변경
   }
 });
 
