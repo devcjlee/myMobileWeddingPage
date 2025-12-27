@@ -413,12 +413,12 @@ window.goToSlide = function(index) {
   document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));  
   // 🔥 active 썸네일 자동 스크롤
   const activeThumb = document.querySelector(`#thumbnailList img[data-index="${index}"]`);
+  activeThumb.classList.add("active");
   activeThumb.scrollIntoView({
     behavior: "smooth",
     inline: "center",
     block: "nearest"
   });
-  activeThumb.add("active");
 }
 
 // 터치 시작
