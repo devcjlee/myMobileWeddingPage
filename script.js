@@ -372,7 +372,7 @@ window.copyAddress = function (dataName, button) {
       .then(() => {
         button.textContent = "복사됨!";
         setTimeout(() => {
-          button.textContent = "복사하기";
+          button.textContent = "복사";
         }, 1500);
       })
       .catch(err => {
