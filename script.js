@@ -405,7 +405,13 @@ window.goToSlide = function(index) {
   currentIndex = index;
   currentTranslate = -width * currentIndex;
   prevTranslate = currentTranslate;
+
+  sliderTrack.style.transition = "transform 0.3s ease";
   setSliderPosition();
+
+  // 🔥 썸네일 active 업데이트 추가
+  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));
+  document.querySelector(`#thumbnailList img[data-index="${index}"]`).classList.add("active");
 }
 
 // 터치 시작
