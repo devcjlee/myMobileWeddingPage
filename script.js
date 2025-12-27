@@ -410,9 +410,17 @@ window.goToSlide = function(index) {
   setSliderPosition();
 
   // 🔥 썸네일 active 업데이트 추가
-  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));
-  document.querySelector(`#thumbnailList img[data-index="${index}"]`).classList.add("active");
+  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active")); 
+  // 🔥 active 썸네일 자동 스크롤
+  const activeThumb = document.querySelector(`#thumbnailList img[data-index="${index}"]`);
+  activeThumb.scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+    block: "nearest"
+  });
 }
+
+
 
 // 터치 시작
 sliderContainer.addEventListener("touchstart", (e) => {
@@ -424,7 +432,6 @@ sliderContainer.addEventListener("touchstart", (e) => {
 // 터치 이동
 sliderContainer.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
-  sliderTrack.style.transition = "transform 0.3s ease"; // ← 다시 활성화
   const currentX = e.touches[0].clientX;
   const diff = currentX - startX;
   currentTranslate = prevTranslate + diff;
