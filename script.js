@@ -408,10 +408,13 @@ window.goToSlide = function(index) {
   activeThumb.classList.add("active");
 
   // 썸네일 자동 스크롤
-  activeThumb.scrollIntoView({
-    behavior: "smooth",
-    inline: "center"
-  });
+  if (isGalleryInView()) {
+    activeThumb.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
+  }
   // 🔥 자동 슬라이드 리셋 (추천)
   resetAutoSlide();
 }
@@ -471,6 +474,10 @@ document.getElementById("slideToggleBtn").addEventListener("click", () => {
   }
 });
 
+window.isGalleryInView = function() {
+  const rect = sliderContainer.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
 
 
 // 썸네일 클릭 이동
