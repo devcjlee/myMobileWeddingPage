@@ -396,7 +396,7 @@ let prevTranslate = 0;
 let isDragging = false;
 
 // 슬라이드 이동 함수
-window.tSliderPosition = function() {
+window.setSliderPosition = function() {
   sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
 }
 
@@ -406,14 +406,11 @@ window.goToSlide = function(index) {
   currentTranslate = -width * currentIndex;
   prevTranslate = currentTranslate;
   setSliderPosition();
-
-  // 썸네일 active 처리
-  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));
-  document.querySelector(`#thumbnailList img[data-index="${index}"]`).classList.add("active");
 }
 
 // 터치 시작
 sliderContainer.addEventListener("touchstart", (e) => {
+  sliderTrack.style.transition = "none";  // ← 이거 중요
   startX = e.touches[0].clientX;
   isDragging = true;
 });
@@ -421,6 +418,7 @@ sliderContainer.addEventListener("touchstart", (e) => {
 // 터치 이동
 sliderContainer.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
+  sliderTrack.style.transition = "transform 0.3s ease"; // ← 다시 활성화
   const currentX = e.touches[0].clientX;
   const diff = currentX - startX;
   currentTranslate = prevTranslate + diff;
@@ -442,6 +440,17 @@ sliderContainer.addEventListener("touchend", (e) => {
     goToSlide(currentIndex);
   }
 });
+
+// 썸네일 클릭 이동
+document.querySelectorAll("#thumbnailList img").forEach(thumb => {
+  thumb.addEventListener("click", () => {
+    const index = parseInt(thumb.dataset.index);
+    goToSlide(index);
+  });
+});
+
+// 초기 active 설정
+document.querySelector('#thumbnailList img[data-index="0"]').classList.add("active");
 
 
 window.loginAdmin = function () {
