@@ -373,24 +373,31 @@ button:active {
 /* ============================= */
 /* 큰 슬라이더 영역 */
 .gallery-slider {
+  position: relative;
   width: 100%;
-  overflow: hidden;
+  height: auto;
   border-radius: 12px;
-  margin-bottom: 12px;
+  overflow: hidden;
 }
 
 .gallery-slider .slides {
-  display: flex;
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.gallery-slider img {
+.gallery-slider .slides img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  flex-shrink: 0;
-  border-radius: 12px;
-  user-select: none;
-  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease; /* 페이드 효과 */
 }
+
+.gallery-slider .slides img.active {
+  opacity: 1;
+  position: relative; /* active 이미지는 정상 위치 */
+}
+
 
 /* 썸네일 리스트 */
 .thumbnail-list {

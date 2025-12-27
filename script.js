@@ -391,39 +391,34 @@ const slides = document.querySelectorAll("#gallerySlider .slides img");
 
 let currentIndex = 0;
 let startX = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
 let isDragging = false;
 
-// 슬라이드 이동 함수
-window.setSliderPosition = function() {
-  sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
-}
-
 window.goToSlide = function(index) {
-  const width = sliderContainer.clientWidth;
   currentIndex = index;
-  currentTranslate = -width * currentIndex;
-  prevTranslate = currentTranslate;
 
-  sliderTrack.style.transition = "transform 0.3s ease";
-  setSliderPosition();
+  // 모든 이미지 숨기기
+  slides.forEach(img => img.classList.remove("active"));
 
-  // 🔥 썸네일 active 업데이트 추가
-  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));  
-  // 🔥 active 썸네일 자동 스크롤
+  // 현재 이미지 보이기
+  slides[index].classList.add("active");
+
+  // 썸네일 active 업데이트
+  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));
   const activeThumb = document.querySelector(`#thumbnailList img[data-index="${index}"]`);
   activeThumb.classList.add("active");
+
+  // 썸네일 자동 스크롤
   activeThumb.scrollIntoView({
     behavior: "smooth",
     inline: "center",
     block: "nearest"
   });
+  // 🔥 자동 슬라이드 리셋 (추천)
+  resetAutoSlide();
 }
 
 // 터치 시작
 sliderContainer.addEventListener("touchstart", (e) => {
-  sliderTrack.style.transition = "none";  // ← 이거 중요
   startX = e.touches[0].clientX;
   isDragging = true;
 });
@@ -431,27 +426,36 @@ sliderContainer.addEventListener("touchstart", (e) => {
 // 터치 이동
 sliderContainer.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = currentX - startX;
-  currentTranslate = prevTranslate + diff;
-  setSliderPosition();
+  // 페이드 방식에서는 이동 중에 아무것도 하지 않음
 });
 
 // 터치 종료
 sliderContainer.addEventListener("touchend", (e) => {
+  if (!isDragging) return;
   isDragging = false;
-  const width = sliderContainer.clientWidth;
-  const movedBy = currentTranslate - prevTranslate;
 
-  // 스와이프 감지 (50px 이상 움직이면 넘기기)
-  if (movedBy < -50 && currentIndex < slides.length - 1) {
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff < -50 && currentIndex < slides.length - 1) {
     goToSlide(currentIndex + 1);
-  } else if (movedBy > 50 && currentIndex > 0) {
+  } else if (diff > 50 && currentIndex > 0) {
     goToSlide(currentIndex - 1);
-  } else {
-    goToSlide(currentIndex);
   }
+
+  resetAutoSlide();
 });
+
+/* 자동 슬라이드 재설정 */
+window.resetAutoSlide = function() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(() => {
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= slides.length) nextIndex = 0;
+    goToSlide(nextIndex);
+  }, 3000);
+}
+
 
 // 썸네일 클릭 이동
 document.querySelectorAll("#thumbnailList img").forEach(thumb => {
@@ -463,6 +467,13 @@ document.querySelectorAll("#thumbnailList img").forEach(thumb => {
 
 // 초기 active 설정
 document.querySelector('#thumbnailList img[data-index="0"]').classList.add("active");
+slides[0].classList.add("active");
+
+let autoSlideInterval = setInterval(() => {
+  let nextIndex = currentIndex + 1;
+  if (nextIndex >= slides.length) nextIndex = 0;
+  goToSlide(nextIndex);
+}, 3000); // 3초마다 자동 전환
 
 
 window.loginAdmin = function () {
