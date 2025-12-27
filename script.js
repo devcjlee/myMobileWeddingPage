@@ -439,10 +439,17 @@ sliderContainer.addEventListener("touchend", (e) => {
   const endX = e.changedTouches[0].clientX;
   const diff = endX - startX;
 
-  if (diff < -50 && currentIndex < slides.length - 1) {
-    goToSlide(currentIndex + 1);
-  } else if (diff > 50 && currentIndex > 0) {
-    goToSlide(currentIndex - 1);
+  if (diff < -50) {
+    // 오른쪽으로 스와이프 → 다음
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= slides.length) nextIndex = 0; // 마지막 → 첫 번째
+    goToSlide(nextIndex);
+
+  } else if (diff > 50) {
+    // 왼쪽으로 스와이프 → 이전
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) prevIndex = slides.length - 1; // 첫 번째 → 마지막
+    goToSlide(prevIndex);
   }
 
   resetAutoSlide();
