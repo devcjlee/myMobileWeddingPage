@@ -434,7 +434,16 @@ button:active {
   border: 2px solid #ffb6c1;
 }
 
-
+/* 썸네일 자동슬라이드 정지 버튼 스타일 */
+.slide-toggle-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
 
 .account {
   text-align: center;

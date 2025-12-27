@@ -410,8 +410,7 @@ window.goToSlide = function(index) {
   // 썸네일 자동 스크롤
   activeThumb.scrollIntoView({
     behavior: "smooth",
-    inline: "center",
-    block: "nearest"
+    inline: "center"
   });
   // 🔥 자동 슬라이드 리셋 (추천)
   resetAutoSlide();
@@ -455,6 +454,23 @@ window.resetAutoSlide = function() {
     goToSlide(nextIndex);
   }, 3000);
 }
+
+let isAutoSlidePaused = false;
+
+document.getElementById("slideToggleBtn").addEventListener("click", () => {
+  if (isAutoSlidePaused) {
+    // 재생
+    resetAutoSlide();
+    isAutoSlidePaused = false;
+    document.getElementById("slideToggleBtn").textContent = "⏸ 자동 슬라이드 일시정지";
+  } else {
+    // 일시정지
+    clearInterval(autoSlideInterval);
+    isAutoSlidePaused = true;
+    document.getElementById("slideToggleBtn").textContent = "▶ 자동 슬라이드 재생";
+  }
+});
+
 
 
 // 썸네일 클릭 이동
