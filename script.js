@@ -410,7 +410,7 @@ window.goToSlide = function(index) {
   setSliderPosition();
 
   // 🔥 썸네일 active 업데이트 추가
-  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active")); 
+  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));  
   // 🔥 active 썸네일 자동 스크롤
   const activeThumb = document.querySelector(`#thumbnailList img[data-index="${index}"]`);
   activeThumb.scrollIntoView({
@@ -418,9 +418,8 @@ window.goToSlide = function(index) {
     inline: "center",
     block: "nearest"
   });
+  activeThumb.add("active");
 }
-
-
 
 // 터치 시작
 sliderContainer.addEventListener("touchstart", (e) => {
