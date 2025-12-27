@@ -465,12 +465,12 @@ document.getElementById("slideToggleBtn").addEventListener("click", () => {
     // 재생
     resetAutoSlide();
     isAutoSlidePaused = false;
-    document.getElementById("slideToggleBtn").textContent = "⏸ 자동 슬라이드 일시정지";
+    document.getElementById("slideToggleBtn").textContent = "⏸";
   } else {
     // 일시정지
     clearInterval(autoSlideInterval);
     isAutoSlidePaused = true;
-    document.getElementById("slideToggleBtn").textContent = "▶ 자동 슬라이드 재생";
+    document.getElementById("slideToggleBtn").textContent = "▶";
   }
 });
 

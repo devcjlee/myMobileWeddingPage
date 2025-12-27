@@ -440,7 +440,7 @@ button:active {
   padding: 8px 14px;
   background: #f3f3f3;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 14px;
 }
