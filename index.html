@@ -73,7 +73,7 @@
       <div id="wedding-info-details">
         <p><span data-name="weddingYear"></span>년 <span data-name="weddingMonth"></span>월 <span data-name="weddingDay"></span>일 <span data-name="weddingDayOfWeekKor"></span>요일 오전 <span data-name="weddingHour"></span>시</p>
         <p><span data-name="weddingLocation"></span></p>
-        <p><span data-name="weddingLocationDetail"></span></p>
+        <p><strong><span data-name="weddingLocationDetail"></span></strong></p>
       </div>
     </section>
 
@@ -99,12 +99,12 @@
       <!-- 주소 연락처 -->
       <div class="location-info">
         <div class="address-row">
-          <span class="locationTypeLabel" data-name="locationType1"></span>
+          <strong><div>주소</div></strong>
+          - <span class="locationTypeLabel" data-name="locationType1"></span>
           <span class="address" data-name="weddingLocationAddress1"></span>
           <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress1', this)">복사하기</button>
-        </div>
-        <div class="address-row">
-          <span class="locationTypeLabel" data-name="locationType2"></span>
+          <br>
+          - <span class="locationTypeLabel" data-name="locationType2"></span>
           <span class="address" data-name="weddingLocationAddress2"></span>
           <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress2', this)">복사하기</button>
         </div>
@@ -115,12 +115,12 @@
         <!-- 교통 안내 -->
         <div class="transport-row">
           <strong><div>밀리토피아호텔 바이 마린 셔틀버스 안내</div></strong>
-          <span> - 남위례역(8호선) 5번출구 ↔ 호텔</span><br>
-          <span> &nbsp;&nbsp; * 예식 1시간전 ~ 예식 후 2시간까지, 15분 간격</span>
+          <span> - 남위례역(8호선) 5번출구↔호텔</span><br>
+          <span> &nbsp;&nbsp; * 오전 10시~오후 1시, 15~20분 간격으로 운행</span>
         </div>
         <div class="transport-row">
           <strong><div>도보 및 지하철 이용 시</div></strong>
-          <span> - 남위례역(8호선) 3,4번출구, 7분 소요</span>
+          <span> - 남위례역(8호선) 3·4번출구, 도보 8분 소요</span>
         </div>
         <div class="transport-row">
           <strong><div>버스 이용 시</div></strong>
@@ -130,10 +130,12 @@
           <br>
           <span> - 광역버스9200번, 9202번</span>
           <br>
-          <span> - 공항버스5500번</span>
+          <span> - 인천국제공항 출발, 공항버스5500번</span>
         </div>
         <div class="transport-row">
-          <strong><div>자가용 이용 시 (동시 600여대 주차 가능)</div></strong>
+          <strong><div>자가용 이용 시</div></strong>
+          <span> - 웨딩센터 지하 주차장(B1~B3, 동시 600여대 주차 가능)</span>
+          <br>
           <span> - 복정역 교차로(남한산성 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
           <br>
           <span> -  산성역 사거리(서울 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
@@ -141,8 +143,6 @@
         <div class="transport-row">
           <strong><div>김포공항 ↔ 밀리토피아호텔 교통안내</div></strong>
           <span> - 일반택시 약 1시간 15분 소요 (약 4~5만원)</span>
-          <br>
-          <span> - 공항버스5500번</span>
         </div>
       </div>
       <br>
