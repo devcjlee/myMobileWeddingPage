@@ -384,6 +384,65 @@ window.copyAddress = function (dataName, button) {
   }
 }
 
+/* 6. 갤러리 슬라이더 기능 */
+const sliderContainer = document.querySelector("#gallerySlider");
+const sliderTrack = document.querySelector("#gallerySlider .slides");
+const slides = document.querySelectorAll("#gallerySlider .slides img");
+
+let currentIndex = 0;
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let isDragging = false;
+
+// 슬라이드 이동 함수
+window.tSliderPosition = function() {
+  sliderTrack.style.transform = `translateX(${currentTranslate}px)`;
+}
+
+window.goToSlide = function(index) {
+  const width = sliderContainer.clientWidth;
+  currentIndex = index;
+  currentTranslate = -width * currentIndex;
+  prevTranslate = currentTranslate;
+  setSliderPosition();
+
+  // 썸네일 active 처리
+  document.querySelectorAll("#thumbnailList img").forEach(t => t.classList.remove("active"));
+  document.querySelector(`#thumbnailList img[data-index="${index}"]`).classList.add("active");
+}
+
+// 터치 시작
+sliderContainer.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+// 터치 이동
+sliderContainer.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  const currentX = e.touches[0].clientX;
+  const diff = currentX - startX;
+  currentTranslate = prevTranslate + diff;
+  setSliderPosition();
+});
+
+// 터치 종료
+sliderContainer.addEventListener("touchend", (e) => {
+  isDragging = false;
+  const width = sliderContainer.clientWidth;
+  const movedBy = currentTranslate - prevTranslate;
+
+  // 스와이프 감지 (50px 이상 움직이면 넘기기)
+  if (movedBy < -50 && currentIndex < slides.length - 1) {
+    goToSlide(currentIndex + 1);
+  } else if (movedBy > 50 && currentIndex > 0) {
+    goToSlide(currentIndex - 1);
+  } else {
+    goToSlide(currentIndex);
+  }
+});
+
 
 window.loginAdmin = function () {
   const email = document.getElementById("adminEmail").value;
