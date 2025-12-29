@@ -72,13 +72,13 @@ button {
   font-size: clamp(11px, 3.2vw, 16px);
 }
 
-.location-info,
+.address-row,
 .contact-row,
 .transport-row{
   font-size: clamp(10px, 3.1vw, 17px); /* 라벨도 clamp 적용 */
 }
 
-.address-row .locationTypeLabel{
+.locationTypeLabel{
   font-size: clamp(8px, 3.0vw, 15px); /* 라벨도 clamp 적용 */
 }
 
