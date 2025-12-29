@@ -364,10 +364,6 @@ button:active {
   text-align: center;
 }
 
-.guestbook {
-  text-align: center;
-}
-
 /* ============================= */
 /* 🖼️ 사진 갤러리 스타일 */
 /* ============================= */
@@ -447,6 +443,113 @@ button:active {
   width: 28px;
   height: 28px;
 }
+
+
+
+.guestbook {
+  text-align: center;
+}
+
+/* 채팅 리스트 */
+.chat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 말풍선 */
+.chat-bubble {
+  max-width: 80%;
+  background: #ffe7e0;
+  padding: 12px 14px;
+  margin: 10px 0 10px 4px;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  color: var(--primary-color);
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 6px solid #ffe7e0; /* 말풍선 색과 동일 */
+}
+
+/* 이름 */
+.chat-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a67c52;
+  margin-bottom: 4px;
+}
+
+/* 메시지 */
+.chat-message {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* 시간 */
+.chat-time {
+  font-size: 12px;
+  color: #b8a89f;
+  margin-top: 6px;
+}
+
+/* 삭제 아이콘 */
+.delete-icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+}
+.delete-icon:hover {
+  opacity: 1;
+}
+
+/* 입력창 전체 박스 */
+.chat-input-box {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.chat-input-box input,
+.chat-input-box textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.chat-input-box textarea {
+  height: 45px;
+  resize: none;
+}
+
+/* 보내기 버튼 */
+.send-btn {
+  background: #ffe7e0;
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .account {
   text-align: center;
@@ -574,19 +677,6 @@ button:active {
   font-weight: bold;
   color: var(--thema-color);
   margin-left: 8px;
-}
-
-#guestbookList {
-  list-style: none;
-  padding: 0;
-  margin-top: 16px;
-  min-height: 80px;
-}
-
-#guestbookList li {
-  padding: 8px 12px;
-  border-bottom: 1px solid #ddd;
-  font-size: clamp(14px, 2vw, 15px);
 }
 
 /* ============================= */

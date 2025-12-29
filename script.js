@@ -7,6 +7,7 @@ import {
   collection,         // 특정 컬렉션(테이블과 유사)을 참조하는 함수
   addDoc,             // 컬렉션에 새 문서를 추가할 때 사용하는 함수 
   getDocs,            // 컬렉션/쿼리 결과의 모든 문서를 가져올 때 사용하는 함수
+  getDoc,             // 특정 문서의 데이터를 가져올 때 사용하는 함수
   query,              // Firestore에서 조건/정렬을 지정할 때 사용하는 함수
   orderBy,            // 쿼리 결과를 특정 필드 기준으로 정렬할 때 사용하는 함수
   serverTimestamp,    // 서버 시간을 필드 값으로 저장할 때 사용하는 함수
@@ -286,71 +287,6 @@ window.addEventListener("load", () => {
   }
 });
 
-// 5. 방명록 기능
-document.getElementById("guestbookForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const name = document.getElementById("guestName").value;
-  const message = document.getElementById("guestMessage").value;
-
-  await addDoc(collection(db, "guestbook"), {
-    name,
-    message,
-    timestamp: serverTimestamp()
-  });
-
-  this.reset();
-  loadGuestbook();
-});
-
-async function loadGuestbook() {
-  const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
-  const snapshot = await getDocs(q);
-  console.log("문서 수:", snapshot.size);
-  const list = document.getElementById("guestbookList");
-  list.innerHTML = "";
-  snapshot.forEach(doc => {
-    console.log("문서 내용:", doc.data());
-    const entry = doc.data();
-    const li = document.createElement("li");
-    li.textContent = `${entry.name}: ${entry.message}`;
-
-    // 관리자일 때만 삭제 버튼 추가
-    if (isAdmin && window.location.search.includes("admin=true")) {
-      const delBtn = document.createElement("button");
-      delBtn.textContent = "삭제";
-      delBtn.className = "delete-btn";
-      delBtn.onclick = () => deleteGuestbookEntry(doc.id);
-      li.appendChild(delBtn);
-    }
-    list.appendChild(li);
-  });
-}
-
-window.toggleAccount = function (header) {
-  const box = header.parentElement;
-  box.classList.toggle("open");
-}
-
-window.copyAccount = function(button) {
-  const row = button.parentElement; // account-row (계좌번호 + 버튼)
-  const numberEl = row.querySelector(".account-number");
-
-  // 은행명은 바로 위의 account-row에 있음
-  const bankEl = row.previousElementSibling.querySelector(".bank");
-
-  const bank = bankEl.textContent.trim();
-  const number = numberEl.textContent.trim();
-
-  const textToCopy = `${bank} ${number}`;
-
-  navigator.clipboard.writeText(textToCopy)
-    .then(() => {
-      button.textContent = "복사됨!";
-      setTimeout(() => button.textContent = "복사", 1500);
-    })
-    .catch(() => alert("복사에 실패했습니다."));
-}
-
 window.openMapLink = function (appUrl, webUrl) {
   var timeout = setTimeout(function() {
     window.open(webUrl, "_blank"); // 새 탭으로 열기
@@ -507,6 +443,107 @@ let autoSlideInterval = setInterval(() => {
   goToSlide(nextIndex);
 }, 3000); // 3초마다 자동 전환
 
+// 5. 방명록 기능
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+document.getElementById("sendMessageBtn").addEventListener("click", async () => {
+  const name = guestName.value.trim();
+  const message = guestMessage.value.trim();
+  const password = guestPassword.value.trim();
+
+  if (!name || !message || !password) {
+    alert("이름, 비밀번호, 메시지를 모두 입력해주세요.");
+    return;
+  }
+
+  const hashed = await hashPassword(password);
+
+  await addDoc(collection(db, "guestbook"), {
+    name,
+    message,
+    password: hashed,
+    timestamp: serverTimestamp()
+  });
+
+  guestMessage.value = "";
+  guestPassword.value = "";
+  loadGuestbook();
+});
+
+
+
+async function loadGuestbook() {
+  const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+  const snapshot = await getDocs(q);
+
+  const list = document.getElementById("guestbookList");
+  list.innerHTML = "";
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    const li = document.createElement("li");
+    li.className = "chat-bubble";
+
+    li.innerHTML = `
+      <div class="chat-name">${data.name}</div>
+      <div class="chat-message">${data.message}</div>
+      <div class="chat-time">${formatTime(data.timestamp)}</div>
+
+      <svg class="delete-icon" data-id="${doc.id}" viewBox="0 0 24 24">
+        <path d="M3 6h18M9 6v12m6-12v12M5 6l1 14h12l1-14" stroke="#4b2a00" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    `;
+
+    list.appendChild(li);
+  });
+
+  attachDeleteEvents();
+}
+
+function formatTime(ts) {
+  if (!ts) return "";
+  const date = ts.toDate();
+  return `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2,'0')}`;
+}
+
+function attachDeleteEvents() {
+  document.querySelectorAll(".delete-icon").forEach(icon => {
+    icon.addEventListener("click", async () => {
+      const id = icon.dataset.id;
+
+      // 관리자면 바로 삭제
+      if (isAdmin) {
+        deleteGuestbookEntry(id);
+        return;
+      }
+
+      const inputPw = prompt("비밀번호를 입력하세요");
+      if (!inputPw) return;
+
+      const hashed = await hashPassword(inputPw);
+
+      const docRef = firestoreDoc(db, "guestbook", id);
+      const snap = await getDoc(docRef);
+
+      if (!snap.exists()) return;
+
+      if (snap.data().password === hashed) {
+        const ok = confirm("메시지를 삭제할까요?");
+        if (ok) deleteGuestbookEntry(id);
+      } else {
+        alert("비밀번호가 일치하지 않습니다.");
+      }
+    });
+  });
+}
 
 window.loginAdmin = function () {
   const email = document.getElementById("adminEmail").value;
@@ -532,18 +569,30 @@ window.logoutAdmin = function () {
     });
 };
 
-// 🗑️ 방명록 삭제 함수
-async function deleteGuestbookEntry(id) {
-  const confirmDelete = confirm("정말로 삭제하시겠어요?");
-  if (!confirmDelete) return;
-  try {
-    await deleteDoc(firestoreDoc(db, "guestbook", id));
-    alert("삭제되었습니다.");
-    loadGuestbook();
-  } catch (err) {
-    console.error("삭제 실패:", err);
-    alert("삭제에 실패했어요.");
-  }
+
+window.toggleAccount = function (header) {
+  const box = header.parentElement;
+  box.classList.toggle("open");
+}
+
+window.copyAccount = function(button) {
+  const row = button.parentElement; // account-row (계좌번호 + 버튼)
+  const numberEl = row.querySelector(".account-number");
+
+  // 은행명은 바로 위의 account-row에 있음
+  const bankEl = row.previousElementSibling.querySelector(".bank");
+
+  const bank = bankEl.textContent.trim();
+  const number = numberEl.textContent.trim();
+
+  const textToCopy = `${bank} ${number}`;
+
+  navigator.clipboard.writeText(textToCopy)
+    .then(() => {
+      button.textContent = "복사됨!";
+      setTimeout(() => button.textContent = "복사", 1500);
+    })
+    .catch(() => alert("복사에 실패했습니다."));
 }
 
 document.addEventListener("DOMContentLoaded", function() {
