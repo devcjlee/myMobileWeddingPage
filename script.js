@@ -545,6 +545,17 @@ function attachDeleteEvents() {
   });
 }
 
+// 🗑️ 방명록 삭제 함수
+async function deleteGuestbookEntry(id) {
+  try {
+    await deleteDoc(firestoreDoc(db, "guestbook", id));
+    loadGuestbook();
+  } catch (err) {
+    console.error("삭제 실패:", err);
+    alert("삭제에 실패했어요.");
+  }
+}
+
 window.loginAdmin = function () {
   const email = document.getElementById("adminEmail").value;
   const password = document.getElementById("adminPassword").value;
