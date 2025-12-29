@@ -58,33 +58,19 @@ p {
 /* ============================= */
 /* 🧾 입력 폼 스타일 */
 /* ============================= */
-input {
+input, textarea{
   padding: 12px;
-  margin-top: 8px;
   width: 100%;
   /*font-size -> css분기*/
-  line-height: 1.5;
-  border: 1px solid;
+  border: 1px solid var(--primary-color);
   border-radius: 6px;
-  border-color: var(--primary-color);
+  line-height: 1.5;
 }
 
 input:focus {
   outline: 2px solid;
   outline-offset: 2px;
   outline-color: var(--primary-color);
-}
-
-textarea {
-  padding: 12px;
-  margin-top: 8px;
-  width: 100%;
-  /*font-size -> css분기*/
-  line-height: 1.5;
-  border: 1px solid;
-  border-radius: 6px;
-  border-color: var(--primary-color);
-  resize: vertical; /* 크기 조절 가능 */
 }
 
 button {
@@ -350,17 +336,14 @@ button:active {
 .map-btn.beige { background-color: var(--tmap-map-color); color: var(--text-color); }
 
 
-.address-row,
-.contact-row,
-.transport-row{
+.info-row {
   text-align:left;
   padding-left:8px;
-  text-align:left;
   /*font-size -> css분기*/
   margin-bottom: 10px;
 }
 
-.address-row .locationTypeLabel{
+.locationTypeLabel{
   /*font-size -> css분기*/
   color: var(--subtle-color);
 }

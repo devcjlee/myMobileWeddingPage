@@ -72,9 +72,7 @@ button {
   font-size: clamp(11px, 3.2vw, 16px);
 }
 
-.address-row,
-.contact-row,
-.transport-row{
+.info-row {
   font-size: clamp(10px, 3.1vw, 17px); /* 라벨도 clamp 적용 */
 }
 
@@ -93,8 +91,4 @@ button {
 
 .account-header h3{
   font-size: clamp(14.5px, 4.5vw, 16px);
-}
-
-.photo-gallery img {
-  max-width: 100%; /* 한 줄에 하나씩 꽉 차게 */
 }
