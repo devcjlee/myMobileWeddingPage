@@ -271,17 +271,8 @@ button:active {
   letter-spacing: 2.0px;
 }
 
-#welcome {
+.welcome {
   text-align: center;
-  margin-top: 6px;
-}
-
-#welcome p + p {
-  margin-top: 4px;
-}
-
-#welcome .welcomeMessage:nth-of-type(3){
-  margin-top: 40px; /* 의미상 단락 사이 여백 */
 }
 
 .familyName{
@@ -299,8 +290,17 @@ button:active {
 
 .welcomeMessage {
   /*font-size -> css분기*/
-  line-height: 1.6;
-  margin-top: 6px;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.welcomeMessage:nth-of-type(3){
+  margin-top: 40px; /* 의미상 단락 사이 여백 */
+}
+
+.welcomeMessage:nth-of-type(5),
+.welcomeMessage:nth-of-type(7){
+  margin-top: 20px; /* 의미상 단락 사이 여백 */
 }
 
 .details {
