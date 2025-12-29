@@ -37,6 +37,20 @@ const db = getFirestore(app);
 // 🔑 Auth 인스턴스 가져오기 (로그인/인증)
 const auth = getAuth(); 
 
+// =======================
+// DOM 요소 캐싱 (전역)
+// =======================
+const el = {
+  guestName: document.getElementById("guestName"),
+  guestMessage: document.getElementById("guestMessage"),
+  guestPassword: document.getElementById("guestPassword"),
+  sendBtn: document.getElementById("sendMessageBtn"),
+  guestbookList: document.getElementById("guestbookList"),
+  adminEmail: document.getElementById("adminEmail"),
+  adminPassword: document.getElementById("adminPassword"),
+  adminLoginBox: document.getElementById("adminLogin")
+};
+
 // 🔐 관리자 로그인 상태 감지
 let isAdmin = false; //관리자 여부. 기본값은 false(로그인 안된 상태)
 onAuthStateChanged(auth, (user) => {
@@ -105,8 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
   const dataMap = {
+    // 인트로
     introText,
     weddingInvitation,
+
+    // 환영 메시지
     welcomeMessage1,
     welcomeMessage2,
     welcomeMessage3,
@@ -114,12 +131,16 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessage5,
     welcomeMessage6,
     welcomeMessage7,
+
+    // 신랑 신부 정보
     groomFullName,
+    groomFirstName,
     groomAccount,
     brideFullName,
-    brideAccount,
-    groomFirstName,
     brideFirstName,
+    brideAccount,
+
+    // 부모님 정보
     groomFatherFullName,
     groomFatherAccount,
     groomMotherFullName,
@@ -128,6 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     brideFatherAccount,
     brideMotherFullName,
     brideMotherAccount,
+
+    // 결혼식 정보
     weddingYear,
     weddingMonth,
     weddingDay,
@@ -138,11 +161,15 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingMinute,
     weddingLocation,
     weddingLocationDetail,
+
+    // 주소
     locationType1,
     locationType2,
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact,
+
+    // 기타
     accountGuide
   };
 
@@ -160,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const isAdminMode = params.get("admin") === "true";
   if (isAdminMode) {
-    document.getElementById("adminLogin").style.display = "block";
+    el.adminLoginBox.style.display = "block";
   }
 });
 
@@ -322,7 +349,6 @@ window.copyAddress = function (dataName, button) {
 
 /* 6. 갤러리 슬라이더 기능 */
 const sliderContainer = document.querySelector("#gallerySlider");
-const sliderTrack = document.querySelector("#gallerySlider .slides");
 const slides = document.querySelectorAll("#gallerySlider .slides img");
 
 let currentIndex = 0;
@@ -453,14 +479,10 @@ async function hashPassword(password) {
     .join("");
 }
 
-document.getElementById("sendMessageBtn").addEventListener("click", async () => {
-  const guestName = document.getElementById("guestName");
-  const guestMessage = document.getElementById("guestMessage");
-  const guestPassword = document.getElementById("guestPassword");
-  
-  const name = guestName.value.trim();
-  const message = guestMessage.value.trim();
-  const password = guestPassword.value.trim();
+el.sendBtn.addEventListener("click", async () => {
+  const name = el.guestName.value.trim();
+  const message = el.guestMessage.value.trim();
+  const password = el.guestPassword.value.trim();
 
   if (!name || !message || !password) {
     alert("이름, 비밀번호, 메시지를 모두 입력해주세요.");
@@ -476,8 +498,9 @@ document.getElementById("sendMessageBtn").addEventListener("click", async () => 
     timestamp: serverTimestamp()
   });
 
-  guestMessage.value = "";
-  guestPassword.value = "";
+  el.guestMessage.value = "";
+  el.guestPassword.value = "";
+  
   loadGuestbook();
 });
 
@@ -487,8 +510,7 @@ async function loadGuestbook() {
   const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
   const snapshot = await getDocs(q);
 
-  const list = document.getElementById("guestbookList");
-  list.innerHTML = "";
+  el.guestbookList.innerHTML = "";
 
   snapshot.forEach(doc => {
     const data = doc.data();
@@ -506,7 +528,7 @@ async function loadGuestbook() {
       </svg>
     `;
 
-    list.appendChild(li);
+    el.guestbookList.appendChild(li);
   });
 
   attachDeleteEvents();
@@ -529,40 +551,84 @@ async function deleteGuestbookEntry(id) {
   }
 }
 
+/* ============================
+   🧹 비밀번호 입력 함수
+============================ */
+async function promptPassword() {
+  const inputPw = prompt("비밀번호를 입력하세요");
+  if (!inputPw) return null;
+  return await hashPassword(inputPw);
+}
+
+/* ============================
+   🔍 Firestore에서 문서 가져오기
+============================ */
+async function getGuestbookDoc(id) {
+  const docRef = firestoreDoc(db, "guestbook", id);
+  const snap = await getDoc(docRef);
+  return snap.exists() ? snap : null;
+}
+
+/* ============================
+   ✔ 비밀번호 검증 함수
+============================ */
+function isCorrectPassword(snap, hashed) {
+  return snap.data().password === hashed;
+}
+
+/* ============================
+   ❓ 삭제 확인 함수
+============================ */
+function confirmDelete() {
+  return confirm("메시지를 삭제할까요?");
+}
+
+/* ============================
+   🗑️ 삭제 클릭 처리 함수
+============================ */
+async function handleDeleteClick(id) {
+  // 관리자면 바로 삭제
+  if (isAdmin) {
+    deleteGuestbookEntry(id);
+    return;
+  }
+
+  // 비밀번호 입력
+  const hashed = await promptPassword();
+  if (!hashed) return;
+
+  // 문서 가져오기
+  const snap = await getGuestbookDoc(id);
+  if (!snap) return;
+
+  // 비밀번호 검증
+  if (!isCorrectPassword(snap, hashed)) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  // 삭제 확인
+  if (confirmDelete()) {
+    deleteGuestbookEntry(id);
+  }
+}
+
+/* ============================
+   🧷 삭제 이벤트 바인딩
+============================ */
 function attachDeleteEvents() {
   document.querySelectorAll(".delete-icon").forEach(icon => {
-    icon.addEventListener("click", async () => {
+    icon.addEventListener("click", () => {
       const id = icon.dataset.id;
-
-      // 관리자면 바로 삭제
-      if (isAdmin) {
-        deleteGuestbookEntry(id);
-        return;
-      }
-
-      const inputPw = prompt("비밀번호를 입력하세요");
-      if (!inputPw) return;
-
-      const hashed = await hashPassword(inputPw);
-
-      const docRef = firestoreDoc(db, "guestbook", id);
-      const snap = await getDoc(docRef);
-
-      if (!snap.exists()) return;
-
-      if (snap.data().password === hashed) {
-        const ok = confirm("메시지를 삭제할까요?");
-        if (ok) deleteGuestbookEntry(id);
-      } else {
-        alert("비밀번호가 일치하지 않습니다.");
-      }
+      handleDeleteClick(id);
     });
   });
 }
 
 window.loginAdmin = function () {
-  const email = document.getElementById("adminEmail").value;
-  const password = document.getElementById("adminPassword").value;
+  const email = el.adminEmail.value;
+  const password = el.adminPassword.value;
+
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       alert("로그인 성공!");
