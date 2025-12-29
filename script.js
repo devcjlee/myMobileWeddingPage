@@ -454,6 +454,10 @@ async function hashPassword(password) {
 }
 
 document.getElementById("sendMessageBtn").addEventListener("click", async () => {
+  const guestName = document.getElementById("guestName");
+  const guestMessage = document.getElementById("guestMessage");
+  const guestPassword = document.getElementById("guestPassword");
+  
   const name = guestName.value.trim();
   const message = guestMessage.value.trim();
   const password = guestPassword.value.trim();
