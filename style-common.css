@@ -449,30 +449,38 @@ button:active {
 /* 전체 채팅방 박스 */
 .guestbook-box {
   background: #fff7f2; /* 은은한 살구톤 */
-  padding: 16px;
+  padding: 10px;
   border-radius: 12px;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin: 0 8px; /* 🔥 좌우 여백 추가 */
 }
 
 /* 방명록 채팅방 박스 */
 #guestbookList {
-  max-height: 300px;
+  max-height: 350px;
   overflow-y: auto;
   padding-right: 6px;
+  /* 🔥 스크롤바 트랙을 안쪽으로 밀어 넣기 */
+  scrollbar-gutter: stable both-edges;
+  overscroll-behavior: contain; /* 🔥 바깥 스크롤로 전파 방지 */
+  touch-action: pan-y;          /* 🔥 세로 스크롤만 허용 */
 }
 
 #guestbookList::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
+}
+
+#guestbookList::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 #guestbookList::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.25);
   border-radius: 4px;
 }
+
 
 /* 채팅 리스트 */
 .chat-list {
@@ -546,6 +554,7 @@ button:active {
   flex-direction: column;
   gap: 8px;
   margin-top: 14px;
+  width: 100%; /* 🔥 전체 폭 통일 */
 }
 
 .chat-input-box input,
@@ -563,25 +572,27 @@ button:active {
 }
 
 
-/* 이름 + 비밀번호 한 줄 */
-.chat-top-row {
+.chat-top-row{
   display: flex;
   gap: 6px;
+  width: 100%; /* 🔥 두 줄 모두 동일한 폭 */
 }
 
-/* 메시지 + 보내기 버튼 한 줄 */
 .chat-bottom-row {
   display: flex;
   gap: 6px;
-  align-items: center;
+  width: 100%; /* 🔥 두 줄 모두 동일한 폭 */
 }
 
+.chat-top-row input {
+  flex: 1; /* 이름/비밀번호가 균등 분배 */
+}
 /* 메시지 입력창을 넓게 */
 .chat-bottom-row textarea {
   flex: 1;
-  height: 48px;
-  resize: none;
 }
+
+
 
 /* 보내기 버튼 */
 .send-btn {
