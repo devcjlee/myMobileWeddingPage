@@ -89,6 +89,11 @@ button {
   font-size: clamp(15px, 2.4vw, 21px); /* 버튼도 통일 */
 }
 
+
+#guestbookList {
+  max-height: 450px;
+}
+
 #accountGuideText{
   font-size: clamp(17.1px, 3.5vw, 24px);
 }

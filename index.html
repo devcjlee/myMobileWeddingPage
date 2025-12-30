@@ -197,22 +197,24 @@
     <section class="guestbook card">
       <h2 class="cardTitle">방명록</h2>
       <img src="images/illustration/card_sakura.png" alt="벚꽃 장식" class="sakura-icon">
-
-      <!-- 채팅 메시지 리스트 -->
-      <ul id="guestbookList" class="chat-list"></ul>
-
-      <!-- 카카오톡 스타일 입력창 -->
-      <div class="chat-input-box">
-        <input type="text" id="guestName" placeholder="이름" required>
-        <input type="password" id="guestPassword" placeholder="비밀번호" required>
-        <textarea id="guestMessage" placeholder="메시지를 입력하세요" required></textarea>
-
-        <button id="sendMessageBtn" class="send-btn">
-          <!-- 화살표 아이콘 -->
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12h18M13 5l8 7-8 7" stroke="#4b2a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+      <div id="guestbookBox" class="guestbook-box">
+        <!-- 채팅 메시지 리스트 -->
+        <ul id="guestbookList" class="chat-list"></ul>
+        <!-- 카카오톡 스타일 입력창 -->
+        <div class="chat-input-box">
+          <div class="chat-top-row">
+            <input type="text" id="guestName" placeholder="이름" required>
+            <input type="password" id="guestPassword" placeholder="비밀번호" required>
+          </div>
+          <div class="chat-bottom-row">
+            <textarea id="guestMessage" placeholder="메시지를 입력하세요" required></textarea>
+            <button id="sendMessageBtn" class="send-btn">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h18M13 5l8 7-8 7" stroke="#4b2a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
