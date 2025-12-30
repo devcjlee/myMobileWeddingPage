@@ -86,19 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const welcomeMessage6 = "결혼식에 참석해 주셨으면 합니다.";
   const welcomeMessage7 = "감사드립니다.";
   const groomFullName = "이치종";
-  const groomAccount = "333-333333-33-333";
+  const groomAccountBank = "카카오뱅크";
+  const groomAccount = "3333-03-4753848";
   const brideFullName = "길신영";
-  const brideAccount = "666-666666-66-666";
+  const brideAccountBank = "국민은행";
+  const brideAccount = "484201-01-336538";
   const groomFirstName = groomFullName.slice(1);
   const brideFirstName = brideFullName.slice(1);
   const groomFatherFullName = "이영호";
-  const groomFatherAccount = "000-000000-00-000";
+  const groomFatherAccountBank = "농협은행";
+  const groomFatherAccount = "352-80007-1972-73";
   const groomMotherFullName = "김애정";
-  const groomMotherAccount = "111-111111-11-222";
+  const groomMotherAccountBank = "기업은행";
+  const groomMotherAccount = "198-071884-02-014";
   const brideFatherFullName = "길기용";
-  const brideFatherAccount = "444-444444-44-444";
+  const brideFatherAccountBank = "SC제일은행"; 
+  const brideFatherAccount = "357-20-362811";
   const brideMotherFullName = "전영희";
-  const brideMotherAccount = "555-555555-55-555";
+  const brideMotherAccountBank = "국민은행";
+  const brideMotherAccount = "484201-01-336538";
   const weddingYear = "2026";
   const weddingMonth = "04";
   const weddingDay = "26";
@@ -135,19 +141,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // 신랑 신부 정보
     groomFullName,
     groomFirstName,
+    groomAccountBank,
     groomAccount,
     brideFullName,
     brideFirstName,
+    brideAccountBank,
     brideAccount,
 
     // 부모님 정보
     groomFatherFullName,
+    groomFatherAccountBank,
     groomFatherAccount,
     groomMotherFullName,
+    groomMotherAccountBank,
     groomMotherAccount,
     brideFatherFullName,
+    brideFatherAccountBank,
     brideFatherAccount,
     brideMotherFullName,
+    brideMotherAccountBank,
     brideMotherAccount,
 
     // 결혼식 정보
@@ -333,17 +345,14 @@ window.copyAddress = function (dataName, button) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text)
       .then(() => {
-        button.textContent = "복사됨!";
-        setTimeout(() => {
-          button.textContent = "복사";
-        }, 1500);
+        showToast("주소 복사완료~");
       })
       .catch(err => {
         console.error("복사 실패:", err);
-        alert("복사에 실패했어요. 브라우저 설정을 확인해주세요.");
+        showToast("복사에 실패했습니다");
       });
   } else {
-    alert("이 브라우저에서는 복사 기능을 지원하지 않습니다.");
+    showToast("이 브라우저에서는 복사를 지원하지 않습니다");
   }
 }
 
@@ -385,12 +394,6 @@ window.goToSlide = function(index) {
 sliderContainer.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
   isDragging = true;
-});
-
-// 터치 이동
-sliderContainer.addEventListener("touchmove", (e) => {
-  if (!isDragging) return;
-  // 페이드 방식에서는 이동 중에 아무것도 하지 않음
 });
 
 // 터치 종료
@@ -657,23 +660,38 @@ window.toggleAccount = function (header) {
 }
 
 window.copyAccount = function(button) {
-  const row = button.parentElement; // account-row (계좌번호 + 버튼)
+  const row = button.parentElement;
   const numberEl = row.querySelector(".account-number");
 
   // 은행명은 바로 위의 account-row에 있음
   const bankEl = row.previousElementSibling.querySelector(".bank");
 
   const bank = bankEl.textContent.trim();
-  const number = numberEl.textContent.trim();
+  const numberRaw = numberEl.textContent.trim();
 
+  // 🔥 하이픈 제거
+  const number = numberRaw.replace(/-/g, "");
+
+  // 🔥 복사할 텍스트
   const textToCopy = `${bank} ${number}`;
 
   navigator.clipboard.writeText(textToCopy)
     .then(() => {
-      button.textContent = "복사됨!";
-      setTimeout(() => button.textContent = "복사", 1500);
+      showToast("계좌번호 복사완료~");
     })
-    .catch(() => alert("복사에 실패했습니다."));
+    .catch(() => {
+      showToast("복사에 실패했습니다");
+    });
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1800); // 1.8초 후 사라짐
 }
 
 document.addEventListener("DOMContentLoaded", function() {

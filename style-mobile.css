@@ -49,7 +49,7 @@ button {
 }
 
 #wedding-info-text {
-  font-size: clamp(16px, 4.5vw, 22px);
+  font-size: clamp(20px, 4.6vw, 24px);
 }
 
 .familyName{
@@ -73,6 +73,10 @@ button {
 }
 
 .info-row {
+  font-size: clamp(13px, 3.3vw, 21px); /* 라벨도 clamp 적용 */
+}
+
+.address-row {
   font-size: clamp(10px, 3.1vw, 17px); /* 라벨도 clamp 적용 */
 }
 

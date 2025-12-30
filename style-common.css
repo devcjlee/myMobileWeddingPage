@@ -233,6 +233,7 @@ button:active {
   margin-top: 30px;
   margin-bottom: 20px; /* 이름과 날짜 사이 간격을 조금 더 */
   font-weight: 300;
+  letter-spacing: 3px;
 }
 
 .heart-icon {
@@ -336,11 +337,12 @@ button:active {
 .map-btn.beige { background-color: var(--tmap-map-color); color: var(--text-color); }
 
 
+.address-row,
 .info-row {
   text-align:left;
   padding-left:8px;
   /*font-size -> css분기*/
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .locationTypeLabel{
@@ -646,22 +648,45 @@ button:active {
 
 /* 복사 버튼 */
 .copy-btn {
-  padding: 6px 10px;
-  background: #eee;
-  border: 1px solid #ccc;
+  padding: 2px 8px;
+  font-size: clamp(11px, 1.0vw, 13px);
+  border: 1px solid var(--primary-color);
   border-radius: 6px;
+  background: transparent;
+  color: var(--primary-color);
   cursor: pointer;
   white-space: nowrap;
-  font-size: clamp(13px, 1.6vw, 15px);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .copy-btn:hover {
-  background: #3f371f;
-  color: #fff;
+  background: var(--primary-color);
+  color: white;
 }
 
 
+/* ============================= */
+/* 🍞 토스트 메시지 */
+/* ============================= */
+#toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+#toast.show {
+  opacity: 1;
+}
 
 /* ============================= */
 /* 📅 디데이 강조 텍스트 */
