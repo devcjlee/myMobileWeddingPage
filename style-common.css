@@ -49,12 +49,6 @@ section {
   margin-bottom: 16px;                /* 섹션 간 간격 */
 }
 
-p {
-  /*line-height -> css분기*/
-  /*text-align: center;*/
-  /*margin: 8px 0;*/
-}
-
 /* ============================= */
 /* 🧾 입력 폼 스타일 */
 /* ============================= */
@@ -374,7 +368,7 @@ button:active {
   padding: 2px 8px;
   font-size: clamp(11px, 1.0vw, 13px);
   border: 1px solid var(--primary-color);
-  border-radius: 6px;
+  border-radius: 6px; 
   background: transparent;
   color: var(--primary-color);
   cursor: pointer;
