@@ -51,8 +51,21 @@ const el = {
   adminLoginBox: document.getElementById("adminLogin")
 };
 
+// 🗑️ 삭제 모달 관련 요소
+const deleteModal = document.getElementById("deleteModal");
+const deletePwInput = document.getElementById("deletePwInput");
+const deleteError = document.getElementById("deleteError");
+const deleteCancelBtn = document.getElementById("deleteCancelBtn");
+const deleteConfirmBtn = document.getElementById("deleteConfirmBtn");
+
+
 // 🔐 관리자 로그인 상태 감지
 let isAdmin = false; //관리자 여부. 기본값은 false(로그인 안된 상태)
+
+// 🗑️ 삭제할 대상 메시지 id 저장
+let deleteTargetId = null;
+
+
 onAuthStateChanged(auth, (user) => {
   // Firebase Auth에서 제공하는 함수.
   // 사용자의 로그인 상태(로그인/로그아웃)가 바뀔 때마다 자동으로 호출됨.
@@ -574,14 +587,6 @@ async function deleteGuestbookEntry(id) {
   }
 }
 
-/* ============================
-   🧹 비밀번호 입력 함수
-============================ */
-async function promptPassword() {
-  const inputPw = prompt("비밀번호를 입력하세요");
-  if (!inputPw) return null;
-  return await hashPassword(inputPw);
-}
 
 // 공백 입력 방지 + 비밀번호 숫자만 허용
 document.addEventListener("input", function (e) {
@@ -620,14 +625,7 @@ function isCorrectPassword(snap, hashed) {
 }
 
 /* ============================
-   ❓ 삭제 확인 함수
-============================ */
-function confirmDelete() {
-  return confirm("메시지를 삭제할까요?");
-}
-
-/* ============================
-   🗑️ 삭제 클릭 처리 함수
+   🗑️ 삭제 클릭 처리 함수 (모달 버전)
 ============================ */
 async function handleDeleteClick(id) {
   // 관리자면 바로 삭제
@@ -636,24 +634,60 @@ async function handleDeleteClick(id) {
     return;
   }
 
-  // 비밀번호 입력
-  const hashed = await promptPassword();
-  if (!hashed) return;
+  // 일반 사용자는 모달에서 비밀번호 입력
+  deleteTargetId = id;
+  openDeleteModal();
+}
 
-  // 문서 가져오기
-  const snap = await getGuestbookDoc(id);
-  if (!snap) return;
+/* ============================
+   🪟 삭제 모달 열기/닫기
+============================ */
+function openDeleteModal() {
+  if (!deleteModal) return;
+  deletePwInput.value = "";
+  deleteError.textContent = "";
+  deleteModal.classList.add("show");
+  deletePwInput.focus();
+}
 
-  // 비밀번호 검증
-  if (!isCorrectPassword(snap, hashed)) {
-    alert("비밀번호가 일치하지 않습니다.");
-    return;
-  }
+function closeDeleteModal() {
+  if (!deleteModal) return;
+  deleteModal.classList.remove("show");
+  deleteTargetId = null;
+}
 
-  // 삭제 확인
-  if (confirmDelete()) {
-    deleteGuestbookEntry(id);
-  }
+/* ============================
+   🪟 삭제 모달 버튼 이벤트
+============================ */
+if (deleteCancelBtn && deleteConfirmBtn) {
+  deleteCancelBtn.addEventListener("click", () => {
+    closeDeleteModal();
+  });
+
+  deleteConfirmBtn.addEventListener("click", async () => {
+    const pw = deletePwInput.value.trim();
+
+    if (!pw) {
+      deleteError.textContent = "비밀번호를 입력해주세요.";
+      return;
+    }
+
+    const hashed = await hashPassword(pw);
+    const snap = await getGuestbookDoc(deleteTargetId);
+
+    if (!snap) {
+      deleteError.textContent = "메시지를 찾을 수 없습니다.";
+      return;
+    }
+
+    if (!isCorrectPassword(snap, hashed)) {
+      deleteError.textContent = "비밀번호가 일치하지 않습니다.";
+      return;
+    }
+
+    await deleteGuestbookEntry(deleteTargetId);
+    closeDeleteModal();
+  });
 }
 
 /* ============================
