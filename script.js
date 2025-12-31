@@ -310,18 +310,25 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
 window.addEventListener("load", () => {
+  const overlay = document.getElementById("introOverlay");
+
   if (sessionStorage.getItem("introPlayed") != "true") {
+
+    // 🔥 인트로 시작 → 스크롤 잠금
+    document.body.style.overflow = "hidden";
+
     startSakura();
-    const overlay = document.getElementById("introOverlay");
+
     setTimeout(() => {
       overlay.classList.add("fade-out");
+
+      // 🔥 인트로 종료 → 스크롤 다시 허용
+      document.body.style.overflow = "";
     }, 3800);
-    // 실행 여부 저장
+
     sessionStorage.setItem("introPlayed", "true");
   }
   else {
-    // 이미 실행된 경우 → 오버레이 바로 숨기기
-    const overlay = document.getElementById("introOverlay");
     overlay.classList.add("fade-out");
   }
 });

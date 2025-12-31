@@ -94,6 +94,11 @@ button {
   max-height: 450px;
 }
 
+.send-btn .send-icon {
+  width: 34px;
+  height: 34px;
+}
+
 #accountGuideText{
   font-size: clamp(17.1px, 3.5vw, 24px);
 }
