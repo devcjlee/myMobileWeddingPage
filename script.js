@@ -563,6 +563,26 @@ async function promptPassword() {
   return await hashPassword(inputPw);
 }
 
+// 공백 입력 방지 + 비밀번호 숫자만 허용
+document.addEventListener("input", function (e) {
+  const target = e.target;
+
+  // 이름, 비밀번호에서 공백 제거
+  if (target.id === "guestName" || target.id === "guestPassword") {
+    target.value = target.value.replace(/\s/g, ""); // 공백 제거
+  }
+
+  // 비밀번호는 숫자만
+  if (target.id === "guestPassword") {
+    const original = target.value;
+    const filtered = original.replace(/[^0-9]/g, "");
+
+    if (original !== filtered) {
+      showToast("비밀번호는 숫자만 입력할 수 있어요");
+    }
+    target.value = filtered;
+  }
+});
 /* ============================
    🔍 Firestore에서 문서 가져오기
 ============================ */

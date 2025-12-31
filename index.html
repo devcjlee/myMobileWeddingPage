@@ -204,7 +204,7 @@
         <div class="chat-input-box">
           <div class="chat-top-row">
             <input type="text" id="guestName" placeholder="이름" required>
-            <input type="password" id="guestPassword" placeholder="비밀번호" required>
+            <input type="password" id="guestPassword" placeholder="비밀번호"  maxlength="4" inputmode="numeric" pattern="\d{4}" required>
           </div>
           <div class="chat-bottom-row">
             <textarea id="guestMessage" placeholder="메시지를 입력하세요" required></textarea>
