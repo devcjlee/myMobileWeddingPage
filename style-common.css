@@ -519,12 +519,15 @@ button:active {
   font-weight: 600;
   color: #a67c52;
   margin-bottom: 4px;
+  text-align: left; /* 🔥 왼쪽 정렬 */
 }
 
 /* 메시지 */
 .chat-message {
   font-size: 15px;
   line-height: 1.4;
+  text-align: left; /* 🔥 왼쪽 정렬 */
+  white-space: pre-line; /* 줄바꿈 자연스럽게 */
 }
 
 /* 시간 */
