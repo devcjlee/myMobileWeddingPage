@@ -254,8 +254,6 @@ button:active {
 }
 
 #wedding-info-text {
-  font-weight: 500;
-  font-family: 'Great Vibes', cursive; /* 필기체 폰트 적용 */
   letter-spacing: 2.0px;
 }
 

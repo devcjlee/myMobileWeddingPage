@@ -89,7 +89,7 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. 데이터 바인딩
-  const introText = "저희, 결혼합니다.";
+  const introText = "저희 결혼합니다.";
   const weddingInvitation = "Wedding Invitation";
   const welcomeMessage1 = "믿음과 사랑으로 인연을 맺어";
   const welcomeMessage2 = "결혼이라는 새로운 출발을 하려 합니다.";
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const brideFirstName = brideFullName.slice(1);
   const groomFatherFullName = "이영호";
   const groomFatherAccountBank = "농협은행";
-  const groomFatherAccount = "352-80007-1972-73";
+  const groomFatherAccount = "352-8007-1972-73";
   const groomMotherFullName = "김애정";
   const groomMotherAccountBank = "기업은행";
   const groomMotherAccount = "198-071884-02-014";
