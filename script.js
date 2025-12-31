@@ -537,13 +537,13 @@ el.sendBtn.addEventListener("click", async () => {
   const message = el.guestMessage.value.trim();
   const password = el.guestPassword.value.trim();
 
-  if(password.length < 4) {
-    showToast("비밀번호는 최소 4자리 숫자여야 합니다.");
-    return;
-  }
-  
   if (!name || !message || !password) {
     showToast("이름, 비밀번호, 메시지를 모두 입력해주세요.");
+    return;
+  }
+
+  if(password.length < 4) {
+    showToast("비밀번호는 최소 4자리 숫자여야 합니다.");
     return;
   }
 
