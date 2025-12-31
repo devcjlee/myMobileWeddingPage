@@ -83,11 +83,11 @@ button {
 }
 
 .info-title {
-  font-size: clamp(16px, 1.3vw, 19px);
+  font-size: clamp(16px, 1.35vw, 19px);
 }
 
 .info-line {
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(15px, 1.3vw, 18px);
 }
 
 #accountGuideText{
