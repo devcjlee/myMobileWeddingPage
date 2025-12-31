@@ -135,18 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationContact = "031-727-9350";
   const accountGuide = "축하해 주셔서 감사드립니다.";
 
-  const bride                                     = "images/weddingPhoto/bride - Copy.JPG";
+  
   const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting - Copy.jpg";
   const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing - Copy.jpg";
   const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2 - Copy.jpg";
   const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring - Copy.jpg";
   const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower - Copy.jpg";
   const groom                                     = "images/weddingPhoto/groom - Copy.jpg";
+  const bride                                     = "images/weddingPhoto/bride - Copy.JPG";
   const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit - Copy.jpg";
   const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower - Copy.jpg";
   const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing - Copy.jpg";
   const window_groom_bride                        = "images/weddingPhoto/window-groom-bride - Copy.jpg";
-  const white_wall_standing                       = "images/weddingPhoto/white-wall-standing - Copy.jpg";
 
 
 
@@ -212,19 +212,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // 기타
     accountGuide,
 
-    //이미지 모음
-    bride,                                    
+    //이미지 모음                 
     flower_arch_groom_bride_sitting,
     flower_arch_groom_bride_standing,
     flower_arch_groom_bride_standing2,
     groom_bride_top_flower_ring,
     groom_bride_top_flower,
     groom,
+    bride,   
     white_wall_groom_bride_standing_beigesuit,
     white_wall_groom_bride_standing_flower,
     white_wall_groom_bride_standing,
-    window_groom_bride,
-    white_wall_standing
+    window_groom_bride
   };
 
   document.querySelectorAll("[data-name]").forEach(el => {
