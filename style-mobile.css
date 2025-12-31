@@ -72,23 +72,6 @@ button {
   font-size: clamp(11px, 3.2vw, 16px);
 }
 
-.info-row {
-  font-size: clamp(13px, 3.3vw, 21px); /* 라벨도 clamp 적용 */
-}
-
-.address-row {
-  font-size: clamp(13px, 3.3vw, 21px); /* 라벨도 clamp 적용 */
-}
-
-.locationTypeLabel{
-  font-size: clamp(8px, 3.0vw, 15px); /* 라벨도 clamp 적용 */
-}
-
-.addressCopyButton {
-  padding: 1px 6px;
-  font-size: clamp(10px, 3.0vw, 15px); /* 버튼도 통일 */
-}
-
 #accountGuideText{
   font-size: clamp(13px, 4.15vw, 18px);
 }

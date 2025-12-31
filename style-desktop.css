@@ -72,23 +72,6 @@ button {
   font-size: clamp(16px, 3.0vw, 17px);
 }
 
-.info-row {
-  font-size: clamp(15px, 2.7vw, 20px); /* 라벨도 clamp 적용 */
-}
-
-.address-row {
-  font-size: clamp(15px, 2.7vw, 20px); /* 라벨도 clamp 적용 */
-}
-
-.locationTypeLabel{
-  font-size: clamp(14px, 2.7vw, 18px); /* 라벨도 clamp 적용 */
-}
-
-.addressCopyButton {
-  padding: 2px 8px;
-  font-size: clamp(15px, 2.4vw, 21px); /* 버튼도 통일 */
-}
-
 
 #guestbookList {
   max-height: 450px;

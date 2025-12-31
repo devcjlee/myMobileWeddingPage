@@ -51,8 +51,8 @@ section {
 
 p {
   /*line-height -> css분기*/
-  text-align: center;
-  margin: 8px 0;
+  /*text-align: center;*/
+  /*margin: 8px 0;*/
 }
 
 /* ============================= */
@@ -277,7 +277,7 @@ button:active {
 .welcomeMessage {
   /*font-size -> css분기*/
   line-height: 1.4;
-  margin-top: 4px;
+  margin: 7px 0;
 }
 
 .welcomeMessage:nth-of-type(3){
@@ -335,23 +335,56 @@ button:active {
 .map-btn.navy { background-color: var(--kakao-map-color); }
 .map-btn.beige { background-color: var(--tmap-map-color); color: var(--text-color); }
 
-
-.address-row,
-.info-row {
-  text-align:left;
-  padding-left:8px;
-  /*font-size -> css분기*/
-  margin-bottom: 15px;
+.location-info,
+.info-block,
+.info-line,
+.info-title {
+  text-align: left;
 }
 
-.locationTypeLabel{
-  /*font-size -> css분기*/
-  color: var(--subtle-color);
+
+.location-info {
+  padding-left: 8px;
+  margin-bottom: 20px;
 }
 
+.info-block {
+  margin-bottom: 18px;
+}
+
+.info-title {
+  margin: 0 0 6px 0;
+  font-weight: bold;
+}
+
+.info-line {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+/* 들여쓰기 스타일 */
+.indent-line {
+  display: block;
+  text-indent: -1.2em;   /* 첫 줄 내어쓰기 */
+  padding-left: 1.2em;   /* 나머지 줄 들여쓰기 */
+}
+
+/* 주소 복사 버튼 */
 .addressCopyButton {
   padding: 2px 8px;
-  font-size: clamp(11px, 1.0vw, 13px); /* 버튼도 통일 */
+  font-size: clamp(11px, 1.0vw, 13px);
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.addressCopyButton:hover {
+  background: var(--primary-color);
+  color: white;
 }
 
 .photos {

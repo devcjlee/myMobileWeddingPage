@@ -119,53 +119,68 @@
       <br>
       <!-- 주소 연락처 -->
       <div class="location-info">
-        <div class="address-row">
-          <strong><span>주소</span></strong>
-          <br>
-          - <span class="locationTypeLabel" data-name="locationType1"></span>
-          <span class="address" data-name="weddingLocationAddress1"></span>
-          <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress1', this)">복사</button>
-          <br>
-          - <span class="locationTypeLabel" data-name="locationType2"></span>
-          <span class="address" data-name="weddingLocationAddress2"></span>
-          <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress2', this)">복사</button>
-        </div>
-        <div class="info-row">
-          <strong><span class="location-row-header">연락처 : </span></strong>
-          <span data-name="weddingLocationContact"></span>
-        </div>
-        <!-- 교통 안내 -->
-        <div class="info-row">
-          <strong><div>셔틀버스</div></strong>
-          <span> - 남위례역(8호선) 5번출구↔호텔</span><br>
-          <span> - 오전 10시~오후 1시, 15~20분 간격으로 운행</span>
-        </div>
-        <div class="info-row">
-          <strong><div>도보 및 지하철 이용 시</div></strong>
-          <span> - 남위례역(8호선) 3·4번 출구, 도보 8분 소요</span>
-        </div>
-        <div class="info-row">
-          <strong><div>버스 이용 시</div></strong>
-          <span> - 서울버스 343번, 345번, 3420번</span>
-          <br>
-          <span> - 성남버스 50번, 231번</span>
-          <br>
-          <span> - 광역버스 9200번, 9202번</span>
-        </div>
-        <div class="info-row">
-          <strong><div>자가용 이용 시</div></strong>
-          <span> - 웨딩센터 지하 주차장(B1~B3)</span>
-          <br>
-          <span> - 복정역 교차로(남한산성 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
-          <br>
-          <span> -  산성역 사거리(서울 방면) → 창곡교차로(위례동 방면) → 밀리토피아</span>
-        </div>
-        <div class="info-row">
-          <strong><div>김포공항 ↔ 밀리토피아호텔 교통 안내</div></strong>
-          <span> - 일반택시 약 1시간 15분 소요 (약 4~5만원)</span>
-        </div>
-      </div>
-      <br>
+
+  <!-- 주소 -->
+  <div class="info-block">
+    <p class="info-title">주소</p>
+    <p class="info-line">
+      - (도로명) <span class="address">경기도 성남시 수정구 위례대로 83</span>
+      <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress1', this)">복사</button>
+    </p>
+    <p class="info-line">
+      - (지번) <span class="address">경기도 성남시 수정구 창곡동 566</span>
+      <button class="addressCopyButton" onclick="copyAddress('weddingLocationAddress2', this)">복사</button>
+    </p>
+  </div>
+
+  <!-- 연락처 -->
+  <div class="info-block">
+    <p class="info-line"><strong>연락처 : </strong>031-727-9350</p>
+  </div>
+
+  <!-- 셔틀버스 -->
+  <div class="info-block">
+    <p class="info-title">셔틀버스</p>
+    <p class="info-line">- 남위례역(8호선) 5번출구↔호텔</p>
+    <p class="info-line">- 오전 10시~오후 1시, 15~20분 간격으로 운행</p>
+  </div>
+
+  <!-- 도보/지하철 -->
+  <div class="info-block">
+    <p class="info-title">도보 및 지하철 이용 시</p>
+    <p class="info-line">- 남위례역(8호선) 3·4번 출구, 도보 8분 소요</p>
+  </div>
+
+  <!-- 버스 -->
+  <div class="info-block">
+    <p class="info-title">버스 이용 시</p>
+    <p class="info-line">- 서울버스 343번, 345번, 3420번</p>
+    <p class="info-line">- 성남버스 50번, 231번</p>
+    <p class="info-line">- 광역버스 9200번, 9202번</p>
+  </div>
+
+  <!-- 자가용 -->
+  <div class="info-block">
+    <p class="info-title">자가용 이용 시</p>
+    <p class="info-line">- 웨딩센터 지하 주차장(B1~B3)</p>
+
+    <!-- 들여쓰기 적용되는 부분 -->
+    <p class="info-line indent-line">
+      - 복정역 교차로(남한산성 방면) → 창곡교차로(위례동 방면) → 밀리토피아
+    </p>
+    <p class="info-line indent-line">
+      - 산성역 사거리(서울 방면) → 창곡교차로(위례동 방면) → 밀리토피아
+    </p>
+  </div>
+
+  <!-- 공항 안내 -->
+  <div class="info-block">
+    <p class="info-title"><strong>김포공항 ↔ 밀리토피아호텔 교통 안내</strong></p>
+    <p class="info-line">- 일반택시 약 1시간 15분 소요 (약 4~5만원)</p>
+  </div>
+
+</div>
+
     </section>
 
     <section class="photos card">
