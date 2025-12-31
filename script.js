@@ -508,6 +508,10 @@ el.sendBtn.addEventListener("click", async () => {
     timestamp: serverTimestamp()
   });
 
+  // 🔥 새 메시지 애니메이션 플래그 저장
+  localStorage.setItem("newMessage", "1");
+
+  el.guestName.value = "";
   el.guestMessage.value = "";
   el.guestPassword.value = "";
   
@@ -517,7 +521,7 @@ el.sendBtn.addEventListener("click", async () => {
 
 
 async function loadGuestbook() {
-  const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+  const q = query(collection(db, "guestbook"), orderBy("timestamp", "asc"));
   const snapshot = await getDocs(q);
 
   el.guestbookList.innerHTML = "";
@@ -542,6 +546,18 @@ async function loadGuestbook() {
   });
 
   attachDeleteEvents();
+
+  // 🔥 새 메시지 애니메이션 적용
+  if (localStorage.getItem("newMessage") === "1") {
+    const bubbles = el.guestbookList.querySelectorAll(".chat-bubble");
+    const lastBubble = bubbles[bubbles.length - 1];
+    lastBubble.classList.add("new-bubble");
+    localStorage.removeItem("newMessage");
+  }
+
+  // 🔥 최신 메시지가 아래에 보이도록 자동 스크롤
+  el.guestbookList.scrollTop = el.guestbookList.scrollHeight;
+
 }
 
 function formatTime(ts) {
