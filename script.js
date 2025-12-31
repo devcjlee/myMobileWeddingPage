@@ -537,11 +537,8 @@ async function loadGuestbook() {
       <div class="chat-message">${data.message}</div>
       <div class="chat-time">${formatTime(data.timestamp)}</div>
 
-      <svg class="delete-icon" data-id="${doc.id}" viewBox="0 0 24 24">
-        <path d="M3 6h18M9 6v12m6-12v12M5 6l1 14h12l1-14" stroke="#4b2a00" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <img src="images/svg-icons/trash.svg" class="delete-icon" data-id="${doc.id}" alt="메시지 삭제 아이콘">
     `;
-
     el.guestbookList.appendChild(li);
   });
 
