@@ -351,8 +351,6 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 });
-// 여러 요소에 적용 가능
-document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
 window.addEventListener("load", () => {
   const overlay = document.getElementById("introOverlay");
