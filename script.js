@@ -134,19 +134,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationAddress2 = "경기도 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
   const accountGuide = "축하해 주셔서 감사드립니다.";
-  
-  const bride                                     = "images/weddingPhoto/bride.JPG";
-  const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting.jpg";
-  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing.jpg";
-  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.jpg";
-  const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring.jpg";
-  const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower.jpg";
-  const groom                                     = "images/weddingPhoto/groom.jpg";
-  const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit.jpg";
-  const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower.jpg";
-  const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing.jp";
-  const window_groom_bride                        = "images/weddingPhoto/window-groom-bride.jpgg";
-  const white_wall_standing                       = "images/weddingPhoto/white-wall-standing.jpg";
+
+  const bride                                     = "images/weddingPhoto/bride - Copy.JPG";
+  const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting - Copy.jpg";
+  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing - Copy.jpg";
+  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2 - Copy.jpg";
+  const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring - Copy.jpg";
+  const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower - Copy.jpg";
+  const groom                                     = "images/weddingPhoto/groom - Copy.jpg";
+  const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit - Copy.jpg";
+  const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower - Copy.jpg";
+  const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing - Copy.jpg";
+  const window_groom_bride                        = "images/weddingPhoto/window-groom-bride - Copy.jpg";
+  const white_wall_standing                       = "images/weddingPhoto/white-wall-standing - Copy.jpg";
 
 
 
