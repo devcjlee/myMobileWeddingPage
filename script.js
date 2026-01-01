@@ -543,7 +543,7 @@ el.sendBtn.addEventListener("click", async () => {
   }
 
   if(password.length < 4) {
-    showToast("비밀번호는 최소 4자리 숫자여야 합니다.");
+    showToast("비밀번호는 4자리 숫자여야 합니다.");
     return;
   }
 
