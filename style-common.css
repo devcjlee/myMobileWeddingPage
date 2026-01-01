@@ -168,7 +168,7 @@ button:active {
   position: relative;
   z-index: 2;
   /*font-size -> css분기*/
-  letter-spacing: clamp(5px, 2.5vw, 8px);
+  letter-spacing: clamp(3px, 2.2vw, 6px);
   font-weight: 300;
   color: var(--text-color);
   opacity: 0;       /* 🔥 기본적으로 안 보이게 */
