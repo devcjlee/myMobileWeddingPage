@@ -517,7 +517,7 @@ button:active {
 
 /* 말풍선 */
 .chat-bubble {
-  max-width: 80%;
+  max-width: 60%;
   background: #ffe7e0;
   padding: 12px 14px;
   margin: 10px 0 10px 4px;
@@ -858,17 +858,6 @@ button:active {
     opacity: 0;              /* 다시 투명해짐 → 화면에서 사라짐 */
     transform: scale(1.01);  /* 아주 살짝 확대된 상태로 사라짐 */
   }
-}
-
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .modal {

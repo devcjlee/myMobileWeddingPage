@@ -128,12 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingMinute = "00";
   const weddingLocation = "밀리토피아호텔 바이마린";
   const weddingLocationDetail = "웨딩센터 2층 아이리스홀";
-  const locationType1 = "(도로명)";
-  const locationType2 = "(지번)";
   const weddingLocationAddress1 = "경기도 성남시 수정구 위례대로 83";
   const weddingLocationAddress2 = "경기도 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
-  const accountGuide = "축하해 주셔서 감사드립니다.";
 
   
   const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting-Copy.JPG";
@@ -205,14 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingLocationDetail,
 
     // 주소
-    locationType1,
-    locationType2,
     weddingLocationAddress1,
     weddingLocationAddress2,
     weddingLocationContact,
-
-    // 기타
-    accountGuide,
 
     //이미지 모음                 
     flower_arch_groom_bride_sitting,
@@ -343,18 +335,6 @@ function startSakura() {
     };
   });
 }
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // 화면에 들어왔을 때
-      entry.target.classList.add("show");
-    } else {
-      // 화면에서 벗어났을 때
-      entry.target.classList.remove("show");
-    }
-  });
-});
 
 window.addEventListener("load", () => {
   const overlay = document.getElementById("introOverlay");

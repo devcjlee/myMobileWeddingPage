@@ -77,6 +77,11 @@ button {
   max-height: 450px;
 }
 
+/* 말풍선 */
+.chat-bubble {
+  max-width: 55%;
+}
+
 .send-btn .send-icon {
   width: 34px;
   height: 34px;
