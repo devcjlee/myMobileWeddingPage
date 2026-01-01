@@ -419,13 +419,13 @@ window.goToSlide = function(index) {
   activeThumb.classList.add("active");
 
   // 썸네일 자동 스크롤
-  if (isGalleryInView()) {
-    activeThumb.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest"
-    });
-  }
+  // if (isGalleryInView()) {
+  //   activeThumb.scrollIntoView({
+  //     behavior: "smooth",
+  //     inline: "center",
+  //     block: "nearest"
+  //   });
+  // }
   // 🔥 자동 슬라이드 리셋 (추천)
   resetAutoSlide();
 }
