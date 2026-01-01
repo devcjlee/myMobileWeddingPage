@@ -462,6 +462,9 @@ window.resetAutoSlide = function() {
     if (nextIndex >= slides.length) nextIndex = 0;
     goToSlide(nextIndex);
   }, 3000);
+  
+  isAutoSlidePaused = false;
+  document.getElementById("slideToggleIcon").src = "images/svg-icons/pause.svg";
 }
 
 let isAutoSlidePaused = false;
@@ -472,8 +475,10 @@ document.getElementById("slideToggleBtn").addEventListener("click", () => {
   if (isAutoSlidePaused) {
     // ▶ 재생 → 자동 슬라이드 다시 시작
     resetAutoSlide();
+    /* 아래 두줄은 resetAutoSlide() 함수로 대체
     isAutoSlidePaused = false;
     icon.src = "images/svg-icons/pause.svg";  // 일시정지 아이콘으로 변경
+    */
   } else {
     // ⏸ 일시정지 → 자동 슬라이드 멈춤
     clearInterval(autoSlideInterval);
