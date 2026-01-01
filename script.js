@@ -148,6 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing-Copy.JPG";
   const window_groom_bride                        = "images/weddingPhoto/window-groom-bride-Copy.JPG";
 
+  const mainPhoto                                 = "images/weddingPhoto/mainPhoto.JPG";
+
 
 
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
@@ -223,7 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
     white_wall_groom_bride_standing_beigesuit,
     white_wall_groom_bride_standing_flower,
     white_wall_groom_bride_standing,
-    window_groom_bride
+    window_groom_bride,
+
+    mainPhoto
   };
 
   document.querySelectorAll("[data-name]").forEach(el => {
