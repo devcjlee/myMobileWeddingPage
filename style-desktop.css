@@ -72,7 +72,6 @@ button {
   font-size: clamp(16px, 3.0vw, 17px);
 }
 
-
 #guestbookList {
   max-height: 450px;
 }

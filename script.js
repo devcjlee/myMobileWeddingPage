@@ -399,6 +399,12 @@ let startX = 0;
 let isDragging = false;
 
 window.goToSlide = function(index) {
+  const slider = document.getElementById("gallerySlider");
+  const activeImg = slides[index];
+
+  slider.style.height = activeImg.offsetHeight + "px";
+
+  
   currentIndex = index;
 
   // 모든 이미지 숨기기

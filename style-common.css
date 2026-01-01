@@ -396,6 +396,8 @@ button:active {
   height: auto;
   border-radius: 12px;
   overflow: hidden;
+  transition: height 0.35s ease; /* 🔥 슬라이더 높이 부드럽게 변경 */
+  margin-bottom: 12px;
 }
 
 .gallery-slider .slides {
