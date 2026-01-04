@@ -123,7 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingDay = "26";
   const weddingDayOfWeekEng = "Sun";
   const weddingDayOfWeekKor = "일";
-  const weddingTimeZone = "am";
+  const weddingTimeZone = "AM";
+  const weddingTimeZoneKor = "오전";
   const weddingHour = "11";
   const weddingMinute = "00";
   const weddingLocation = "밀리토피아호텔 바이마린";
@@ -137,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing1.JPG";
   const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.jpg";
   const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring.JPG";
-  const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower.JPG";
   const groom                                     = "images/weddingPhoto/groom.JPG";
   const bride                                     = "images/weddingPhoto/bride.JPG";
   const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit.JPG";
@@ -196,6 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
     weddingDayOfWeekEng,
     weddingDayOfWeekKor,
     weddingTimeZone,
+    weddingTimeZoneKor,
     weddingHour,
     weddingMinute,
     weddingLocation,
@@ -211,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
     flower_arch_groom_bride_standing,
     flower_arch_groom_bride_standing2,
     groom_bride_top_flower_ring,
-    groom_bride_top_flower,
     groom,
     bride,   
     white_wall_groom_bride_standing_beigesuit,

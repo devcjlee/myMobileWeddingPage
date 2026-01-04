@@ -49,7 +49,7 @@ button {
 }
 
 #wedding-info-text {
-  font-size: clamp(20px, 4.6vw, 24px);
+  font-size: clamp(18px, 4.4vw, 24px);
 }
 
 .familyName{

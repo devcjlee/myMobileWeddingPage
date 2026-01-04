@@ -228,7 +228,8 @@ button:active {
   margin-top: 30px;
   margin-bottom: 20px; /* 이름과 날짜 사이 간격을 조금 더 */
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
+  color: var(--text-color);
 }
 
 .heart-icon {
@@ -241,7 +242,6 @@ button:active {
 
 #wedding-info {
   margin-top: 12px;              /* 사진과 이름 사이 간격 조금 더 */
-  color: var(--text-color);
   line-height: 1.4;
   padding: 8px;
   text-align: center;            /* 텍스트 중앙 정렬 */
@@ -249,6 +249,8 @@ button:active {
 
 #wedding-info-text {
   letter-spacing: 2.0px;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-color);
 }
 
 .welcome {
