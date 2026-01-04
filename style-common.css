@@ -420,6 +420,14 @@ button:active {
   position: relative; /* active 이미지는 정상 위치 */
 }
 
+.gallery-slider img {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 
 /* 썸네일 리스트 */
 .thumbnail-list {
