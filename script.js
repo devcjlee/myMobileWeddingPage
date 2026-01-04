@@ -134,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
   const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting.JPG";
-  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing1.jpg";
-  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.JPG";
+  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing1.JPG";
+  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.jpg";
   const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring.JPG";
   const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower.JPG";
   const groom                                     = "images/weddingPhoto/groom.JPG";
