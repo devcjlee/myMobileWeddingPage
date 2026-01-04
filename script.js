@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const brideFatherAccount = "357-20-362811";
   const brideMotherFullName = "전영희";
   const brideMotherAccountBank = "국민은행";
-  const brideMotherAccount = "023210-64-4360";
+  const brideMotherAccount = "023-21-0644-360";
   const weddingYear = "2026";
   const weddingMonth = "04";
   const weddingDay = "26";
@@ -133,17 +133,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationContact = "031-727-9350";
 
   
-  const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting-Copy.JPG";
-  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing-Copy.jpg";
-  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2-Copy.JPG";
-  const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring-Copy.JPG";
-  const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower-Copy.JPG";
-  const groom                                     = "images/weddingPhoto/groom-Copy.JPG";
-  const bride                                     = "images/weddingPhoto/bride-Copy.JPG";
-  const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit-Copy.JPG";
-  const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower-Copy.JPG";
-  const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing-Copy.JPG";
-  const window_groom_bride                        = "images/weddingPhoto/window-groom-bride-Copy.JPG";
+  const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting.JPG";
+  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing1.jpg";
+  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.JPG";
+  const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring.JPG";
+  const groom_bride_top_flower                    = "images/weddingPhoto/groom-bride-top-flower.JPG";
+  const groom                                     = "images/weddingPhoto/groom.JPG";
+  const bride                                     = "images/weddingPhoto/bride.JPG";
+  const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit.JPG";
+  const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower.JPG";
+  const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing.JPG";
+  const window_groom_bride                        = "images/weddingPhoto/window-groom-bride.JPG";
 
   const mainPhoto                                 = "images/weddingPhoto/mainPhoto.JPG";
 
@@ -419,13 +419,13 @@ window.goToSlide = function(index) {
   activeThumb.classList.add("active");
 
   // 썸네일 자동 스크롤
-  // if (isGalleryInView()) {
-  //   activeThumb.scrollIntoView({
-  //     behavior: "smooth",
-  //     inline: "center",
-  //     block: "nearest"
-  //   });
-  // }
+  if (isGalleryInView()) {
+    activeThumb.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
+  }
   // 🔥 자동 슬라이드 리셋 (추천)
   resetAutoSlide();
 }
@@ -774,10 +774,10 @@ window.copyAccount = function(button) {
   const numberRaw = numberEl.textContent.trim();
 
   // 🔥 하이픈 제거
-  const number = numberRaw.replace(/-/g, "");
+  //const number = numberRaw.replace(/-/g, "");
 
   // 🔥 복사할 텍스트
-  const textToCopy = `${bank} ${number}`;
+  const textToCopy = `${bank} ${numberRaw}`;
 
   navigator.clipboard.writeText(textToCopy)
     .then(() => {

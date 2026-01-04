@@ -645,6 +645,10 @@ button:active {
   align-items: center;
 }
 
+#guestPassword{
+  font-size: 12px;
+}
+
 .chat-top-row input {
   flex: 1; /* 이름/비밀번호가 균등 분배 */
 }
