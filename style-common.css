@@ -952,6 +952,6 @@ button:active {
   margin-top: 40px;
   margin-bottom: 20px;
   font-size: clamp(10px, 2.5vw, 12px);
-  color: rgba(0,0,0,0.35);
+  color: rgba(0, 0, 0, 0.5);
   letter-spacing: 0.5px;
 }
