@@ -133,25 +133,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const weddingLocationAddress2 = "경기도 성남시 수정구 창곡동 566";
   const weddingLocationContact = "031-727-9350";
 
-  
-  const flower_arch_groom_bride_sitting           = "images/weddingPhoto/flower-arch-groom-bride-sitting.JPG";
-  const flower_arch_groom_bride_standing          = "images/weddingPhoto/flower-arch-groom-bride-standing1.JPG";
-  const flower_arch_groom_bride_standing2         = "images/weddingPhoto/flower-arch-groom-bride-standing2.jpg";
-  const groom_bride_top_flower_ring               = "images/weddingPhoto/groom-bride-top-flower-ring.JPG";
-  const groom                                     = "images/weddingPhoto/groom.JPG";
-  const bride                                     = "images/weddingPhoto/bride.JPG";
-  const white_wall_groom_bride_standing_beigesuit = "images/weddingPhoto/white-wall-groom-bride-standing-beigesuit.JPG";
-  const white_wall_groom_bride_standing_flower    = "images/weddingPhoto/white-wall-groom-bride-standing-flower.JPG";
-  const white_wall_groom_bride_standing           = "images/weddingPhoto/white-wall-groom-bride-standing.JPG";
-  const window_groom_bride                        = "images/weddingPhoto/window-groom-bride.JPG";
+  const r2Base = "https://pub-874a81a27a0d492d9bcce0ba3efae4fd.r2.dev/";
 
-  const mainPhoto                                 = "images/weddingPhoto/mainPhoto.JPG";
-
+  const images = {
+    mainPhoto: r2Base + "mainPhoto.JPG",
+    flower_arch_groom_bride_sitting: r2Base + "flower-arch-groom-bride-sitting.JPG",
+    flower_arch_groom_bride_standing: r2Base + "flower-arch-groom-bride-standing1.JPG",
+    flower_arch_groom_bride_standing2: r2Base + "flower-arch-groom-bride-standing2.jpg",
+    groom_bride_top_flower_ring: r2Base + "groom-bride-top-flower-ring.JPG",
+    groom: r2Base + "groom.JPG",
+    bride: r2Base + "bride.JPG",
+    white_wall_groom_bride_standing_beigesuit: r2Base + "white-wall-groom-bride-standing-beigesuit.JPG",
+    white_wall_groom_bride_standing_flower: r2Base + "white-wall-groom-bride-standing-flower.JPG",
+    white_wall_groom_bride_standing: r2Base + "white-wall-groom-bride-standing.JPG",
+    window_groom_bride: r2Base + "window-groom-bride.JPG"
+  };
 
 
   document.title = `${groomFirstName} ❤️ ${brideFirstName}의 모바일 청첩장`;
 
   const dataMap = {
+    ... images,
     // 인트로
     introText,
     weddingInvitation,
@@ -205,21 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 주소
     weddingLocationAddress1,
     weddingLocationAddress2,
-    weddingLocationContact,
-
-    //이미지 모음                 
-    flower_arch_groom_bride_sitting,
-    flower_arch_groom_bride_standing,
-    flower_arch_groom_bride_standing2,
-    groom_bride_top_flower_ring,
-    groom,
-    bride,   
-    white_wall_groom_bride_standing_beigesuit,
-    white_wall_groom_bride_standing_flower,
-    white_wall_groom_bride_standing,
-    window_groom_bride,
-
-    mainPhoto
+    weddingLocationContact
   };
 
   document.querySelectorAll("[data-name]").forEach(el => {
