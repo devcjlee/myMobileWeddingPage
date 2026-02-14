@@ -696,6 +696,9 @@ button:active {
   filter: brightness(0) invert(1); /* 갈색 → 흰색으로 변환 */
 }
 
+.noflower-announce {
+  margin-bottom : 50px;
+}
 
 .account {
   text-align: center;
